@@ -1,28 +1,25 @@
 .nav {
-    background-color: #ccc;
     width: 100%;
 }
 
 .nav__item{
     display: inline;
-    padding: 0.5rem;    
+    margin-left: 2rem;
+    padding: 2rem;
 }
 
 .nav__item>a{
     text-decoration: none;
     text-transform: uppercase;
+    font-size: 2.8rem;
 }
 
 .header.grid{
-    background-color: #ccc; 
     line-height: 4rem;
+    background-color: rgb(233, 204, 204);
+    position: fixed;
 }
 
-.nav__item{
-    margin-left: 2rem;
-    font-size: 1.8rem;
-    padding: 2rem;
-}
 
 .nav__item:first-child {
     margin-left: 8rem;

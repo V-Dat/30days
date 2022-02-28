@@ -1,6 +1,7 @@
 
 body{
-    height: 100vh;
+    position: relative;
+    min-height: 100vh;
 	background-image: linear-gradient(to right, #4daf54, #3d8880);
 	/* overflow: hidden; */
 }

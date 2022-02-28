@@ -1,5 +1,10 @@
-
-  
+.header {
+    z-index: 1;
+}
+.content{
+    padding-top: 12rem;
+    padding-bottom: 15rem;
+}
 .preview.col{
     background-color: transparent;
     background-clip: content-box;
@@ -9,7 +14,9 @@
 }
 
 .root2{
-    /* display: none; */
+    min-height: 100vh;
+    padding-top: 12rem;
+    padding-bottom: 15rem;
 }
 .preview{
     width: 40rem;

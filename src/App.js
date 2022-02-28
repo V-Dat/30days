@@ -1,5 +1,6 @@
 import './App.css';
 import Header from './parts/Header'
+import Footer from './parts/Footer'
 import Content from './component/Content/Content.js';
 import {  BrowserRouter as Router,  Routes,  Route, } from "react-router-dom";
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Header />
       <br/>
       <Content onClick ={handleRemove} /> 
+      <Footer />
     </Router>
     
     </>
