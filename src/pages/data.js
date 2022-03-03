@@ -1,5 +1,6 @@
 
 const data = { 
+  day:['Day1','Day2','Day3','Day4','Day5,Day6','Day7',],
   productList: [
     {
       name: "Nike",
@@ -88,27 +89,57 @@ const data = {
   
   ],
   about: {
-    name: 'Văn Đạt',
-    age: 24,
+    name: 'ĐOÀN VĂN ĐẠT',
+    dayOfBirth: '19/03/1998',
+    avatar:'./img/about/avatar.png',
+    age:24,
+    email: 'Vandat.k21@gmail.com',
+    phone: '0399 179 067',
+    location: 'TP HCM',
+    education: [ {school: 'TON DUC THANG UNIVERSITY', time: '2017 - 2021', gpa: 'GPA: 3/4'} ],
+    work: [ {company: 'NPV EXPRESS & LOGISTIC CO., LTD', time: '2017 - 2021', 
+            task :[ 'đây là task 1',
+                    'đây là task 2 ',
+                    'đây là task 3 ',
+                    'đây là task 4 ',
+                    'đây là task 5 ',
+                    'đây là task 6 ',]}],
+
+
     love: 'du lịch!',
-  },
-  imageList: [
-    {
+    skill: [
+      {key:'HTML' , value: ': HTML DOM , HTML Event, HTTP Methods'},
+      {key:'CSS' , value: ': Flex Box, Grid System, Reponsive, BEM'},
+      {key:'JavaScript' , value: ': Event, Callbacks, Promise,...'},
+      {key:'ReactJS' , value: ': JSX, Function Components, Hooks'},
+      {key:'My SQL' , value: ': CRUD, Query'},
+      {key:'Microsoft Office' , value: ': Sử dụng thành thạo'},
+  ],
+  objective:[
+    {key:'Ngắn Hạn', value: ['- Tìm kiếm một vị trí trong một môi trường làm việc chuyên nghiệp, năng động và thử thách.',
+    '- Đóng góp những kiến thức, kinh nghiệm và kỹ năng tốt nhất của tôi cho sự phát triển của công ty.',
+    '- Luôn luôn phát triển khả năng bản thân, tích lũy thêm nhiều kinh nghiệm để hoàn thành tốt các nhiệm vụ được giao và cống hiến tối đa cho công ty. ']},
+    {key:'Dài Hạn', value: ['- Gắn bó lâu dài với công ty, trở thành nhân viên nòng cốt, tạo nhiều giá trị cho công ty.']},
+  
+  
+  ]},
+  dayList: [
+    { day:'Day1',
       name:'product card',
       url:'Day1',
       imageUrl:'./img/listimage/product_card.png',
     },
-    {
+    {day:'Day2',
       name:'profile card',
       url:'Day2',
       imageUrl:'./img/listimage/profile_card.png',
     },
-    {
+    {day:'Day3',
       name:'create modal',
       url:'Day3',
       imageUrl:'./img/listimage/create_modal.png',
     },
-    {
+    {day:'Day4',
       name:'image gallery',
       url:'Day4',
       imageUrl:'./img/listimage/image_gallery.png',
@@ -163,7 +194,39 @@ social:  ['facebook',
           'github',
           'tiktok']
 },
-  ]
-
+  ],
+  galary: [{
+    name: "img1",
+    url: './img/day4/img1.png',
+  },
+  {
+    name: "img2",
+    url: './img/day4/img2.png',
+  },
+  {
+    name: "img3",
+    url: './img/day4/img3.png',
+  },
+  {
+    name: "img4",
+    url: './img/day4/img4.png',
+  },
+  {
+    name: "img5",
+    url: './img/day4/img5.png',
+  },
+  {
+    name: "img6",
+    url: './img/day4/img6.png',
+  },
+  {
+    name: "img7",
+    url: './img/day4/img7.png',
+  },
+  {
+    name: "img8",
+    url: './img/day4/img8.png',
+  },]
 }
 export default data;
+

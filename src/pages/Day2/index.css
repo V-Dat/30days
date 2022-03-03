@@ -1,11 +1,3 @@
-.col{
-    /* background-color: #ccc; */
-    background-clip: content-box;
-    text-align: center;        
-    margin-top: 0.8rem;
-    margin-bottom:  0.8rem;
-}
-
 .profile__avatar img {
     width: 60%;
     height: 60%;
@@ -20,7 +12,7 @@
     overflow: hidden;
     border-radius: 4rem;
     background-color: #272d40;
-    height: 42rem
+    height: 48rem;
 }
 
 .profile__job{
@@ -29,7 +21,15 @@
     margin-top: 1rem;
 }
 
-.profile__name, .profile__contact{
+.profile__name{
+    color: var(--color-white);
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin: 1.5rem 0;
+    font-weight: Bold ;
+}
+
+.profile__contact{
     color: var(--color-white);
     font-weight: 700;
     font-size: 1.8rem;
@@ -39,6 +39,7 @@
     font-weight: normal;
     border: 0.3rem solid var(--primary-color)
 }
+
 
 .profile__social > a  {
     font-size: 2.8rem;

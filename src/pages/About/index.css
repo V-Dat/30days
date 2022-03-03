@@ -1,8 +1,73 @@
+.cv{
+    margin:1rem auto;
+    text-align:center;
+}
 .about__heading{
-    text-align: justify;
-    
+    text-align: left!important;    
 }
 .about{
+    min-height: 100vh;
     padding-top: 12rem;
     padding-bottom: 15rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    background-color: #ccc!important;
+    text-align: justify!important;
+}
+
+.head-content{
+    display: flex;
+    padding: 2rem;
+}
+
+.head-content__left{
+    flex: 9 
+}
+.head-content__right{
+    flex: 3;
+}
+
+.head-content__right .image > img {
+    width: 20rem;
+    vertical-align: middle;
+    height: 25rem;
+}
+
+.head-content__right .image{
+    text-align: center;
+
+}
+.contact > *{
+    padding-right: 4rem;
+}
+.body-content{
+    display: flex;
+    padding: 2rem;
+}
+
+.body-content__left{
+    flex: 4.2
+}
+
+.body-content__right{
+    flex: 7.8;
+    border-left: 0.3rem solid #000;
+    padding-left: 3rem;
+}
+
+.skill{
+    display: flex;
+}
+
+.content-skill{
+    padding: 2rem;
+}
+
+
+.skill__right{
+    padding-left: 3rem;
+}
+
+.objective{
+    padding: 2rem;
 }

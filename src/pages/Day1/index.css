@@ -3,14 +3,6 @@ body{
     position: relative;
     min-height: 100vh;
 	background-image: linear-gradient(to right, #4daf54, #3d8880);
-	/* overflow: hidden; */
-}
-.col{
-    background-clip: content-box;
-    text-align: center;        
-    margin-top: 1.2rem;
-    margin-bottom:  0.8rem;
-
 }
 
 .card__image >img {

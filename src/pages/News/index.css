@@ -1,3 +1,10 @@
+.new{
+    min-height: 100vh;
+    padding-top: 12rem;
+    padding-bottom: 15rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
 .about__heading{
     text-align: justify;
     

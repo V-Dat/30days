@@ -10,7 +10,9 @@ function Footer() {
   return (
     <div className="footer">
         <div className="footer__child footer__image">
+        <a href="/About" >
             <img src='./img/day2/Kevin.png'/>
+        </a>
         </div>
 
         <div className='footer__child footer__contact1'>

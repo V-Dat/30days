@@ -3,6 +3,9 @@ import '../../assets/css/grid.css'
 import data from '../data'
 
 function Day2() {
+  console.log('Day2: render....')
+
+
   const profile = data.profile;
   return (
     <>
@@ -14,6 +17,7 @@ function Day2() {
           <img src={e.avatar} alt={e.name}/>
         </div>
         <div className="profile__job">{e.job}</div>
+        <div className="profile__name">{e.name}</div>
         <div className="profile__social">
         {e.social.map(social => (
           <a key={`${social}${e.index}`} href={`https://www.${social}.com/${e.name}`}>

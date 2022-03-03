@@ -12,7 +12,7 @@ function News({onClick}) {
   useEffect(() => onClick(),[])
   console.log('news re-render')
   return (
-    <div className="about  ">
+    <div className="new">
       <h2>THIS IS NEWS PAGE</h2>
     </div>
   );

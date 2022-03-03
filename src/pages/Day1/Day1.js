@@ -1,10 +1,17 @@
 import "./index.css";
 import "../../assets/css/grid.css";
-import { useState , useEffect} from "react";
+import { useState , useMemo } from "react";
 import data from '../data'
 
-function Day1() {
-  const [active , setActive] = useState('false');
+function Day1( {}) {
+
+  console.log('Day1: render....')
+
+
+
+
+
+const [active , setActive] = useState('false');
 
 const  productList = data.productList
 
@@ -23,7 +30,6 @@ const handleClickButton = e =>{
   e.target.classList.add('card__button-active')
   setTimeout(() =>e.target.classList.remove('card__button-active'), 200)
 }
-
 
   return (
     <div className="day1 grid wide">

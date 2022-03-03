@@ -24,3 +24,19 @@
 .nav__item:first-child {
     margin-left: 8rem;
 }
+
+
+@media (min-width: 1024px) {
+
+}
+/* >= Tablet */
+@media (min-width: 740px) and (max-width: 1023px) {
+
+}
+
+/* Tablet - PC low resolution width: 644px; */
+@media (max-width: 740px) {
+    .nav{
+        display: none;
+    }
+}
