@@ -31,6 +31,8 @@
     height: 100%;
     object-fit: cover;
     overflow:hidden;
+    scale: 0.5;
+    margin: 0 auto;
 }
 
 .preview .preview__title{
@@ -42,7 +44,6 @@
     text-transform: capitalize;
     color: var(--color-white);
     transition-duration: 0.3s
-
 }
 
 .preview:hover .preview__title{

@@ -1,9 +1,8 @@
 .footer{
-    /* position: fixed; */
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #ccc;
+    background-color: rgb(59, 57, 57);
     display: flex;
     justify-content: space-around;
 }
@@ -26,4 +25,9 @@
     justify-content: center;
 }
 .footer__contact2 p, .footer__contact1 p{
+}
+@media (max-width: 740px) {
+    .footer__child.footer__contact2{
+        display: none!important;
+    }
 }

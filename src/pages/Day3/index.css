@@ -2,10 +2,12 @@
  z-index:2;
 }
 
+
 .day3{
-    padding-top: 11rem;
+    /* padding-top: 11rem; */
+    padding-top: 10rem;
     text-align: center;
-    height: 100%;
+    height: 100vh;
 }
 .dialog__btnOpen{
     padding: 2rem 4rem;
@@ -15,6 +17,7 @@
     border-radius: 2rem;
     transition: 1s;
     position: relative;
+    top: 20%;
 }
 
 .dialog__btn:hover{
@@ -23,6 +26,7 @@
 
 .dialog--hide{
     display: none;
+    top: 25%;
 }
 
 .dialog--show{
@@ -97,6 +101,8 @@
     position: absolute;
     border-radius: 1.3rem;
     transform: translateX(-50%);
+    top:60%;
+
 }
 
 .search-box__button{
@@ -107,6 +113,7 @@
     position: absolute;
     transform: translateX(-50%);
     border-radius: 1.3rem;
+    top:60%;
 }
 .search-box__button:hover{
     background-color: #ccc

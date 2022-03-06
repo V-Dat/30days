@@ -41,12 +41,12 @@ function Day3() {
       <div className="dialog--hide ">
         <div className="dialog__inner">
           <div className="dialog__header">
-            <p>Welcome to Nodemy</p>
+            <p>Welcome to my website</p>
             <i className="fas fa-times" onClick={handleCloseModel} ></i>
           </div>
           <div className="dialog__body">
             <h2>Modal</h2>
-            <p>Đây là phần body của day3</p>
+            <p>Đây là phần nội dung thông báo</p>
           </div>
           <div className="dialog__footer">
             <button onClick={handleCloseModel}>Close</button>

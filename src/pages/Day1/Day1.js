@@ -5,11 +5,7 @@ import data from '../data'
 
 function Day1( {}) {
 
-  console.log('Day1: render....')
-
-
-
-
+console.log('Day1: render....')
 
 const [active , setActive] = useState('false');
 

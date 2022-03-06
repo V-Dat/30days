@@ -26,14 +26,15 @@ function Day4() {
 // handle click picture in list 
     if (e.target.closest(".galary__image")) {
       control.style.display = "block";
-      currentImageUrl = `.${e.target.src.toString().slice(21)}`;
+      // currentImageUrl = `.${e.target.src.toString().slice(21)}`; 
+      currentImageUrl = `.${e.target.src.toString().slice(e.target.src.indexOf('/img') ,e.target.src.length )}`
 
       setImageUrl( currentImageUrl )
       console.log('handle click picture ')
     }
 // handle close
     if (e.target.closest(".control__close")) {
-      control.style.display = "none";
+    control.style.display = "none";
 
     console.log('handle close')
     }
@@ -68,7 +69,7 @@ function Day4() {
       image.src = `${listUrlImage[indexOfPrevImage]}`
         console.log('indexOfCurrentImageUrl: ' + indexOfPrevImage)
     }
-    }
+  }
 
 
   return (

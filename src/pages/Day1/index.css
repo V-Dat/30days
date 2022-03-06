@@ -1,7 +1,10 @@
-
+.day1.grid{
+    padding-top: 10rem;
+    padding-bottom: 3rem;
+}
 body{
-    position: relative;
-    min-height: 100vh;
+    /* position: relative; */
+    /* min-height: 100vh; */
 	background-image: linear-gradient(to right, #4daf54, #3d8880);
 }
 
