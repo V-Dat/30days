@@ -1,6 +1,8 @@
 .day5.grid{
-  padding-top: 8rem;
+  padding-top: 12rem;
   padding-bottom: 3rem;
+  height: 100vh;
+  width: 100%;  
 }
 
 .input__title{

@@ -8,6 +8,8 @@ import Day3 from "../../pages/Day3/Day3";
 import Day4 from "../../pages/Day4/Day4";
 import Day5 from "../../pages/Day5/Day5";
 import Day6 from "../../pages/Day6/Day6";
+import Day7 from "../../pages/Day7/Day7";
+import Day8 from "../../pages/Day8/Day8";
 
 import { Route, Routes, Link, Outlet } from "react-router-dom";
 import { useState, useEffect, memo } from "react";
