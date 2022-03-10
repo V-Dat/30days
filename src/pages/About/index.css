@@ -123,26 +123,79 @@
     padding-left: 1rem;
 }
 
-
+.work p{
+    padding:  0;
+}
 
 /* responsive */
-
+/* pc */
 @media (min-width: 1024px) {
-    .contact{
-    }
 
-    .contact > *{
-        flex: 0 0 50%;
-    }
 }
 /* >= Tablet */
 @media (min-width: 740px) and (max-width: 1023px) {
- 
+
+    .skill{flex: 12!important;}
+    .skill__name{flex: 2.5!important;}
+    .skill__value{flex: 9.5 !important;}
+
+
+    .contact > *{
+        flex: 0 0 100%;
+    }
+    .contact .contact__email{
+        order: 4!important;
+    }
+    .contact .contact__phone{
+        order: 3!important;
+    }
+    .contact .contact__location{
+        order: 2!important;
+    }
+    .contact .contact__github{
+        order: 1!important;
+    }
+    .body-content__left{
+        padding-right: 1rem;
+    }
+    .body-content__left > * {
+        display: inline-block;
+    }
+
 }
 
 /* Tablet - PC low resolution width: 644px; */
 @media (max-width: 740px) {
-    /* .contact{display: block} */
+
+    .body-content__left .education, .body-content__left .project, .body-content__left .objective{
+        justify-content:center!important;
+    }
+
+    .grid .about{
+        font-size: 1.5rem;
+    }
+
+    .body-content__left{
+        margin-top: 0!important;
+    }
+    .contact > *{
+        flex: 0 0 100%;
+        padding: 0;
+        font-size:1.5rem;
+    }
+    .contact .contact__email{
+        order: 4;
+    }
+    .contact .contact__phone{
+        order: 3;
+    }
+    .contact .contact__location{
+        order: 2;
+    }
+    .contact .contact__github{
+        order: 1;
+    }
+
     .image{display: none}
     .head-content__left{flex:0}
     .contact > * {padding-right:0}
@@ -153,8 +206,6 @@
 
     .work , .education {
         width: 100%; 
-        /* border-bottom: 0.3rem solid #000;  */
-        line-height: 0.1em;
         margin: 1rem 0 2rem; 
       }
       .work span , .education span{ 
@@ -173,6 +224,34 @@
     }
     .skill__value span {
         display: none;
+    }
+
+    .education .gpa {
+        padding-top: 2rem
+    }
+    .education .major {
+        padding-top: 1rem
+    }
+
+    .work{
+        word-wrap: break-word;
+        white-space:pre-wrap;
+    }
+
+    .work .task{
+        display: inline-block;
+        word-wrap: break-word;
+        white-space:pre-wrap;
+    }
+
+    .listComponent__list{
+        flex: 0 0 100%!important;
+        justify-content:center;
+    }
+    .listComponent__title{
+        word-wrap: break-word;
+        white-space:pre-wrap;
+        display: inline-block;
     }
 }
 
