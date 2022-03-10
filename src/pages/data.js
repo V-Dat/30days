@@ -156,7 +156,7 @@ const data = {
 
     {title: 'TheBand - HTML/CSS' , show:true , 
     link:'https://v-dat.github.io/w3-theband',
-    listImage:['./img/about/theband1.png','./img/about/theband2.png','./img/about/theband3.png','./img/about/theband4.png',],
+    listImage:['./img/about/theband2.png','./img/about/theband3.png','./img/about/theband1.png','./img/about/theband4.png',],
     leftDescription: ['Tạo HTML CSS từ design' ,'Responsive cho cả mobile và tablet',], 
     rightDescription: ['Style: CSS' ,'Cấu trúc web: HTML'  , 'Xử lý logics: JS (rất ít)']}, 
   ],
