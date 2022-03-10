@@ -1,10 +1,9 @@
 .day1.grid{
-    padding-top: 10rem;
+    min-height: 100vh;
+    padding-top: 3rem;
     padding-bottom: 3rem;
 }
 body{
-    /* position: relative; */
-    /* min-height: 100vh; */
 	background-image: linear-gradient(to right, #4daf54, #3d8880);
 }
 
@@ -18,7 +17,6 @@ body{
     flex-direction: column;
     border-radius: 3rem;
     background-color: var(--bg--color);
-    /* height: 46rem; */
 }
 
 .card-item{

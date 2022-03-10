@@ -1,10 +1,8 @@
 import "./index.css";
 import "../../assets/css/grid.css";
-import data from "../data";
 import {useEffect} from "react"
 
 function Day3() {
-  const profile = data.profile;
   console.log('Day3: render....')
 
   const handleOpenModel = () =>{
@@ -55,7 +53,7 @@ function Day3() {
       </div>
       <button className="dialog__btnOpen" onClick={handleOpenModel}>Open Modal</button>
 
-    <div class='break' >  </div>
+    <div className='break' >  </div>
 
       <div className="search-box">
         <input className ="search-box__input"type="text" />

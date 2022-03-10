@@ -12,9 +12,7 @@ function Day4() {
   let indexOfNextImage ;
   let indexOfPrevImage ;
 
-
   console.log('Day4: render....')
-
 
   const[imageUrl, setImageUrl] = useState('')
 

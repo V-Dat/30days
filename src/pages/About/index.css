@@ -1,70 +1,84 @@
+.about{
+    min-height: 80vh;
+    background-color: #fff!important;
+    text-align: justify!important;
+}
+.body-content{
+    min-height: 80vh
+}
 .left-page{
-    border-left: 5rem solid #0b608a;
+    border-left: 5rem solid #0b68a0;
 }
 .cv{
     padding:4rem 0 2rem 0;
     text-align:center;
-    color:#0b608a;
-}
-
- .objective > h2 , .content-skill > h2 , .ceritficate >h2{
-    width: 100%; 
-    border-bottom: 0.3rem solid #000;
-    line-height: 0.1em;
-    margin: 1rem 0 2rem; 
-    color: #0b608a;
-  }
-  .objective > h2 span , .content-skill > h2 span , .ceritficate >h2 span { 
-    background: #fff; 
-}
-
-.ceritficate{
-    padding:2rem
+    color:#087bec;
 }
 
 .contact{
     padding:  1rem ;
+    display: flex;
+    justify-content:space-between;
+    flex-wrap: wrap;
+}
+
+.contact i:before{
+    font-size: 2.5rem;
 }
 .about__heading{
     text-align: left!important;    
 }
-.about{
-    min-height: 100vh;
-    padding-top: 12rem;
-    padding-bottom: 15rem;
-    padding-left: 3rem;
-    padding-right: 3rem;
-    background-color: #fff!important;
-    text-align: justify!important;
+.contact .fa-envelope{
+    color: #f87a13;
+}
+
+.contact .fa-envelope{
+    color: #f87a13;
+}
+
+.contact .fa-phone{
+    color: #2471be;
+}
+
+.contact .fa-map{
+    color: #ccc;
+}
+
+.contact > p:hover {
+    color: var(--primary-color)
+}
+.contact__github{
+    text-decoration: none !important;
 }
 
 .head-content{
     display: flex;
-    padding: 1rem 2rem 2rem 2rem;
+    padding: 1rem 2rem 2rem 0;
 }
 
-.head-content__left{
-    flex: 9 
-}
 .head-content__right{
-    flex: 3;
+    flex: 9;
+    text-align: center;
+    margin: auto;
+}
+.head-content__left{
+    flex: 3
 }
 
 .head-content .name{
-    color:#0b608a;
+    color:#087bec;
     font-size: 2.6rem;
 }
 
-.head-content__right .image > img {
+.head-content__left .image > img {
     width: 14rem;
     vertical-align: middle;
     border-bottom-left-radius: 3rem;
     border-top-right-radius: 3rem;
     box-shadow: 1rem 0.5rem 0.5rem 0.5rem rgb(239, 241, 241);
-
 }
 
-.head-content__right .image{
+.head-content__left .image{
     text-align: center;
 
 }
@@ -75,71 +89,71 @@
 .contact i{
     padding-right: 1rem;
 }
-.body-content{
-    padding: 2rem;
-    flex: 12;
-    display: flex;
-}
-.body-content .work , .body-content .education{
-    color: #0b608a;
+
+.body-content__left{padding-top: 2rem;}
+.body-content__left .education, .body-content__left .project ,.body-content__left .objective{
+    font-size:1.8rem;
+    height: 6rem;
+    margin: auto;
+    display:flex;
+    align-items: center;
 }
 
-.body-content__left{
-    flex: 4;
-    padding-right: 1rem;
+.body-content__left .education > i, .body-content__left .project  > i,.body-content__left .objective > i{
+    padding-left: 1rem!important;
+}
+.body-content__left .education i:before{
+    color: #e01010
+}
+.body-content__left .project i:before {
+    color: #10e091
+}
+.body-content__left .objective i:before{
+    color: #1391f8
 }
 
-.body-content__right{
-    flex: 8;
-    border-left: 0.1rem solid #000;
+
+.body-content__left .education:hover, .body-content__left .project:hover ,.body-content__left .objective:hover {
+    transition: color .15s ease-in-out;
+    border-left: 4px solid #e01010;
+    color:#087bec;
+}
+
+.body-content__left .education > span, .body-content__left .project > span ,.body-content__left .objective > span {
     padding-left: 1rem;
 }
 
-.skill{
-    display: flex;
-}
 
-.content-skill{
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    flex:12
-}
-
-.skill__value{
-    flex:9.2}
-.skill__name{
-    flex: 2.8
-}
-
-.objective{
-    padding: 2rem;
-    padding-bottom: 4rem;
-}
 
 /* responsive */
 
 @media (min-width: 1024px) {
+    .contact{
+    }
+
+    .contact > *{
+        flex: 0 0 50%;
+    }
 }
 /* >= Tablet */
 @media (min-width: 740px) and (max-width: 1023px) {
-    /* .contact{display: block} */
+ 
 }
 
 /* Tablet - PC low resolution width: 644px; */
 @media (max-width: 740px) {
     /* .contact{display: block} */
     .image{display: none}
-    .head-content__right{flex:0}
+    .head-content__left{flex:0}
     .contact > * {padding-right:0}
     .body-content{
         flex-direction: column;
     }
-    .body-content__right{padding-left: 0; border-left: none; margin-top:4rem}
+    .body-content__left{padding-left: 0; border-left: none; margin-top:4rem}
 
     .work , .education {
         width: 100%; 
-        border-bottom: 0.3rem solid #000; 
+        /* border-bottom: 0.3rem solid #000;  */
         line-height: 0.1em;
         margin: 1rem 0 2rem; 
       }

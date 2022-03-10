@@ -12,7 +12,7 @@ function Day2() {
     <div className="day2 grid wide">
       <div className="row">
         {profile.map( (e) => (
-      <div key={`${e.avatar}${e.index}`}  className="profile col l-4 m-6 c-12">
+      <div key={`${e.avatar}${e.index}`}  className="profile col l-3 m-6 c-12">
         <div className="profile__avatar">
           <img src={e.avatar} alt={e.name}/>
         </div>

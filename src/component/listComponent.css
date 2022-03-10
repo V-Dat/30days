@@ -1,0 +1,55 @@
+.container-skill{
+  margin-top:3rem;
+  margin-bottom:3rem;
+}
+
+.listComponent__list{
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: flex-start; */
+}
+.listComponent__list{
+  display: flex;
+  min-height: 10rem;
+  text-align: center;
+  align-items: center;
+  flex: 0 0 33.333333%;
+}
+
+.listComponent__list  i:before{
+  font-size:4rem;
+  width: 4rem;
+  height: 4rem;
+  padding-right: 1.2rem;  
+}
+
+.listComponent__list .react {color: #9fcadf }
+.listComponent__list .html {color: #f87a13 }
+.listComponent__list .css {color: #1391f8 }
+.listComponent__list .js {color: #cfc208 }
+.listComponent__list .express {color: #e01010 }
+.listComponent__list .nodejs {color: #10e091 }
+.listComponent__list .sql {color: #2471be }
+.listComponent__list .nextjs {color: #2471be }
+.listComponent__list .redux {color: #b11ff5 }
+.listComponent__list .mongodb {color: #3ff308 }
+.listComponent__list .figma {color: #1abcfd }
+.listComponent__list .sql {color: #2471be }
+.listComponent__list .microsoft{color: #2471be }
+
+
+.listComponent__title {
+  width: 100%; 
+  border-bottom: 0.1rem solid #ccc;
+  line-height: 0.1em;
+  margin: 1rem 0 2rem; 
+  color: #087bec;
+  text-align: center;
+}
+ .listComponent__title > span { 
+  background: #fff; 
+}
+
+.listComponent{
+  margin: 3rem 0;
+}

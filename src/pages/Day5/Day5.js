@@ -1,35 +1,40 @@
 import "./index.css";
 import "../../assets/css/grid.css";
-import { useState } from "react";
+import { useState , useCallback } from "react";
 
 function Day5() {
   // counter
 
   // register
-  const [email, setEmail] = useState();
-  const [user, setUser] = useState();
-  const [password, setPassword] = useState();
+  
+  const [state, setSate] = useState('Vui Lòng Đăng Nhập');
+  const [email, setEmail] = useState('');
+  const [user, setUser] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
+
+  
+  const handleLogin = useCallback(() => {
     console.log('id: '+ user + 'pw: ' +  password+'em: '+ email);
-  };
+  },[]);
 
-  const handleRegister = () => {
+  const handleRegister = useCallback(() => {
     console.log('id: '+ user + 'pw: ' +  password+'em: '+ email);
-  };
+  },[]);
 
-  const handleInputUsername = (e) => {
+  const handleInputUsername = useCallback((e) => {
     setUser(e.target.value);
-  };
+  },[]);
 
-  const handleInputPassword = (e) => {
+  const handleInputPassword = useCallback((e) => {
     setPassword(e.target.value);
-  };
+  },[]);
 
-  const handleInputEmail = (e) => {
+  const handleInputEmail = useCallback((e) => {
     setEmail(e.target.value);
-  };
-
+  },[]);
+  
+  // vấn đề: mỗi lần input => re-render => hàm sẽ được khởi tạo lại => vậy làm sao 
   console.log("Register - ReRender: ", email || 'email' , user || 'user', password || 'password');
 
   return (
@@ -38,7 +43,7 @@ function Day5() {
         <div className="col l12 m-12 c-12">
           <div className="login">
             <form>
-              <h3 className="input__title">Vui Lòng Đăng Nhập <i className="fa-solid fa-heart"></i></h3>
+              <h3 className="input__title">{state}<i className="fa-solid fa-heart"></i></h3>
 
               <div className="input__user input__place">
                 <p className='caption'>Tên Đăng Nhập</p>

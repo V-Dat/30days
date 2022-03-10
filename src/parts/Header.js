@@ -15,6 +15,7 @@ import Day5 from "../pages/Day5/Day5.js";
 import Day6 from "../pages/Day6/Day6.js";
 import Day7 from "../pages/Day7/Day7.js";
 import Day8 from "../pages/Day8/Day8.js";
+import Day9 from "../pages/Day9/Day9.js";
 
 function Header() {
   const handleRemove = () => {
@@ -74,6 +75,7 @@ function Header() {
           <Route path='/Day6' element={<Day6 />} /> 
           <Route path='/Day7' element={<Day7 />} /> 
           <Route path='/Day8' element={<Day8 />} /> 
+          <Route path='/Day9' element={<Day9 />} /> 
     </Routes>
     </>
   );

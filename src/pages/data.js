@@ -1,6 +1,6 @@
 
 const data = { 
-  day:['Day1','Day2','Day3','Day4','Day5,Day6','Day7','Day8'],
+  day:['Day1','Day2','Day3','Day4','Day5,Day6','Day7','Day8','Day9','Day10','Day11'],
   productList: [
     {
       name: "Nike",
@@ -91,6 +91,9 @@ const data = {
   about: {
     name: 'ĐOÀN VĂN ĐẠT',
     dayOfBirth: '19/03/1998',
+    description: 'Tôi tên là Đoàn Văn Đạt - tôi sao sao sao ',
+    tdtu_icon: './img/about/tdtu_icon.jpg',
+    github: 'https://github.com/V-Dat',
     avatar:'./img/about/avatar.png',
     age:24,
     email: 'Vandat.k21@gmail.com',
@@ -98,7 +101,7 @@ const data = {
     location: 'TP HCM',
     education: [ {school: 'TON DUC THANG UNIVERSITY', time: '2017 - 2021', gpa: 'GPA: 2.8/4.0',major: 'International Business'}, ],
     ceritficate: ['Toeic: 615', 'Microsoft Office Specialist - Word','Microsoft Office Specialist - Excel'],
-    work: [ {company: 'NPV EXPRESS & LOGISTIC CO., LTD', time: '2017 - 2021', 
+    work: [ {company: 'NPV EXPRESS & LOGISTIC CO., LTD', time: '9/2019 - 6/2021', 
             task :[ 
                     'Quản lý & thiết lập database',
                     'Theo dõi & khai báo cáo hóa chất MSDS',
@@ -109,24 +112,57 @@ const data = {
 
     love: 'du lịch!',
     skill: [
-      {key:'HTML' , value: 'HTML DOM , HTML Event, HTTP Methods'},
-      {key:'CSS' , value: 'Flex Box, Grid System, Reponsive, BEM'},
-      {key:'JavaScript' , value: 'Javascript cơ bản, ES6, ...'},
-      {key:'ReactJS' , value: 'JSX, Function Components, Hooks'},
-      {key:'My SQL' , value: 'CRUD, Query'},
-      {key:'Microsoft Office' , value: 'Sử dụng thành thạo'},
-      {key:'Tiếng Anh' , value: 'Có khả năng đọc và hiểu tài liệu tiếng Anh'},
-      {key:'Kỹ Năng Mềm' , value: 'Có khả năng làm việc nhóm, làm việc dưới áp lực'},
-      {key:'Project' , value: 'vandatproject.surge.sh'},
+      {title: 'Ngôn Ngữ Lập Trình / Framework / Library' , icon:''},
+      {key:'HTML' , value: 'HTML DOM , HTML Event, HTTP Methods',icon:'<i class="fab fa-html5 html" ></i>'},
+      {key:'CSS' , value: 'Flex Box, Grid System, Reponsive, BEM',icon:'<i class="fab fa-css3-alt css" ></i>'},
+      {key:'JavaScript' , value: 'Javascript cơ bản, ES6, ...',icon:'<i class="fab fa-js-square js" ></i>'},
+      {key:'ReactJS' , value: 'JSX, Function Components, Hooks',icon:'<i class="fab fa-react react" ></i>'},
+      {key:'My SQL' , value: 'CRUD, Query',icon:'<i class="fas fa-database sql" ></i>'},
+      {key:'Microsoft Office' , value: 'Sử dụng thành thạo',icon:'<i class="fab fa-microsoft microsoft" ></i>'},
+      {key:'Tiếng Anh' , value: 'Có khả năng đọc và hiểu tài liệu tiếng Anh',icon:''},
+      {key:'Kỹ Năng Mềm' , value: 'Có khả năng làm việc nhóm, làm việc dưới áp lực',icon:''},
   ],
   objective:[
     {key:'Ngắn Hạn', value: ['- Tìm kiếm một vị trí trong một môi trường làm việc chuyên nghiệp, năng động và thử thách.',
     '- Đóng góp những kiến thức, kinh nghiệm và kỹ năng tốt nhất của tôi cho sự phát triển của công ty.',
     '- Luôn luôn phát triển khả năng bản thân, tích lũy thêm nhiều kinh nghiệm để hoàn thành tốt các nhiệm vụ được giao và cống hiến tối đa cho công ty. ']},
     {key:'Dài Hạn', value: ['- Gắn bó lâu dài với công ty, trở thành nhân viên nòng cốt, tạo nhiều giá trị cho công ty.']},
-  
-  
-  ]},
+  ],
+
+  objectiveSkill: [
+      {title: 'Muốn Học Trong Năm 2022' , icon:''},
+      {key:'NextJS' , value: 'Framework của React',icon:'<i class="fa-solid fa-n nextjs"></i>'},
+      {key:'React Native' , value: 'Framework của React',icon:'<i class="fab fa-react react"></i>'},
+      {key:'React Redux' , value: 'Library của React',icon:'<i class="fas fa-check-double redux"></i>'},
+      {key:'SCSS, SASS' , value: 'Chương trình tiền xử lý CSS (CSS preprocessor).',icon:'<i class="fab fa-sass scss" ></i>'},
+      {key:'MongoDB' , value: 'Quản lý Database',icon:'<i class="fas fa-database mongodb" ></i>'},
+      {key:'Figma' , value: 'Thiết kế UI web',icon:'<i class="fa-brands fa-figma figma"></i>'},
+  ],
+
+  project :[
+
+    {title: '30 Days Practice' , show:true , 
+    link:'null',
+    listImage:['./img/about/day1.png'
+              ,'./img/about/day2.png'
+              ,'./img/about/day3.png'
+              ,'./img/about/day4.png'
+              ,'./img/about/day5.png'
+              ,'./img/about/day6.png'
+              ,'./img/about/day7.png'
+              ,'./img/about/day8.png',],
+    leftDescription: ['Tạo HTML CSS từ design' ,'Responsive cho cả mobile và tablet',], 
+    rightDescription: ['Style: CSS','Library ReactJS' ,'React Router V6' , 'Xử lý logics: JS, Hooks']}, 
+
+    {title: 'TheBand - HTML/CSS' , show:true , 
+    link:'https://v-dat.github.io/w3-theband',
+    listImage:['./img/about/theband1.png','./img/about/theband2.png','./img/about/theband3.png','./img/about/theband4.png',],
+    leftDescription: ['Tạo HTML CSS từ design' ,'Responsive cho cả mobile và tablet',], 
+    rightDescription: ['Style: CSS' ,'Cấu trúc web: HTML'  , 'Xử lý logics: JS (rất ít)']}, 
+  ],
+
+},
+
   dayList: [
     { day:'Day1',
       name:'product card',
@@ -166,6 +202,11 @@ const data = {
     {day:'Day8',
     name:'Music Player',
     url:'Day8',
+    imageUrl:'./img/listimage/mp3_player.png',
+    },
+    {day:'Day9',
+    name:'Image Picker',
+    url:'Day9',
     imageUrl:'./img/listimage/mp3_player.png',
     },
   ],

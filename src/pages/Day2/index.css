@@ -1,5 +1,6 @@
 .day2.grid{
-    padding-top: 10rem;
+    min-height: 100vh;
+    padding-top: 3rem;
     padding-bottom: 3rem;
 }
 .profile__avatar img {

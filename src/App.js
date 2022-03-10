@@ -1,9 +1,10 @@
 import "./App.css";
 import Header from "./parts/Header";
+import Day1 from "./pages/Day1/Day1";
 import Footer from "./parts/Footer";
 import Content from "./component/Content/Content.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useMemo } from "react";
+import { useMemo ,useState  } from "react";
 function App() {
 ///deploy : yarn run deploy
 //https://vandatproject.surge.sh/
@@ -68,13 +69,14 @@ if (window.location.href == "http://localhost:3000/") {
   content.setAttribute("style", "display: none;");
 }
 });
+/// Mount Và UnMount Content bằng setState
+
+
 
   return (
     <>
       <Router>
         <Header />
-        <br />
-
         <Content onClick={ handleHideContent } />
       </Router>
       <Footer />    

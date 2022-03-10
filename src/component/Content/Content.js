@@ -2,17 +2,10 @@ import "./index.css";
 import "../../assets/css/grid.css";
 
 import data from "../../pages/data.js";
-import Day1 from "../../pages/Day1/Day1";
-import Day2 from "../../pages/Day2/Day2";
-import Day3 from "../../pages/Day3/Day3";
-import Day4 from "../../pages/Day4/Day4";
-import Day5 from "../../pages/Day5/Day5";
-import Day6 from "../../pages/Day6/Day6";
-import Day7 from "../../pages/Day7/Day7";
-import Day8 from "../../pages/Day8/Day8";
 
-import { Route, Routes, Link, Outlet } from "react-router-dom";
-import { useState, useEffect, memo } from "react";
+
+import {  Link  } from "react-router-dom";
+import {  memo } from "react";
 
 function Content({ onClick }) {
   const dayList = data.dayList;

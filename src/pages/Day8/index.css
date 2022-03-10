@@ -1,12 +1,14 @@
 .day8.grid{
-  padding-top: 10rem;
-  padding-bottom: 3rem;
-  height:100%;
+  min-height:100vh;
 }
 
+.day8.grid .col{
+  margin-top: 0 ;
+}
 .music-player.player{
+  padding-top: 4rem;
   max-width: 100%;
-  margin: 0 auto;;
+  margin: auto;;
   background-color: #fff
 }
 

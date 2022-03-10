@@ -11,8 +11,6 @@ function Day7() {
   const [countLi,setCountLi] = useState(0)
   // event hover remove todo list
 
-  
-
   //xử lý enter input:
   const handleEnter = (e) =>{ if(e.key=='Enter' && job != ''){    
     let countLiChecked = document.querySelectorAll('input:checked').length;
@@ -29,25 +27,15 @@ function Day7() {
   const handleAddJobs = () => {
     let countLiChecked = document.querySelectorAll('input:checked').length;
       setCountLi( () => {
-      return (jobs.length - countLiChecked)
-    }
-    
-
-  
-    
-    
-    )
-
+      return (jobs.length - countLiChecked)})
 
     if(job != ''){ 
     setJobs( (prev) => [...prev,job])
     setCountLi(jobs.length -countLiChecked +1)
-    setJob('') } 
-  }
+    setJob('') } }
 
   const handleDelJob = ({e, eJob}) => {
     
-
     console.log('JOB: ',eJob ,'-- del');
     setJobs ( (prev) => [ ...prev].filter(ele => {return ele != eJob}))
     setJobs ( (prev) => [ ...prev].filter(ele => {return ele}))
@@ -70,11 +58,6 @@ function Day7() {
         return jobs.length -1  - countLiChecked})
     }
     }
-    
-
-
-
-
 
   const handleCheckBox = (eJob) => {
     setChecked((prev) =>

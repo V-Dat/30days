@@ -48,6 +48,7 @@
     line-height: 1rem;
     background-color: rgb(59, 57, 57);
     position: fixed;
+    z-index: 1;
 }
 
 
