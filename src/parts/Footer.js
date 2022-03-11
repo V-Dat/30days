@@ -11,7 +11,7 @@ function Footer() {
     <div className="footer">
         <div className="footer__child footer__image">
         <a href="/About" >
-            <img src='./img/day2/Kevin.png'/>
+            <img src='./img/day2/Kevin.png' alt='doesnt exist'/>
         </a>
         </div>
 

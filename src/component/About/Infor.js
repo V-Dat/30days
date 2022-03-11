@@ -10,7 +10,7 @@ function Infor({ data }) {
           </h2>
           <div className="school">
             <div className="school__image">
-              <img src={data.tdtu_icon} />
+              <img src={data.tdtu_icon} alt='doesnt exist'/>
             </div>
             <span className="school__name">{e.school}</span>
           </div>
@@ -29,8 +29,8 @@ function Infor({ data }) {
           <span>Kĩ Năng</span>
         </h2>
         {data.skill.map((e) => {
-          if (e.icon == "") {
-            return;
+          if (e.icon === "") {
+            return
           } else {
             return (
               <div key={e.value} className="skill">
