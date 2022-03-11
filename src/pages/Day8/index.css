@@ -8,7 +8,7 @@
 .music-player.player{
   padding-top: 4rem;
   max-width: 100%;
-  margin: auto;;
+  margin: auto;
   background-color: #fff
 }
 
@@ -56,7 +56,7 @@
 .song{
   display: flex;
   justify-content: space-between;
-  padding: 1rem 1rem 0 1rem;
+  padding: 1rem 1rem 0;
   background-clip: content-box;
   background-color: #fff;
 

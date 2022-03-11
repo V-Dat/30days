@@ -2,7 +2,7 @@
     border-left: 5rem solid #0b608a;
 }
 .cv{
-    padding:4rem 0 2rem 0;
+    padding:4rem 0 2rem;
     text-align:center;
     color:#0b608a;
 }
@@ -40,7 +40,7 @@
 
 .head-content{
     display: flex;
-    padding: 1rem 2rem 2rem 2rem;
+    padding: 1rem 2rem 2rem;
 }
 
 .head-content__left{
