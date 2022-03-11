@@ -38,11 +38,11 @@ body{
 .card__action > button{ 
     font-size: 1.5rem;
     margin: 0.5rem auto;
-    padding: 0.9rem 0.5rem 0.9rem 0.5rem;
+    padding: 0.9rem 0.5rem;
     max-width: 10rem;
     border-radius: 0.5rem;
     color: var(--color-white);
-    border: solid 0px;
+    border: solid 0;
     background-color: var(--color-green);
 }
 
