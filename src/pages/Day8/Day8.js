@@ -56,7 +56,7 @@ function Day8() {
         }
       }
   /// handle Pause
-  const controlAction = {
+  const controlActions = {
     pause: function(e){
             e.target.display ='none'
             e.target.style.display = "none";
@@ -156,27 +156,27 @@ function Day8() {
   const handleControlMusic =  (e) => {
       // xử lý pause song
       if (e.target.classList.contains("icon-pause")) {
-        controlAction.pause(e);
+        controlActions.pause(e);
       }
       // xử lý play song
       if (e.target.classList.contains("icon-play")) {
-        controlAction.play(e);
+        controlActions.play(e);
       }
       // xử lý repeat
       if (e.target.classList.contains("fa-redo")) {
-        controlAction.repeat(e);
+        controlActions.repeat(e);
       }
       // xử lý btn random
       if (e.target.classList.contains("fa-random")) {
-        controlAction.random(e);
+        controlActions.random(e);
       }
       // xử lý next song
       if (e.target.classList.contains("fa-step-forward")) {
-        controlAction.next(e);
+        controlActions.next(e);
       }
       // xử lý prev song
       if (e.target.classList.contains("fa-step-backward")) {
-        controlAction.prev(e);
+        controlActions.prev(e);
       }
     } 
 
