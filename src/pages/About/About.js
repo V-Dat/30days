@@ -10,7 +10,6 @@ import { useState, useEffect } from "react";
 
 function About({ onClick }) {
   const about = data.about;
-  const skill = data.about.skill;
   console.log("Aboute re-render");
 
   const [infor, setInfor] = useState(true);
