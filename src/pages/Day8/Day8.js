@@ -72,7 +72,7 @@ function Day8() {
       if (e.target.classList.contains("icon-pause")) {
         e.target.style.display = "none";
         document.querySelector(".icon-play").style.display = "inline-block";
-        document.querySelector(".audio").pause(); // tai sao chỗ này không sử dụng được elementAudio
+        document.querySelector(".audio").pause(); 
       }
 
       // xử lý play song
@@ -85,7 +85,7 @@ function Day8() {
           setAudioCurrent(() => musics[indexOfCurrentSong.current]);
         } else {
           document.querySelector(".audio").play();
-        } // tai sao chỗ này không sử dụng được elementAudio
+        } 
       }
 
       // xử lý repeat
@@ -95,7 +95,6 @@ function Day8() {
           e.target.click();
         } else if (indexOfCurrentSong.current != undefined) {
           // đã có thuộc tính autoplay
-          // document.querySelector('.audio').setAttribute('src',musics[indexOfCurrentSong.current].mp3)}
         }
       }
 
@@ -121,7 +120,6 @@ function Day8() {
               indexOfCurrentSong.current = nextRandomSong.current = Math.floor(
                 Math.random() * musics.length
               );
-              // nextRandomSong.current = Math.floor(Math.random()*musics.length)
               console.log("nextRandomSong.current", nextRandomSong.current);
               console.log("indexOfCurrentSong.current", indexOfCurrentSong.current);
               return musics[nextRandomSong.current];
@@ -152,7 +150,6 @@ function Day8() {
               indexOfCurrentSong.current = nextRandomSong.current = Math.floor(
                 Math.random() * musics.length
               );
-              // nextRandomSong.current = Math.floor(Math.random()*musics.length)
               console.log("nextRandomSong.current", nextRandomSong.current);
               console.log("indexOfCurrentSong.current", indexOfCurrentSong.current);
               return musics[nextRandomSong.current];
