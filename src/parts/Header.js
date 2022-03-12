@@ -1,9 +1,7 @@
 import {  Route, Routes, Link, Outlet} from "react-router-dom";
 import About from '../pages/About/About.js'
 import News from '../pages/News/News.js'
-import Content from '../component/Content/Content.js';
 
-import App1 from "../App";
 import {memo} from 'react'
 import './Header.css';
 import '../assets/css/grid.css';
