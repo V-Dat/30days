@@ -46,27 +46,20 @@ function Day8() {
   }, [audioCurrent]);
 
   /// xử lý click song ở list => play
-  const handleClickSong = useMemo(
-    () =>
-    
-      ({ e, music }) => {
+  const handleClickSong = (e) =>  ({ e, music }) => {
         document.querySelector(".icon-play").style.display = "none";
         document.querySelector(".icon-pause").style.display = "inline-block";
         
-        if (e.target.className == "song__action") {
+        if (e.target.className === "song__action") {
           console.log("click more ");
         } else {
           setAudioCurrent(() => music);
           indexOfCurrentSong.current = musics.indexOf(music);
         }
 
+      }
 
-      },
-    [audioCurrent]
-  );
-
-  const handleControlMusic = useMemo(
-    () => (e) => {
+  const handleControlMusic =  (e) => {
       console.log(e.target);
       // xử lý pause song
       if (e.target.classList.contains("icon-pause")) {
@@ -80,7 +73,7 @@ function Day8() {
         e.target.style.display = "none";
         document.querySelector(".icon-pause").style.display = "inline-block";
 
-        if (indexOfCurrentSong.current == undefined) {
+        if (indexOfCurrentSong.current === undefined) {
           indexOfCurrentSong.current = 0;
           setAudioCurrent(() => musics[indexOfCurrentSong.current]);
         } else {
@@ -91,9 +84,9 @@ function Day8() {
       // xử lý repeat
       if (e.target.classList.contains("fa-redo")) {
         e.target.classList.toggle("active");
-        if (indexOfCurrentSong.current == undefined) {
+        if (indexOfCurrentSong.current === undefined) {
           e.target.click();
-        } else if (indexOfCurrentSong.current != undefined) {
+        } else if (indexOfCurrentSong.current !== undefined) {
           // đã có thuộc tính autoplay
         }
       }
@@ -101,7 +94,7 @@ function Day8() {
       // xử lý btn random
       if (e.target.classList.contains("fa-random")) {
         e.target.classList.toggle("active");
-        if (indexOfCurrentSong.current == undefined) {
+        if (indexOfCurrentSong.current === undefined) {
           e.target.click();
         } else {
           nextRandomSong.current = Math.floor(Math.random() * musics.length);
@@ -170,9 +163,7 @@ function Day8() {
           setAudioCurrent(() => musics[indexOfCurrentSong.current]);
         }
       }
-    },
-    []
-  );
+    } 
 
   console.log("Re-render ");
 
@@ -190,7 +181,7 @@ function Day8() {
                 className="player__image__url"
                 alt="Tên bài hát"
                 src={
-                  process.env.PUBLIC_URL + `${audioCurrent.image}` ==
+                  process.env.PUBLIC_URL + `${audioCurrent.image}` ===
                   "undefined"
                     ? process.env.PUBLIC_URL + "/img/day8/default.jpg"
                     : process.env.PUBLIC_URL + `${audioCurrent.image}`
