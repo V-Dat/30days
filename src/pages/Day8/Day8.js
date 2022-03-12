@@ -45,31 +45,26 @@ function Day8() {
     };
   }, [audioCurrent]);
 
+
   /// xử lý click song ở list => play
-  const handleClickSong = (e) =>  ({ e, music }) => {
+  const handleClickSong = ({ e, music }) => {
         document.querySelector(".icon-play").style.display = "none";
         document.querySelector(".icon-pause").style.display = "inline-block";
-        
-        if (e.target.className === "song__action") {
-          console.log("click more ");
-        } else {
+        if (e.target.className !== "song__action") {
           setAudioCurrent(() => music);
           indexOfCurrentSong.current = musics.indexOf(music);
         }
-
       }
-
-  const handleControlMusic =  (e) => {
-      // xử lý pause song
-      if (e.target.classList.contains("icon-pause")) {
-        e.target.style.display = "none";
-        document.querySelector(".icon-play").style.display = "inline-block";
-        document.querySelector(".audio").pause(); 
-      }
-
-      // xử lý play song
-      if (e.target.classList.contains("icon-play")) {
-        e.target.style.display = "none";
+  /// handle Pause
+  const controlAction = {
+    pause: function(e){
+            e.target.display ='none'
+            e.target.style.display = "none";
+            document.querySelector(".icon-play").style.display = "inline-block";
+            document.querySelector(".audio").pause(); 
+          },
+    play: function(e){
+      e.target.style.display = "none";
         document.querySelector(".icon-pause").style.display = "inline-block";
 
         if (indexOfCurrentSong.current === undefined) {
@@ -78,32 +73,26 @@ function Day8() {
         } else {
           document.querySelector(".audio").play();
         } 
+    },
+    repeat: function(e){
+      e.target.classList.toggle("active");
+      if (indexOfCurrentSong.current === undefined) {
+        e.target.click();
+      } else if (indexOfCurrentSong.current !== undefined) {
+        // đã có thuộc tính autoplay
       }
-
-      // xử lý repeat
-      if (e.target.classList.contains("fa-redo")) {
-        e.target.classList.toggle("active");
-        if (indexOfCurrentSong.current === undefined) {
-          e.target.click();
-        } else if (indexOfCurrentSong.current !== undefined) {
-          // đã có thuộc tính autoplay
-        }
+    },
+    random: function(e){
+      e.target.classList.toggle("active");
+      if (indexOfCurrentSong.current === undefined) {
+        e.target.click();
+      } else {
+        nextRandomSong.current = Math.floor(Math.random() * musics.length);
+        console.log("nextRandomSong.current", nextRandomSong.current);
       }
-
-      // xử lý btn random
-      if (e.target.classList.contains("fa-random")) {
-        e.target.classList.toggle("active");
-        if (indexOfCurrentSong.current === undefined) {
-          e.target.click();
-        } else {
-          nextRandomSong.current = Math.floor(Math.random() * musics.length);
-          console.log("nextRandomSong.current", nextRandomSong.current);
-        }
-      }
-
-      // xử lý next song
-      if (e.target.classList.contains("fa-step-forward")) {
-        document.querySelector(".icon-play").style.display = "none";
+    },
+    next: function(e){
+      document.querySelector(".icon-play").style.display = "none";
         document.querySelector(".icon-pause").style.display = "inline-block";
 
         if (document.querySelector(".fa-random").classList.contains("active")) {
@@ -130,10 +119,9 @@ function Day8() {
           }
           setAudioCurrent(() => musics[indexOfCurrentSong.current]);
         }
-      }
-      // xử lý prev song
-      if (e.target.classList.contains("fa-step-backward")) {
-        document.querySelector(".icon-play").style.display = "none";
+    },
+    prev: function(e){
+      document.querySelector(".icon-play").style.display = "none";
         document.querySelector(".icon-pause").style.display = "inline-block";
 
         if (document.querySelector(".fa-random").classList.contains("active")) {
@@ -161,6 +149,34 @@ function Day8() {
           }
           setAudioCurrent(() => musics[indexOfCurrentSong.current]);
         }
+    },
+  }
+
+
+  const handleControlMusic =  (e) => {
+      // xử lý pause song
+      if (e.target.classList.contains("icon-pause")) {
+        controlAction.pause(e);
+      }
+      // xử lý play song
+      if (e.target.classList.contains("icon-play")) {
+        controlAction.play(e);
+      }
+      // xử lý repeat
+      if (e.target.classList.contains("fa-redo")) {
+        controlAction.repeat(e);
+      }
+      // xử lý btn random
+      if (e.target.classList.contains("fa-random")) {
+        controlAction.random(e);
+      }
+      // xử lý next song
+      if (e.target.classList.contains("fa-step-forward")) {
+        controlAction.next(e);
+      }
+      // xử lý prev song
+      if (e.target.classList.contains("fa-step-backward")) {
+        controlAction.prev(e);
       }
     } 
 
