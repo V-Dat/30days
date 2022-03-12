@@ -60,7 +60,6 @@ function Day8() {
       }
 
   const handleControlMusic =  (e) => {
-      console.log(e.target);
       // xử lý pause song
       if (e.target.classList.contains("icon-pause")) {
         e.target.style.display = "none";
