@@ -1,7 +1,7 @@
 import "./index.css";
 import "../../assets/css/grid.css";
 import { useState , useMemo } from "react";
-import data from '../data'
+import data from "pages/data";
 
 function Day1( {}) {
 
