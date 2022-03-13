@@ -1,5 +1,6 @@
+import ListComponent from "component/ListComponent";
 import "./infor.css";
-import ListComponent from "../ListComponent";
+// import ListComponent from "../ListComponent";
 function Infor({ data }) {
   return (
     <>
