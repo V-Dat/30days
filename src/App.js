@@ -1,8 +1,8 @@
 import "./App.css";
-import Header from "./parts/Header";
-import Day1 from "./pages/Day1/Day1";
-import Footer from "./parts/Footer";
-import Content from "./component/Content/Content.js";
+import Header from "parts/Header";
+import Day1 from "pages/Day1/Day1";
+import Footer from "parts/Footer";
+import Content from "component/Content/Content";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useMemo ,useState  } from "react";
 function App() {
