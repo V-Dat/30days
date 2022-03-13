@@ -1,6 +1,6 @@
 import "./index.css";
 import "../../assets/css/grid.css";
-import { useState, useMemo, useEffect, useCallback, useRef } from "react";
+import { useState,useEffect, useRef } from "react";
 import data from "../data";
 let elementAudio =  document.querySelector(".audio");
 let seekBar = document.querySelector(".player__seekbar > input");
