@@ -1,5 +1,5 @@
 import "./objective.css";
-import ListComponent from '../ListComponent'
+import ListComponent from "component/ListComponent";
 
 const parser = new DOMParser();
 function Objective({ data }) {
