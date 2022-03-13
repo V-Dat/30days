@@ -1,7 +1,7 @@
 import "./index.css";
 import "../../assets/css/grid.css";
 import { useState, useEffect } from "react";
-import data from "../data";
+import data from "pages/data";
 
 function Day7() {
   // todo list 
