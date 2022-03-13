@@ -29,9 +29,7 @@ function Infor({ data }) {
           <span>Kĩ Năng</span>
         </h2>
         {data.skill.map((e) => {
-          if (e.icon === "") {
-            return
-          } else {
+          if (e.icon !== "") {
             return (
               <div key={e.value} className="skill">
                 <div className="skill__name">{e.key}</div>
