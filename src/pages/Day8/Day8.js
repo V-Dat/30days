@@ -42,86 +42,65 @@ function Day8() {
     };
   }, [audioCurrent]);
 
+
   /// xử lý click song ở list => play
-  const handleClickSong = useMemo(
-    () =>
-    
-      ({ e, music }) => {
+  const handleClickSong = ({ e, music }) => {
         document.querySelector(".icon-play").style.display = "none";
         document.querySelector(".icon-pause").style.display = "inline-block";
-        
-        if (e.target.className == "song__action") {
-          console.log("click more ");
-        } else {
+        if (e.target.className !== "song__action") {
           setAudioCurrent(() => music);
-          indexOfCurrentSong = musics.indexOf(music);
+          indexOfCurrentSong.current = musics.indexOf(music);
         }
-
-
-      },
-    [audioCurrent]
-  );
-
-  const handleControlMusic = useMemo(
-    () => (e) => {
-      console.log(e.target);
-      // xử lý pause song
-      if (e.target.classList.contains("icon-pause")) {
-        e.target.style.display = "none";
-        document.querySelector(".icon-play").style.display = "inline-block";
-        document.querySelector(".audio").pause(); // tai sao chỗ này không sử dụng được elementAudio
       }
-
-      // xử lý play song
-      if (e.target.classList.contains("icon-play")) {
-        e.target.style.display = "none";
+  /// handle Pause
+  const controlActions = {
+    pause: function(e){
+            e.target.display ='none'
+            e.target.style.display = "none";
+            document.querySelector(".icon-play").style.display = "inline-block";
+            document.querySelector(".audio").pause(); 
+          },
+    play: function(e){
+      e.target.style.display = "none";
         document.querySelector(".icon-pause").style.display = "inline-block";
 
-        if (indexOfCurrentSong == undefined) {
-          indexOfCurrentSong = 0;
-          setAudioCurrent(() => musics[indexOfCurrentSong]);
+        if (indexOfCurrentSong.current === undefined) {
+          indexOfCurrentSong.current = 0;
+          setAudioCurrent(() => musics[indexOfCurrentSong.current]);
         } else {
           document.querySelector(".audio").play();
-        } // tai sao chỗ này không sử dụng được elementAudio
+        } 
+    },
+    repeat: function(e){
+      e.target.classList.toggle("active");
+      if (indexOfCurrentSong.current === undefined) {
+        e.target.click();
+      } else if (indexOfCurrentSong.current !== undefined) {
+        // đã có thuộc tính autoplay
       }
-
-      // xử lý repeat
-      if (e.target.classList.contains("fa-redo")) {
-        e.target.classList.toggle("active");
-        if (indexOfCurrentSong == undefined) {
-          e.target.click();
-        } else if (indexOfCurrentSong != undefined) {
-          // đã có thuộc tính autoplay
-          // document.querySelector('.audio').setAttribute('src',musics[indexOfCurrentSong].mp3)}
-        }
+    },
+    random: function(e){
+      e.target.classList.toggle("active");
+      if (indexOfCurrentSong.current === undefined) {
+        e.target.click();
+      } else {
+        nextRandomSong.current = Math.floor(Math.random() * musics.length);
+        console.log("nextRandomSong.current", nextRandomSong.current);
       }
-
-      // xử lý btn random
-      if (e.target.classList.contains("fa-random")) {
-        e.target.classList.toggle("active");
-        if (indexOfCurrentSong == undefined) {
-          e.target.click();
-        } else {
-          nextRandomSong = Math.floor(Math.random() * musics.length);
-          console.log("nextRandomSong", nextRandomSong);
-        }
-      }
-
-      // xử lý next song
-      if (e.target.classList.contains("fa-step-forward")) {
-        document.querySelector(".icon-play").style.display = "none";
+    },
+    next: function(e){
+      document.querySelector(".icon-play").style.display = "none";
         document.querySelector(".icon-pause").style.display = "inline-block";
 
         if (document.querySelector(".fa-random").classList.contains("active")) {
           setAudioCurrent(
             () => {
-              indexOfCurrentSong = nextRandomSong = Math.floor(
+              indexOfCurrentSong.current = nextRandomSong.current = Math.floor(
                 Math.random() * musics.length
               );
-              // nextRandomSong = Math.floor(Math.random()*musics.length)
-              console.log("nextRandomSong", nextRandomSong);
-              console.log("indexOfCurrentSong", indexOfCurrentSong);
-              return musics[nextRandomSong];
+              console.log("nextRandomSong.current", nextRandomSong.current);
+              console.log("indexOfCurrentSong.current", indexOfCurrentSong.current);
+              return musics[nextRandomSong.current];
             }
             /// nếu có repeat acctive
           );
@@ -130,50 +109,73 @@ function Day8() {
         ) {
           elementAudio.currentTime = 0;
         } else {
-          if (indexOfCurrentSong < musics.length - 1) {
-            indexOfCurrentSong++;
+          if (indexOfCurrentSong.current < musics.length - 1) {
+            indexOfCurrentSong.current++;
           } else {
-            indexOfCurrentSong = 0;
+            indexOfCurrentSong.current = 0;
           }
-          setAudioCurrent(() => musics[indexOfCurrentSong]);
+          setAudioCurrent(() => musics[indexOfCurrentSong.current]);
         }
+    },
+    prev: function(e){
+      document.querySelector(".icon-play").style.display = "none";
+        document.querySelector(".icon-pause").style.display = "inline-block";
+
+        if (document.querySelector(".fa-random").classList.contains("active")) {
+          setAudioCurrent(
+            () => {
+              indexOfCurrentSong.current = nextRandomSong.current = Math.floor(
+                Math.random() * musics.length
+              );
+              console.log("nextRandomSong.current", nextRandomSong.current);
+              console.log("indexOfCurrentSong.current", indexOfCurrentSong.current);
+              return musics[nextRandomSong.current];
+            }
+
+            /// nếu có repeat acctive
+          );
+        } else if (
+          document.querySelector(".fa-redo").classList.contains("active")
+        ) {
+          elementAudio.currentTime = 0;
+        } else {
+          if (indexOfCurrentSong.current > 0) {
+            indexOfCurrentSong.current--;
+          } else {
+            indexOfCurrentSong.current = musics.length - 1;
+          }
+          setAudioCurrent(() => musics[indexOfCurrentSong.current]);
+        }
+    },
+  }
+
+
+  const handleControlMusic =  (e) => {
+      // xử lý pause song
+      if (e.target.classList.contains("icon-pause")) {
+        controlActions.pause(e);
+      }
+      // xử lý play song
+      if (e.target.classList.contains("icon-play")) {
+        controlActions.play(e);
+      }
+      // xử lý repeat
+      if (e.target.classList.contains("fa-redo")) {
+        controlActions.repeat(e);
+      }
+      // xử lý btn random
+      if (e.target.classList.contains("fa-random")) {
+        controlActions.random(e);
+      }
+      // xử lý next song
+      if (e.target.classList.contains("fa-step-forward")) {
+        controlActions.next(e);
       }
       // xử lý prev song
       if (e.target.classList.contains("fa-step-backward")) {
-        document.querySelector(".icon-play").style.display = "none";
-        document.querySelector(".icon-pause").style.display = "inline-block";
-
-        if (document.querySelector(".fa-random").classList.contains("active")) {
-          setAudioCurrent(
-            () => {
-              indexOfCurrentSong = nextRandomSong = Math.floor(
-                Math.random() * musics.length
-              );
-              // nextRandomSong = Math.floor(Math.random()*musics.length)
-              console.log("nextRandomSong", nextRandomSong);
-              console.log("indexOfCurrentSong", indexOfCurrentSong);
-              return musics[nextRandomSong];
-            }
-
-            /// nếu có repeat acctive
-          );
-        } else if (
-          document.querySelector(".fa-redo").classList.contains("active")
-        ) {
-          elementAudio.currentTime = 0;
-        } else {
-          if (indexOfCurrentSong > 0) {
-            indexOfCurrentSong--;
-          } else {
-            indexOfCurrentSong = musics.length - 1;
-          }
-          setAudioCurrent(() => musics[indexOfCurrentSong]);
-        }
+        controlActions.prev(e);
       }
-    },
-    []
-  );
-
+    } 
   console.log("Re-render ");
 
   return (
