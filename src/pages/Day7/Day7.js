@@ -1,5 +1,8 @@
 import "./index.css";
 import "../../assets/css/grid.css";
+
+import Header from "../../parts/Header";
+import Footer from "../../parts/Footer";
 import { useState, useEffect } from "react";
 import data from "../data";
 
@@ -79,7 +82,10 @@ function Day7() {
   }
 
   return (
-    <div className="day7 grid wide">
+    <>
+    <Header></Header>
+    <div className="day7">
+    <div className="grid wide">
       <div className="row">
         <div className="col l-12 m-12 c-12">
           <div className="todo">
@@ -111,6 +117,9 @@ function Day7() {
         </div>
       </div>
       </div>
+      <Footer></Footer>
+      </div>
+      </>
   );
 }
 

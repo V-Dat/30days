@@ -1,6 +1,9 @@
 import "./infor.css";
 import ListComponent from "../ListComponent";
+
+import {memo} from 'react';
 function Infor({ data }) {
+  console.log('Infor render /re-render')
   return (
     <>
       {data.education.map((e) => (
@@ -70,4 +73,4 @@ function Infor({ data }) {
   );
 }
 
-export default Infor;
+export default memo(Infor);

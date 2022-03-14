@@ -131,12 +131,12 @@ const data = {
 
   objectiveSkill: [
       {title: 'Muốn Học Trong Năm 2022' , icon:''},
-      {key:'NextJS' , value: 'Framework của React',icon:'<i class="fa-solid fa-n nextjs"></i>'},
-      {key:'React Native' , value: 'Framework của React',icon:'<i class="fab fa-react react"></i>'},
-      {key:'React Redux' , value: 'Library của React',icon:'<i class="fas fa-check-double redux"></i>'},
-      {key:'SCSS, SASS' , value: 'Chương trình tiền xử lý CSS (CSS preprocessor).',icon:'<i class="fab fa-sass scss" ></i>'},
-      {key:'MongoDB' , value: 'Quản lý Database',icon:'<i class="fas fa-database mongodb" ></i>'},
-      {key:'Figma' , value: 'Thiết kế UI web',icon:'<i class="fa-brands fa-figma figma"></i>'},
+      {key:'NextJS' , value: 'Framework của React',icon:'<i class ="fa-solid fa-n nextjs"></i>'},
+      {key:'React Native' , value: 'Framework của React',icon:'<i class ="fab fa-react react"></i>'},
+      {key:'React Redux' , value: 'Library của React',icon:'<i class ="fas fa-check-double redux"></i>'},
+      {key:'SCSS, SASS' , value: 'Chương trình tiền xử lý CSS (CSS preprocessor).',icon:'<i class ="fab fa-sass scss" ></i>'},
+      {key:'MongoDB' , value: 'Quản lý Database',icon:'<i class ="fas fa-database mongodb" ></i>'},
+      {key:'Figma' , value: 'Thiết kế UI web',icon:'<i class ="fa-brands fa-figma figma"></i>'},
   ],
 
   project :[

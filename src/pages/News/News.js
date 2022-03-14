@@ -1,13 +1,11 @@
 import "./index.css";
 import "../../assets/css/grid.css";
-import Day1 from "../Day1/Day1";
-import Day2 from "../Day2/Day2";
-import Day3 from "../Day3/Day3";
-import Content from "../../component/Content/Content";
-import { useState, useEffect } from "react";
 
-function News({ onClick }) {
-  useEffect(() =>onClick(),[])
+import Header from "../../parts/Header";
+import Footer from "../../parts/Footer";
+import { useState } from "react";
+
+function News() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
@@ -18,6 +16,8 @@ function News({ onClick }) {
   };
 
   return (
+    <>
+    <Header></Header>
     <div className="new">
       <div style={{ padding: 32 }}>
         <input  onChange={(e) => setName(e.target.value)} />
@@ -25,6 +25,8 @@ function News({ onClick }) {
         <button onClick={handleClick}>Change</button>
       </div>
     </div>
+    <Footer></Footer>
+    </>
   );
 }
 

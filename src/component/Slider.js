@@ -2,6 +2,8 @@ import "./slider.css";
 import { useState, memo } from "react";
 
 function Slider( {data} ) {
+  console.log('slider render/ re-render')
+
 
   const [image1 , setImage ] = useState(0)
 
@@ -28,13 +30,13 @@ function Slider( {data} ) {
   if(e.target.parentNode.parentNode === ''){}
   }
   return (
-        <div class="project">
+        <div className="project">
           <h2 className="project__title"><span>{data.title}</span></h2>
           <div className="project__link"><a href={data.link}>Nhấn vào đây để xem web</a></div>
           <div className="project__slideShow" onClick={(e) => handleClick(e)}>
                 <div className="project-slideShow__image"> <img src={data.listImage[image1]}/> </div>
-                <div className="project-slideShow__btnLeft"><i class="fa-solid fa-less-than"></i></div> 
-                <div className="project-slideShow__btnRight"><i class="fa-solid fa-greater-than"></i></div> 
+                <div className="project-slideShow__btnLeft"><i className="fa-solid fa-less-than"></i></div> 
+                <div className="project-slideShow__btnRight"><i className="fa-solid fa-greater-than"></i></div> 
           </div>
           <div className="project__description">
               <div  className="project-description-left">

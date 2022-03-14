@@ -1,5 +1,7 @@
 import "./index.css";
 import "../../assets/css/grid.css";
+import Header from "../../parts/Header";
+import Footer from "../../parts/Footer";
 import { useState, useEffect } from "react";
 import data from "../data";
 var newDateOptions = {
@@ -42,6 +44,8 @@ function Day6() {
   }, [currentTime]);
 
   return (
+    <>
+    <Header></Header>
     <div className="day6 grid wide">
       <div className="row">
         <div className="timer col l-3 m-4 c-6">
@@ -85,6 +89,8 @@ function Day6() {
         </div>
       </div>
     </div>
+    <Footer></Footer>
+    </>
   );
 }
 

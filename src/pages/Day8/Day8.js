@@ -1,5 +1,8 @@
 import "./index.css";
 import "../../assets/css/grid.css";
+import Header from "../../parts/Header";
+import Footer from "../../parts/Footer";
+
 import { useState, useMemo, useEffect, useCallback, useRef } from "react";
 import data from "../data";
 let elementAudio =  document.querySelector(".audio");
@@ -177,6 +180,8 @@ function Day8() {
   console.log("Re-render ");
 
   return (
+    <>
+    <Header></Header>
     <div className="day8 grid wide">
       <div className="row">
         <div className="col l-12 m-12 c-12">
@@ -262,6 +267,8 @@ function Day8() {
         </div>
       </div>
     </div>
+    <Footer></Footer>
+    </>
   );
 }
 

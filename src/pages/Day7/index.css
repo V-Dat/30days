@@ -1,3 +1,6 @@
+.day7 {
+  background-color: rgb(255, 255, 255);
+}
 .day7.grid{
   min-height: 100vh;
 }
