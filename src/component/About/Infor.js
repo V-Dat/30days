@@ -1,6 +1,9 @@
 import "./infor.css";
 import ListComponent from "../ListComponent";
+
+import {memo} from 'react';
 function Infor({ data }) {
+  console.log('Infor render /re-render')
   return (
     <>
       {data.education.map((e) => (
@@ -29,19 +32,15 @@ function Infor({ data }) {
           <span>Kĩ Năng</span>
         </h2>
         {data.skill.map((e) => {
-          if (e.icon == "") {
-            return;
-          } else {
             return (
               <div key={e.value} className="skill">
                 <div className="skill__name">{e.key}</div>
                 <div className="skill__value">
-                  <span> : </span>
+                  <span> {e.icon !== "" ? ':': null} </span>
                   {e.value}
                 </div>
               </div>
             );
-          }
         })}
       </div>
 
@@ -74,4 +73,4 @@ function Infor({ data }) {
   );
 }
 
-export default Infor;
+export default memo(Infor);
