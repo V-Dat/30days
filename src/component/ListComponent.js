@@ -10,12 +10,13 @@ function ListComponent({ data }) {
 
       <div class="list-skill listComponent__list">
         {data.map((skill) => {
-        
-        if(skill.icon == '') {return}else{return (
+        if(skill.icon !== '') {return (
           <div key={skill.key} class="list-skill__item listComponent__list">
             <span dangerouslySetInnerHTML={{ __html: `${skill.icon}` }} />
-            <span>{`${skill.icon}` == "" ? null : skill.key}</span>
-          </div>)}
+            <span>{`${skill.icon}` === "" ? null : skill.key}</span>
+          </div>)}else{
+            return ''
+          }
         })}
       </div>
     </div>

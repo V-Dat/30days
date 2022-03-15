@@ -3,7 +3,7 @@ import "../../assets/css/grid.css";
 import { useState , useMemo } from "react";
 import data from '../data'
 
-function Day1( {}) {
+function Day1() {
 
 console.log('Day1: render....')
 
