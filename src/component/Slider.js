@@ -11,7 +11,7 @@ function Slider( {data} ) {
     if(e.target.classList.contains('fa-less-than')){
       console.log('đây là nút back')
       setImage( (prev) => {
-        if(prev == 0){
+        if(prev === 0){
           return ( prev = data.listImage.length -1 )}
           else{return (prev-1)}
       })}
@@ -25,7 +25,7 @@ function Slider( {data} ) {
         else{return (prev = 0)}
     })}
 
-  if(e.target.parentNode.parentNode == ''){}
+  if(e.target.parentNode.parentNode === ''){}
   }
   return (
         <div class="project">

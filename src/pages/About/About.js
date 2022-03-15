@@ -23,7 +23,7 @@ function About({ onClick }) {
   };
   const handleShowProJect = () => {
     setProject((prev) => 
-    {if(prev == true){ 
+    {if(prev === true){ 
       setInfor(true);
       return false
     }else{ 
@@ -34,7 +34,7 @@ function About({ onClick }) {
 
   const handleShowObjective = () => {
     setObjective((prev) =>
-    {if(prev == true){ 
+    {if(prev === true){ 
       setInfor(true);
       return false
     }else{ 
