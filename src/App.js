@@ -52,7 +52,7 @@ const handleHideContent = (e) => {
 }
 
 window.addEventListener("load", function(){
-if (window.location.href == "http://localhost:3000/") {
+if (window.location.href === "http://localhost:3000/") {
   const content = document.querySelector(".content");
   content.setAttribute("style", "display: block;");
 }else{
@@ -61,7 +61,7 @@ if (window.location.href == "http://localhost:3000/") {
 }
 });
 window.addEventListener('popstate', function(){
-if (window.location.href == "http://localhost:3000/") {
+if (window.location.href === "http://localhost:3000/") {
   const content = document.querySelector(".content");
   content.setAttribute("style", "display: block;");
 }else{

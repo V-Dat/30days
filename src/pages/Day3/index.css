@@ -118,8 +118,8 @@
 .search-box__input--active{
     min-width: 20rem;
     transform: translateX(-66.66%);
-    border-top-right-radius: 0rem;
-    border-bottom-right-radius: 0rem;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
     border: 1px solid transparent;
 }
 
@@ -127,7 +127,7 @@
     transform: translateX(166.66%);
     /* right: 0; */
     color: var(--primary-color);
-    border-top-left-radius: 0rem;
-    border-bottom-left-radius: 0rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
     border: 1px solid transparent;
 }

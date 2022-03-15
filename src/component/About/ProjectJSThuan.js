@@ -12,7 +12,7 @@ function Project( {data} ) {
     if(e.target.classList.contains('fa-less-than')){
       console.log('đây là nút back')
       setImage1( (prev) => {
-        if(prev == 0){
+        if(prev === 0){
           return ( prev = data[0].listImage.length -1 )}
           else{return (prev-1)}
       })}
@@ -28,7 +28,7 @@ function Project( {data} ) {
 
 
 
-  if(e.target.parentNode.parentNode == ''){}
+  if(e.target.parentNode.parentNode === ''){}
   }
   
   const handleClick2 = (e) => {
@@ -37,7 +37,7 @@ function Project( {data} ) {
     if(e.target.classList.contains('fa-less-than')){
       console.log('đây là nút back')
       setImage2( (prev) => {
-        if(prev == 0){
+        if(prev === 0){
           return ( prev = data[0].listImage.length -1 )}
           else{return (prev-1)}
       })}
@@ -53,7 +53,7 @@ function Project( {data} ) {
 
 
 
-  if(e.target.parentNode.parentNode == ''){}
+  if(e.target.parentNode.parentNode === ''){}
   }
 
   console.log(image1)
