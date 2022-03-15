@@ -1,5 +1,7 @@
 import "./index.css";
 import "../../assets/css/grid.css";
+import Header from "../../parts/Header";
+import Footer from "../../parts/Footer";
 import { useState , useCallback } from "react";
 
 function Day5() {
@@ -38,6 +40,8 @@ function Day5() {
   console.log("Register - ReRender: ", email || 'email' , user || 'user', password || 'password');
 
   return (
+    <>
+    <Header></Header>
     <div className="day5 grid wide">
       <div className="row">
         <div className="col l12 m-12 c-12">
@@ -87,6 +91,8 @@ function Day5() {
         </div>
       </div>
     </div>
+    <Footer></Footer>
+    </>
   );
 }
 

@@ -1,5 +1,8 @@
 import "./index.css";
 import "../../assets/css/grid.css";
+
+import Header from "../../parts/Header";
+import Footer from "../../parts/Footer";
 import { useState, useEffect } from "react";
 import data from "../data";
 
@@ -12,7 +15,7 @@ function Day7() {
   // event hover remove todo list
 
   //xử lý enter input:
-  const handleEnter = (e) =>{ if(e.key=='Enter' && job != ''){    
+  const handleEnter = (e) =>{ if(e.key==='Enter' && job !== ''){    
     let countLiChecked = document.querySelectorAll('input:checked').length;
     setJobs( (prev) => [...prev,job])
     setCountLi(jobs.length - countLiChecked + 1)
@@ -29,7 +32,7 @@ function Day7() {
       setCountLi( () => {
       return (jobs.length - countLiChecked)})
 
-    if(job != ''){ 
+    if(job !== ''){ 
     setJobs( (prev) => [...prev,job])
     setCountLi(jobs.length -countLiChecked +1)
     setJob('') } }
@@ -37,7 +40,7 @@ function Day7() {
   const handleDelJob = ({e, eJob}) => {
     
     console.log('JOB: ',eJob ,'-- del');
-    setJobs ( (prev) => [ ...prev].filter(ele => {return ele != eJob}))
+    setJobs ( (prev) => [ ...prev].filter(ele => {return ele !== eJob}))
     setJobs ( (prev) => [ ...prev].filter(ele => {return ele}))
     
     console.log('JOB: ',jobs);
@@ -61,7 +64,7 @@ function Day7() {
 
   const handleCheckBox = (eJob) => {
     setChecked((prev) =>
-    prev.includes(eJob) ?  checked.filter(e => (e != eJob)) : [...prev,eJob] )
+    prev.includes(eJob) ?  checked.filter(e => (e !== eJob)) : [...prev,eJob] )
     console.log('JOB- Checked: ' + checked);
 
     //xu li check => pending - di so lan check
@@ -79,7 +82,10 @@ function Day7() {
   }
 
   return (
-    <div className="day7 grid wide">
+    <>
+    <Header></Header>
+    <div className="day7">
+    <div className="grid wide">
       <div className="row">
         <div className="col l-12 m-12 c-12">
           <div className="todo">
@@ -102,7 +108,7 @@ function Day7() {
                 </li>
               ))}
               <div className="todo__clearAll" >
-                <div>{ countLi == 0 ? `No task pending !`:`You have ${countLi} tasks pending` }</div>
+                <div>{ countLi === 0 ? `No task pending !`:`You have ${countLi} tasks pending` }</div>
                 <button onClick={handleRemoveAllTask}> Clear All </button>
               </div>
           </ol>
@@ -111,6 +117,9 @@ function Day7() {
         </div>
       </div>
       </div>
+      <Footer></Footer>
+      </div>
+      </>
   );
 }
 

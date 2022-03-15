@@ -1,5 +1,8 @@
 import "./index.css";
 import "../../assets/css/grid.css";
+import Header from "../../parts/Header";
+import Footer from "../../parts/Footer";
+
 import { useState, useEffect } from "react";
 import data from "../data";
 
@@ -72,6 +75,7 @@ function Day4() {
 
   return (
     <>
+    <Header></Header>
       {/* galary list  */}
       <div className="day4 grid wide">
         <div className="row" onClick={(e) => HandleGalary(e)}>
@@ -104,6 +108,7 @@ function Day4() {
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 }

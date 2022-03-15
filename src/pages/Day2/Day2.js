@@ -1,5 +1,8 @@
 import './index.css';
 import '../../assets/css/grid.css'
+import Header from "../../parts/Header";
+import Footer from "../../parts/Footer";
+
 import data from '../data'
 
 function Day2() {
@@ -9,6 +12,7 @@ function Day2() {
   const profile = data.profile;
   return (
     <>
+    <Header></Header>
     <div className="day2 grid wide">
       <div className="row">
         {profile.map( (e) => (
@@ -30,6 +34,7 @@ function Day2() {
       ))}
       </div>
     </div>
+    <Footer></Footer>
     </>
   );
 }

@@ -1,9 +1,13 @@
 import "./index.css";
 import "../../assets/css/grid.css";
-import { useState , useMemo } from "react";
+import Header from "../../parts/Header";
+import Footer from "../../parts/Footer";
 import data from '../data'
 
-function Day1( {}) {
+
+import { useState , useMemo } from "react";
+
+function Day1() {
 
 console.log('Day1: render....')
 
@@ -28,6 +32,8 @@ const handleClickButton = e =>{
 }
 
   return (
+    <>
+    <Header></Header>
     <div className="day1 grid wide">
       <div className="row">
         {productList.map((product, index) => (
@@ -62,6 +68,8 @@ const handleClickButton = e =>{
         ))}
       </div>
     </div>
+    <Footer></Footer>
+    </>
   );
 }
 

@@ -1,5 +1,8 @@
 import "./index.css";
 import "../../assets/css/grid.css";
+import Header from "../../parts/Header";
+import Footer from "../../parts/Footer";
+
 import {useEffect} from "react"
 
 function Day3() {
@@ -35,6 +38,7 @@ function Day3() {
 
   return (
     <>
+    <Header></Header>
       <div className="day3">
       <div className="dialog--hide ">
         <div className="dialog__inner">
@@ -61,6 +65,7 @@ function Day3() {
       </div>
 
       </div>
+    <Footer></Footer>
     </>
   );
 }
