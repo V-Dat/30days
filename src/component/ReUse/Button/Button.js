@@ -2,9 +2,9 @@ import { useState } from "react";
 
 export default function Button({ className, handleClick, children, data }) {
   const [isActive, setIsActive] = useState(false);
-  const handleClickButton = (product) => {
+  const handleClickButton = (data) => {
     setIsActive(!isActive);
-    handleClick(product);
+    handleClick(data);
   };
   return (
     <div
