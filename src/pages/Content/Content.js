@@ -1,7 +1,7 @@
 import "./index.css";
 import "../../assets/css/grid.css";
 
-import data from "../../pages/data.js";
+import data from "../data.js";
 
 
 import {  Link  } from "react-router-dom";
