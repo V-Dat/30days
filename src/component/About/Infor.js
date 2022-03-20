@@ -1,5 +1,6 @@
 import "./infor.css";
 import ListComponent from "../ListComponent";
+import {memo} from 'react';
 function Infor({ data }) {
   return (
     <>
@@ -70,4 +71,4 @@ function Infor({ data }) {
   );
 }
 
-export default Infor;
+export default memo(Infor);
