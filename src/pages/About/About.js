@@ -74,7 +74,7 @@ function About() {
                   {about.phone}
                 </p>
                 <p className="contact__location">
-                <i class="fas fa-map"></i>
+                <i className="fas fa-map"></i>
                   {about.location}
                 </p>
                 <a className="contact__github" href={ about.github}>
