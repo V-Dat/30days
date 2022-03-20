@@ -1,16 +1,15 @@
 import "./index.css";
 import "../../assets/css/grid.css";
 import data from "../data";
-// import Infor from "../../component/About/Infor.js";
+import Header from "../../parts/Header"
 import Infor from "../../component/About/Infor";
 import Objective from "../../component/About/Objective";
 import Project from "../../component/About/Project";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-function About({ onClick }) {
+function About() {
   const about = data.about;
-  const skill = data.about.skill;
   console.log("Aboute re-render");
 
   const [infor, setInfor] = useState(true);
@@ -43,9 +42,10 @@ function About({ onClick }) {
       return true}});
   };
 
-  useEffect(() => onClick(), []);
 
   return (
+    <>
+    <Header></Header>
     <div className="grid wide">
       <div className="row"></div>
       <div className="about col l-12 m-12 c-12">
@@ -114,6 +114,7 @@ function About({ onClick }) {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
