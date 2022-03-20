@@ -3,19 +3,16 @@ import "../../assets/css/grid.css";
 
 import data from "../../pages/data.js";
 
-
-import {  Link  } from "react-router-dom";
-import {  memo } from "react";
+import { Link } from "react-router-dom";
+import { memo } from "react";
+import Footer from "../../parts/Footer";
+import Header from "../../parts/Header";
 
 function Content({ onClick }) {
   const dayList = data.dayList;
-  const content = document.querySelector(".content");
-
-
-  console.log("content homepage re-render ");
-
   return (
     <>
+      <Header />
       <div className="content grid wide">
         <div className="row" onClick={(e) => onClick(e)}>
           {dayList.map((e) => (
@@ -28,7 +25,7 @@ function Content({ onClick }) {
           ))}
         </div>
       </div>
-
+      <Footer />
     </>
   );
 }

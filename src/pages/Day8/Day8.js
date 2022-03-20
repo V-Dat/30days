@@ -4,8 +4,10 @@ import "../../assets/css/grid.css";
 import { useEffect, useRef } from "react";
 import listMusicDefault from "./listMusicDefault";
 import HeadPlayer from "../../component/Day8/HeadPlayer/HeadPlayer.js";
+import Footer from "../../parts/Footer.js";
 import ListMusic from "../../component/Day8/ListMusic/ListMusic.js";
 import { useDispatch } from "react-redux";
+import Header from "../../parts/Header";
 
 function Day8() {
   const dispatch = useDispatch();
@@ -47,16 +49,20 @@ function Day8() {
   });
 
   return (
-    <div className="day8 grid wide">
-      <div className="row">
-        <div className="col l-12 m-12 c-12">
-          <div className="music-player player">
-            <HeadPlayer />
-            <ListMusic />
+    <>
+      <Header />
+      <div className="day8 grid wide">
+        <div className="row">
+          <div className="col l-12 m-12 c-12">
+            <div className="music-player player">
+              <HeadPlayer />
+              <ListMusic />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 }
 
