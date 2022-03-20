@@ -1,7 +1,6 @@
 import "./objective.css";
 import ListComponent from '../ListComponent'
-
-const parser = new DOMParser();
+import {memo} from 'react';
 function Objective({ data }) {
   return (
     <>
@@ -26,4 +25,4 @@ function Objective({ data }) {
   );
 }
 
-export default Objective;
+export default memo(Objective);
