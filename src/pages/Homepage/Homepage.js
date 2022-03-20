@@ -3,9 +3,8 @@ import "../../assets/css/grid.css";
 
 import data from "../data.js";
 
-
-import {  Link  } from "react-router-dom";
-import {  memo } from "react";
+import { memo } from "react";
+import Day from "../../component/Day";
 
 function Content({ onClick }) {
   const dayList = data.dayList;
@@ -16,17 +15,11 @@ function Content({ onClick }) {
     <>
       <div className="content grid wide">
         <div className="row" onClick={(e) => onClick(e)}>
-          {dayList.map((e) => (
-            <div key={e.index + e.name} className="preview col l-3 m-6 c-12">
-              <Link to={e.url}>
-                <img className="preview__image" src={e.imageUrl} alt={e.name} />
-                <h2 className="preview__title">{e.name}</h2>
-              </Link>
-            </div>
+          {dayList.map((day) => (
+              <Day data={day}/>
           ))}
         </div>
       </div>
-
     </>
   );
 }
