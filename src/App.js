@@ -12,8 +12,9 @@ import About from "./pages/About/About.js";
 import News from "./pages/News/News.js";
 
 import { Suspense } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
 import Content from "./component/Content/Content";
+import NotFound from "./pages/NotFound";
 
 function App() {
 
@@ -33,7 +34,9 @@ function App() {
             <Route path="Day9" element={<Day9 />} />
             <Route path="News" element={<News />} />
             <Route path="About" element={<About />} />
+            <Route path="404NotFound"  element= {<NotFound />} />
             <Route path="/" element={<Content />} />
+            <Route path="*" element={<Navigate replace to="/404NotFound" />} />
           </Routes>
         </Router>
       </Suspense>
