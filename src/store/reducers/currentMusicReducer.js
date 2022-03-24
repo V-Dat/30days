@@ -18,9 +18,11 @@ const currentMusicReducer = (state = initialState, action) => {
       newState = {...state, ...action.payload}
       return state = newState;
     case "Random":
-      return state;
-    case "Reload":
-      return state;
+      newState = {...state, ...action.payload}
+      return state = newState;
+    case "Repeat":
+      newState = {...state, ...action.payload}
+      return state = newState;
     case "Play":
       return state;
     case "Pause":

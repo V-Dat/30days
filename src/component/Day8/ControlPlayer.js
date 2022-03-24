@@ -3,7 +3,9 @@ import Button from "./Button";
 import SeekBar from "./SeekBar";
 import { useDispatch, useSelector } from "react-redux";
 function ControlPlayer({ musics }) {
-  const [active , setActive ] = useState(false);
+  const [show, setShow] = useState(false);
+  const [random, setRandom] = useState(false);
+  const [repeat, setRepeat] = useState(false);
 
   const audioElement = useRef();
   const buttonPlay = useRef();
@@ -17,10 +19,9 @@ function ControlPlayer({ musics }) {
   const audioCurrent = useSelector((state) => state.currentMusicReducer);
 
   const handleClickNext = () => {
-
-    console.log(audioCurrent.isPlaying)
-    console.log(buttonPlay.current)
-    console.log(buttonPause.current)
+    console.log(audioCurrent.isPlaying);
+    console.log(buttonPlay.current);
+    console.log(buttonPause.current);
     if (
       (audioCurrent.isRandom && audioCurrent.isRepeat) ||
       audioCurrent.isRepeat
@@ -84,9 +85,8 @@ function ControlPlayer({ musics }) {
 
   const handlePause = () => {
     audioCurrent.isPlaying = false;
-    setActive(false)
+    setShow(false);
 
-    buttonPlay.current.classList.toggle("hide");
     audioElement.current.duration > 0
       ? audioElement.current.pause()
       : audioElement.current.play();
@@ -96,26 +96,35 @@ function ControlPlayer({ musics }) {
 
   const handlePlay = () => {
     audioCurrent.isPlaying = true;
+    setShow(true);
+
     audioElement.current.src !== null
       ? audioElement.current.play()
       : dispatch({ type: "Next", payload: { ...musics[0], index: 0 } });
-    setActive(true)
     console.log("handlePlay");
   };
 
   const handleRandom = () => {
-    buttonRandom.current.classList.toggle("active");
-    audioCurrent.isRandom === true
-      ? (audioCurrent.isRandom = false)
-      : (audioCurrent.isRandom = true);
+    if (audioCurrent.isRandom === true) {
+      audioCurrent.isRandom = false;
+      setRandom(false);
+    } else {
+      audioCurrent.isRandom = true;
+      setRandom(true);
+    }
+
     console.log(audioCurrent);
   };
 
   const handleRepeat = () => {
-    buttonRepeat.current.classList.toggle("active");
-    audioCurrent.isRepeat === true
-      ? (audioCurrent.isRepeat = false)
-      : (audioCurrent.isRepeat = true);
+    if (audioCurrent.isRepeat === true) {
+      audioCurrent.isRepeat = false;
+      setRepeat(false);
+    } else {
+      audioCurrent.isRepeat = true;
+      setRepeat(true);
+    }
+
     console.log(audioCurrent);
   };
 
@@ -124,9 +133,13 @@ function ControlPlayer({ musics }) {
       <div className="player__control btn">
         <Button
           type="btn-repeat"
-          icon={<i className="fas fa-redo" ref={buttonRepeat} ></i>}
+          icon={
+            <i
+              className={repeat ? "active fas fa-redo" : "fas fa-redo"}
+              ref={buttonRepeat}
+            ></i>
+          }
           onClick={handleRepeat}
-          
         />
 
         <Button
@@ -139,19 +152,22 @@ function ControlPlayer({ musics }) {
           type="btn-toggle-play"
           icon={
             <>
-
               <i
-                className={ active ? "show fas fa-pause icon-pause" : "fas fa-pause icon-pause" }
+                className={
+                  show
+                    ? "show fas fa-pause icon-pause"
+                    : "fas fa-pause icon-pause"
+                }
                 onClick={handlePause}
                 ref={buttonPlay}
               ></i>{" "}
-
               <i
-                className={ active ? "hide fas fa-play icon-play" : "fas fa-play icon-play" }
+                className={
+                  show ? "hide fas fa-play icon-play" : "fas fa-play icon-play"
+                }
                 onClick={handlePlay}
                 ref={buttonPause}
               ></i>{" "}
-
             </>
           }
         />
@@ -163,14 +179,19 @@ function ControlPlayer({ musics }) {
         <Button
           onClick={handleRandom}
           type="btn-random"
-          icon={<i className="fas fa-random" ref={buttonRandom}></i>}
+          icon={
+            <i
+              className={random ? "active fas fa-random" : "fas fa-random"}
+              ref={buttonRandom}
+            ></i>
+          }
         />
       </div>
       <div>
-        <SeekBar 
-        buttonNext={buttonNext} 
-        audioElement={audioElement}
-        setActive={setActive}
+        <SeekBar
+          buttonNext={buttonNext}
+          audioElement={audioElement}
+          setShow={setShow}
         />
       </div>
 

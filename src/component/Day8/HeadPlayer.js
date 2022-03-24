@@ -4,7 +4,7 @@ import InforCurrentPlayer from "./InforCurrentPlayer";
 function HeadPlayer({ musics }) {
   return (
     <>
-      <InforCurrentPlayer musics={musics} />
+      <InforCurrentPlayer  />
       <ControlPlayer musics={musics} />
     </>
   );

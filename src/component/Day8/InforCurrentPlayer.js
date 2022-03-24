@@ -1,6 +1,6 @@
 import {  useSelector } from "react-redux";
 
-function InforPlayer({musics}) {
+function InforPlayer({}) {
   const audioCurrent = useSelector(state => state.currentMusicReducer)
   return (
       <>

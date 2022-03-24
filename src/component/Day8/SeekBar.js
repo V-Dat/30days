@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 
-function SeekBar({  buttonNext, audioElement  ,setActive }) {
+function SeekBar({  buttonNext, audioElement  ,setShow }) {
   const audioCurrent = useSelector((state) => state.currentMusicReducer);
   const seekBarInput = useRef();
 
@@ -22,7 +22,7 @@ function SeekBar({  buttonNext, audioElement  ,setActive }) {
       }
     };
     const handlePlay = () => {
-      setActive(true)
+      setShow(true)
 
     }
     audioElement.current.addEventListener('play', handlePlay);
