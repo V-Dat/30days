@@ -2,7 +2,9 @@ import React, { useRef, useState } from "react";
 import Button from "./Button";
 import SeekBar from "./SeekBar";
 import { useDispatch, useSelector } from "react-redux";
-function ControlPlayer({ musics }) {
+function ControlPlayer() {
+  const listMusics = useSelector((state) => state.listMusicsReducer);
+
   const [show, setShow] = useState(false);
   const [random, setRandom] = useState(false);
   const [repeat, setRepeat] = useState(false);
@@ -15,7 +17,7 @@ function ControlPlayer({ musics }) {
   const buttonNext = useRef();
 
   const dispatch = useDispatch();
-  const length = Number(musics.length);
+  const length = Number(listMusics.length);
   const audioCurrent = useSelector((state) => state.currentMusicReducer);
 
   const handleClickNext = () => {
@@ -31,7 +33,7 @@ function ControlPlayer({ musics }) {
       dispatch({
         type: "Next",
         payload: {
-          ...musics[Math.floor(Math.random() * length)],
+          ...listMusics[Math.floor(Math.random() * length)],
           index: Number(Math.floor(Math.random() * length)),
         },
         isPlaying: true,
@@ -39,13 +41,13 @@ function ControlPlayer({ musics }) {
     } else if (audioCurrent.index === length - 1) {
       dispatch({
         type: "Next",
-        payload: { ...musics[0], index: Number(0), isPlaying: true },
+        payload: { ...listMusics[0], index: Number(0), isPlaying: true },
       });
     } else {
       dispatch({
         type: "Next",
         payload: {
-          ...musics[audioCurrent.index + 1],
+          ...listMusics[audioCurrent.index + 1],
           index: Number(audioCurrent.index + 1),
           isPlaying: true,
         },
@@ -63,20 +65,20 @@ function ControlPlayer({ musics }) {
       dispatch({
         type: "Prev",
         payload: {
-          ...musics[Math.floor(Math.random() * length)],
+          ...listMusics[Math.floor(Math.random() * length)],
           index: Number(Math.floor(Math.random() * length)),
         },
       });
     } else if (audioCurrent.index <= 0) {
       dispatch({
         type: "Prev",
-        payload: { ...musics[length - 1], index: Number(length - 1) },
+        payload: { ...listMusics[length - 1], index: Number(length - 1) },
       });
     } else {
       dispatch({
         type: "Prev",
         payload: {
-          ...musics[audioCurrent.index - 1],
+          ...listMusics[audioCurrent.index - 1],
           index: Number(audioCurrent.index - 1),
         },
       });
@@ -100,7 +102,7 @@ function ControlPlayer({ musics }) {
 
     audioElement.current.src !== null
       ? audioElement.current.play()
-      : dispatch({ type: "Next", payload: { ...musics[0], index: 0 } });
+      : dispatch({ type: "Next", payload: { ...listMusics[0], index: 0 } });
     console.log("handlePlay");
   };
 

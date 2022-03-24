@@ -1,11 +1,11 @@
 import ControlPlayer from "./ControlPlayer";
 import InforCurrentPlayer from "./InforCurrentPlayer";
-
-function HeadPlayer({ musics }) {
+function HeadPlayer() {
+  
   return (
     <>
       <InforCurrentPlayer  />
-      <ControlPlayer musics={musics} />
+      <ControlPlayer  />
     </>
   );
 }

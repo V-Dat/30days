@@ -1,14 +1,15 @@
 import "./index.css";
 import "../../assets/css/grid.css";
 
-import { useState, useEffect, useRef } from "react";
+import {  useEffect, useRef } from "react";
 import data from "../data";
 import HeadPlayer from "../../component/Day8/HeadPlayer";
 import ListSongPlayer from "../../component/Day8/ListSongPlayer";
+import {  useDispatch } from "react-redux";
 
 function Day8() {
-  const listmusics = useRef(data.musics)
-  let [musics, setMusics] = useState({});
+  const dispatch = useDispatch();
+  const listMusicsDefault = useRef(data.musics);
 
   // fetch API
   useEffect(() => {
@@ -20,37 +21,35 @@ function Day8() {
           "x-rapidapi-host": "shazam.p.rapidapi.com",
           "x-rapidapi-key":
             "d14273a324msh55af19a5d1083b4p11dffejsn91db4945117a",
-        },
-      }
-    )
-      .then((apiData) => apiData.json())
-      .then((apiData) =>
-        apiData.tracks.map((song) => {
-          return {
-            name: song.title,
-            author: song.subtitle,
-            image: song.share.image,
-            mp3: song.hub.actions[1].uri,
-          };
-        })
-      )
-      .then((listSong) => setMusics(listSong))
-      .then(() => console.log("fetch"))
-      .catch((err) => {
-        setMusics(listmusics.current);
-        console.log("Fetch Error: " + err.message);
-      });
-  }, []);
+        }, }
+        )
+          .then((response) => response.json())
+          .then((response) =>
+          response.tracks.map((music) => {
+              return {
+                name: music.title,
+                author: music.subtitle,
+                image: music.share.image,
+                mp3: music.hub.actions[1].uri,
+              };
+            })
+          )
+          .then((listMusics) => dispatch({type:'CallApiSucess' , payload: {listMusics} }))
+          .then(() => console.log("fetch"))
+          .catch((err) => {
+            dispatch({type:'CallApiFail' , payload: listMusicsDefault.current  })
+            console.log("Fetch Error: " + err.message + '12312312312');
+          });
+      }, []);
 
-  /// xử lý click song ở list => play
 
   return (
     <div className="day8 grid wide">
       <div className="row">
         <div className="col l-12 m-12 c-12">
           <div className="music-player player">
-            <HeadPlayer musics={musics} />
-            <ListSongPlayer musics={musics} />
+            <HeadPlayer />
+            <ListSongPlayer  />
           </div>
         </div>
       </div>
