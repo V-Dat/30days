@@ -10,11 +10,6 @@ function ControlPlayer() {
   const [repeat, setRepeat] = useState(false);
 
   const audioElement = useRef();
-  const buttonPlay = useRef();
-  const buttonPause = useRef();
-  const buttonRandom = useRef();
-  const buttonRepeat = useRef();
-  const buttonNext = useRef();
 
   const dispatch = useDispatch();
   const length = Number(listMusics.length);
@@ -22,8 +17,6 @@ function ControlPlayer() {
 
   const handleClickNext = () => {
     console.log(audioCurrent.isPlaying);
-    console.log(buttonPlay.current);
-    console.log(buttonPause.current);
     if (
       (audioCurrent.isRandom && audioCurrent.isRepeat) ||
       audioCurrent.isRepeat
@@ -86,8 +79,11 @@ function ControlPlayer() {
   };
 
   const handlePause = () => {
-    audioCurrent.isPlaying = false;
-    setShow(false);
+    // audioCurrent.isPlaying = false;
+    // setShow(false);
+    setShow((prev) =>
+      audioCurrent.isPlaying ? (prev = false) : (prev = true)
+    );
 
     audioElement.current.duration > 0
       ? audioElement.current.pause()
@@ -97,8 +93,10 @@ function ControlPlayer() {
   };
 
   const handlePlay = () => {
-    audioCurrent.isPlaying = true;
-    setShow(true);
+    // audioCurrent.isPlaying = true;
+    setShow((prev) =>
+      audioCurrent.isPlaying ? (prev = true) : (prev = false)
+    );
 
     audioElement.current.src !== null
       ? audioElement.current.play()
@@ -130,16 +128,18 @@ function ControlPlayer() {
     console.log(audioCurrent);
   };
 
+  const handleAudioEnded = () => {
+    console.log("Hết bài hát");
+    handleClickNext();
+  };
+
   return (
     <>
       <div className="player__control btn">
         <Button
           type="btn-repeat"
           icon={
-            <i
-              className={repeat ? "active fas fa-redo" : "fas fa-redo"}
-              ref={buttonRepeat}
-            ></i>
+            <i className={repeat ? "active fas fa-redo" : "fas fa-redo"}></i>
           }
           onClick={handleRepeat}
         />
@@ -161,21 +161,19 @@ function ControlPlayer() {
                     : "fas fa-pause icon-pause"
                 }
                 onClick={handlePause}
-                ref={buttonPlay}
               ></i>{" "}
               <i
                 className={
                   show ? "hide fas fa-play icon-play" : "fas fa-play icon-play"
                 }
                 onClick={handlePlay}
-                ref={buttonPause}
               ></i>{" "}
             </>
           }
         />
         <Button
           type="btn-next"
-          icon={<i className="fas fa-step-forward" ref={buttonNext}></i>}
+          icon={<i className="fas fa-step-forward"></i>}
           onClick={handleClickNext}
         />
         <Button
@@ -184,17 +182,12 @@ function ControlPlayer() {
           icon={
             <i
               className={random ? "active fas fa-random" : "fas fa-random"}
-              ref={buttonRandom}
             ></i>
           }
         />
       </div>
       <div>
-        <SeekBar
-          buttonNext={buttonNext}
-          audioElement={audioElement}
-          setShow={setShow}
-        />
+        <SeekBar audioElement={audioElement} setShow={setShow} />
       </div>
 
       <audio
@@ -203,6 +196,8 @@ function ControlPlayer() {
         src={audioCurrent.mp3}
         autoPlay={true}
         ref={audioElement}
+        onEnded={handleAudioEnded}
+        onPlay={handlePlay}
       ></audio>
     </>
   );

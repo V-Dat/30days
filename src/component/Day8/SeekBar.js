@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 
-function SeekBar({  buttonNext, audioElement  ,setShow }) {
+function SeekBar({   audioElement  ,setShow }) {
   const audioCurrent = useSelector((state) => state.currentMusicReducer);
   const seekBarInput = useRef();
 
@@ -15,26 +15,15 @@ function SeekBar({  buttonNext, audioElement  ,setShow }) {
       audioElement.current.currentTime = (e.target.value / 100) * audioElement.current.duration;
     };
 
-    const handleAudioEnded = () => {
-      console.log(!audioCurrent.isRepeat);
-      if (audioCurrent.isRepeat === true) {
-        buttonNext.current.click();
-      }
-    };
-    const handlePlay = () => {
-      setShow(true)
 
-    }
-    audioElement.current.addEventListener('play', handlePlay);
-    audioElement.current.addEventListener("ended", handleAudioEnded);
     seekBarInput.current.addEventListener("input", handleSeekBarInput);
     audioElement.current.addEventListener("timeupdate", handleSeekBarUpdate);
     return () => {
       audioElement.current.removeEventListener("timeupdate", handleSeekBarUpdate);
       seekBarInput.current.addEventListener("input", handleSeekBarInput);
-      audioElement.current.addEventListener("ended", handleAudioEnded);
     };
-  }, [audioCurrent, buttonNext.current]);
+    
+  }, [audioCurrent]);
 
   return (
     <div className="player__seekbar">
