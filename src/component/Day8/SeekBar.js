@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 
-function SeekBar({ musics, buttonNext, audioElement  ,buttonPlay ,buttonPause}) {
+function SeekBar({  buttonNext, audioElement  ,setActive }) {
   const audioCurrent = useSelector((state) => state.currentMusicReducer);
   const seekBarInput = useRef();
 
@@ -22,10 +22,8 @@ function SeekBar({ musics, buttonNext, audioElement  ,buttonPlay ,buttonPause}) 
       }
     };
     const handlePlay = () => {
-      if (!audioCurrent.isPlaying) {
-        buttonPlay.current.classList.add("show");
-        buttonPause.current.classList.add("hide");
-      }
+      setActive(true)
+
     }
     audioElement.current.addEventListener('play', handlePlay);
     audioElement.current.addEventListener("ended", handleAudioEnded);

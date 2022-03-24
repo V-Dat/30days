@@ -1,8 +1,10 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Button from "./Button";
 import SeekBar from "./SeekBar";
 import { useDispatch, useSelector } from "react-redux";
 function ControlPlayer({ musics }) {
+  const [active , setActive ] = useState(false);
+
   const audioElement = useRef();
   const buttonPlay = useRef();
   const buttonPause = useRef();
@@ -82,7 +84,8 @@ function ControlPlayer({ musics }) {
 
   const handlePause = () => {
     audioCurrent.isPlaying = false;
-    buttonPause.current.classList.toggle("show");
+    setActive(false)
+
     buttonPlay.current.classList.toggle("hide");
     audioElement.current.duration > 0
       ? audioElement.current.pause()
@@ -96,8 +99,7 @@ function ControlPlayer({ musics }) {
     audioElement.current.src !== null
       ? audioElement.current.play()
       : dispatch({ type: "Next", payload: { ...musics[0], index: 0 } });
-    buttonPlay.current.classList.toggle("hide");
-    buttonPause.current.classList.toggle("show");
+    setActive(true)
     console.log("handlePlay");
   };
 
@@ -137,16 +139,19 @@ function ControlPlayer({ musics }) {
           type="btn-toggle-play"
           icon={
             <>
+
               <i
-                className="fas fa-pause icon-pause"
+                className={ active ? "show fas fa-pause icon-pause" : "fas fa-pause icon-pause" }
                 onClick={handlePause}
                 ref={buttonPlay}
               ></i>{" "}
+
               <i
-                className="fas fa-play icon-play"
+                className={ active ? "hide fas fa-play icon-play" : "fas fa-play icon-play" }
                 onClick={handlePlay}
                 ref={buttonPause}
               ></i>{" "}
+
             </>
           }
         />
@@ -163,11 +168,9 @@ function ControlPlayer({ musics }) {
       </div>
       <div>
         <SeekBar 
-        music={musics} 
         buttonNext={buttonNext} 
         audioElement={audioElement}
-        buttonPause={buttonPause}
-        buttonPlay={buttonPlay}
+        setActive={setActive}
         />
       </div>
 
