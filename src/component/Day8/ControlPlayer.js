@@ -8,7 +8,8 @@ function ControlPlayer() {
   const [show, setShow] = useState(false);
   const [random, setRandom] = useState(false);
   const [repeat, setRepeat] = useState(false);
-
+  const [percent, setPercent] = useState(0);
+  
   const audioElement = useRef();
 
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ function ControlPlayer() {
   const audioCurrent = useSelector((state) => state.currentMusicReducer);
 
   const handleClickNext = () => {
+
     console.log(audioCurrent.isPlaying);
     if (
       (audioCurrent.isRandom && audioCurrent.isRepeat) ||
@@ -49,6 +51,7 @@ function ControlPlayer() {
   };
 
   const handleClickPrev = () => {
+
     if (
       (audioCurrent.isRandom && audioCurrent.isRepeat) ||
       audioCurrent.isRepeat
@@ -65,7 +68,7 @@ function ControlPlayer() {
     } else if (audioCurrent.index <= 0) {
       dispatch({
         type: "Prev",
-        payload: { ...listMusics[length - 1], index: Number(length - 1) },
+        payload: { ...listMusics[length - 1], index: Number(length - 1),isPlaying: true, },
       });
     } else {
       dispatch({
@@ -73,6 +76,7 @@ function ControlPlayer() {
         payload: {
           ...listMusics[audioCurrent.index - 1],
           index: Number(audioCurrent.index - 1),
+          isPlaying: true,
         },
       });
     }
@@ -133,6 +137,18 @@ function ControlPlayer() {
     handleClickNext();
   };
 
+  const handlePlaying = () => {
+    setShow((prev) =>
+      audioCurrent.isPlaying ? (prev = true) : (prev = false)
+    );
+  }
+
+  const handleSeekBarUpdate = () => {
+    console.log('timeupdate', (audioElement.current.currentTime / audioElement.current.duration) * 100)
+    setPercent( () => (audioElement.current.currentTime / audioElement.current.duration) * 100 )
+  };
+
+
   return (
     <>
       <div className="player__control btn">
@@ -187,7 +203,7 @@ function ControlPlayer() {
         />
       </div>
       <div>
-        <SeekBar audioElement={audioElement} setShow={setShow} />
+        <SeekBar audioElement={audioElement} setShow={setShow} percent={percent}/>
       </div>
 
       <audio
@@ -197,7 +213,8 @@ function ControlPlayer() {
         autoPlay={true}
         ref={audioElement}
         onEnded={handleAudioEnded}
-        onPlay={handlePlay}
+        onPlay={handlePlaying}
+        onTimeUpdate={handleSeekBarUpdate}
       ></audio>
     </>
   );
