@@ -1,6 +1,6 @@
 import "./ListMusic.css";
 
-import MusicInList from "./MusicInList";
+import MusicInList from "../MusicInList/MusicInList.js";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 

@@ -2,14 +2,14 @@ import "./index.css";
 import "../../assets/css/grid.css";
 
 import { useEffect, useRef } from "react";
-import data from "../data";
-import HeadPlayer from "../../component/Day8/HeadPlayer";
-import ListMusic from "../../component/Day8/ListMusic";
+import listMusicDefault from "./listMusicDefault";
+import HeadPlayer from "../../component/Day8/HeadPlayer/HeadPlayer.js";
+import ListMusic from "../../component/Day8/ListMusic/ListMusic.js";
 import { useDispatch } from "react-redux";
 
 function Day8() {
   const dispatch = useDispatch();
-  const listMusicsDefault = useRef(data.musics);
+  const listMusicsDefault = useRef(listMusicDefault);
 
   // fetch API
   useEffect(() => {

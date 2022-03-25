@@ -1,10 +1,12 @@
 import "./ControlPlayer.css";
 
 import React, { useRef, useState } from "react";
-import Button from "./Button";
-import SeekBar from "./SeekBar";
+import Button from "../Button/Button.js";
+import SeekBar from "../SeekBar/SeekBar.js";
 import { useDispatch, useSelector } from "react-redux";
 function ControlPlayer() {
+  const dispatch = useDispatch();
+  const audioElement = useRef();
   const listMusics = useSelector((state) => state.listMusicsReducer);
 
   const [show, setShow] = useState(false);
@@ -12,20 +14,16 @@ function ControlPlayer() {
   const [repeat, setRepeat] = useState(false);
   const [percent, setPercent] = useState(0);
 
-  const audioElement = useRef();
-
-  const dispatch = useDispatch();
   const length = Number(listMusics.length);
   const audioCurrent = useSelector((state) => state.currentMusicReducer);
 
   const handleClickNext = () => {
-    console.log(audioCurrent.isPlaying);
-    if (
-      (audioCurrent.isRandom && audioCurrent.isRepeat) ||
-      audioCurrent.isRepeat
-    ) {
+    if (audioCurrent.isRepeat) {
       audioElement.current.currentTime = 0;
-    } else if (audioCurrent.isRandom) {
+      return;
+    }
+
+    if (audioCurrent.isRandom) {
       dispatch({
         type: "Next",
         payload: {
@@ -34,31 +32,29 @@ function ControlPlayer() {
         },
         isPlaying: true,
       });
-    } else if (audioCurrent.index === length - 1) {
-      dispatch({
-        type: "Next",
-        payload: { ...listMusics[0], index: Number(0), isPlaying: true },
-      });
-    } else {
+      return;
+    }
+
+    if (length) {
+      audioCurrent.index = (audioCurrent.index + 1 + length) % length;
       dispatch({
         type: "Next",
         payload: {
-          ...listMusics[audioCurrent.index + 1],
-          index: Number(audioCurrent.index + 1),
+          ...listMusics[audioCurrent.index],
           isPlaying: true,
+          index: audioCurrent.index,
         },
       });
     }
-    setTimeout(() => audioElement.current.play(), 800);
   };
 
   const handleClickPrev = () => {
-    if (
-      (audioCurrent.isRandom && audioCurrent.isRepeat) ||
-      audioCurrent.isRepeat
-    ) {
+    if (audioCurrent.isRepeat) {
       audioElement.current.currentTime = 0;
-    } else if (audioCurrent.isRandom) {
+      return;
+    }
+
+    if (audioCurrent.isRandom) {
       dispatch({
         type: "Prev",
         payload: {
@@ -66,29 +62,34 @@ function ControlPlayer() {
           index: Number(Math.floor(Math.random() * length)),
         },
       });
-    } else if (audioCurrent.index <= 0) {
+    }
+
+    if (length) {
+      audioCurrent.index = (audioCurrent.index - 1 + length) % length;
       dispatch({
-        type: "Prev",
+        type: "Next",
         payload: {
-          ...listMusics[length - 1],
-          index: Number(length - 1),
+          ...listMusics[audioCurrent.index],
           isPlaying: true,
+          index: Number(audioCurrent.index),
         },
       });
-    } else {
+    }
+
+    if (length) {
+      console.log(audioCurrent.index);
       dispatch({
         type: "Prev",
         payload: {
-          ...listMusics[audioCurrent.index - 1],
-          index: Number(audioCurrent.index - 1),
+          ...listMusics[audioCurrent.index],
           isPlaying: true,
+          index: Number(audioCurrent.index),
         },
       });
     }
   };
 
   const handlePause = () => {
-    // setShow(false);
     setShow((prev) =>
       audioCurrent.isPlaying ? (prev = false) : (prev = true)
     );
@@ -101,7 +102,6 @@ function ControlPlayer() {
   };
 
   const handlePlay = () => {
-    // audioCurrent.isPlaying = true;
     setShow((prev) =>
       audioCurrent.isPlaying ? (prev = true) : (prev = false)
     );
@@ -113,26 +113,14 @@ function ControlPlayer() {
   };
 
   const handleRandom = () => {
-    if (audioCurrent.isRandom === true) {
-      audioCurrent.isRandom = false;
-      setRandom(false);
-    } else {
-      audioCurrent.isRandom = true;
-      setRandom(true);
-    }
-
+    audioCurrent.isRandom = !audioCurrent.isRandom;
+    setRandom(audioCurrent.isRandom);
     console.log(audioCurrent);
   };
 
   const handleRepeat = () => {
-    if (audioCurrent.isRepeat === true) {
-      audioCurrent.isRepeat = false;
-      setRepeat(false);
-    } else {
-      audioCurrent.isRepeat = true;
-      setRepeat(true);
-    }
-
+    audioCurrent.isRepeat = !audioCurrent.isRepeat;
+    setRepeat(audioCurrent.isRepeat);
     console.log(audioCurrent);
   };
 
@@ -153,8 +141,7 @@ function ControlPlayer() {
       (audioElement.current.currentTime / audioElement.current.duration) * 100
     );
     setPercent(
-      () =>
-        (audioElement.current.currentTime / audioElement.current.duration) * 100
+      (audioElement.current.currentTime / audioElement.current.duration) * 100
     );
   };
 
