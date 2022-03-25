@@ -14,23 +14,24 @@ function Day8() {
   // fetch API
   useEffect(() => {
     async function fetchData(url) {
-      const response = await fetch(url);
+      const response = (await fetch(url)).json();
 
       if (!response.ok) {
         dispatch({ type: "CallApiFail", payload: listMusicsDefault.current });
-      } else {
-        response.json().tracks.map((music) =>
-          ({
-            name: music.title,
-            author: music.subtitle,
-            image: music.share.image,
-            mp3: music.hub.actions[1].uri,
-          }.then((listMusics) =>
-            dispatch({ type: "CallApiSucess", payload: { listMusics } })
-          ))
-        );
+        return;
       }
+      response.tracks.map((music) =>
+        ({
+          name: music.title,
+          author: music.subtitle,
+          image: music.share.image,
+          mp3: music.hub.actions[1].uri,
+        }.then((listMusics) =>
+          dispatch({ type: "CallApiSucess", payload: { listMusics } })
+        ))
+      );
     }
+
     const options = {
       method: "GET",
       headers: {
