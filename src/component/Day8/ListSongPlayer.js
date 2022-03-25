@@ -26,7 +26,7 @@ function ListSongPlayer() {
             music={music}
             handleClickSong={handleClickSong}
           />
-        ))
+          ))
       )}
     </div>
   );
