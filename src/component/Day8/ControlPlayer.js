@@ -1,4 +1,4 @@
-import "./ControlPlayer.css"
+import "./ControlPlayer.css";
 
 import React, { useRef, useState } from "react";
 import Button from "./Button";
@@ -11,7 +11,7 @@ function ControlPlayer() {
   const [random, setRandom] = useState(false);
   const [repeat, setRepeat] = useState(false);
   const [percent, setPercent] = useState(0);
-  
+
   const audioElement = useRef();
 
   const dispatch = useDispatch();
@@ -19,7 +19,6 @@ function ControlPlayer() {
   const audioCurrent = useSelector((state) => state.currentMusicReducer);
 
   const handleClickNext = () => {
-
     console.log(audioCurrent.isPlaying);
     if (
       (audioCurrent.isRandom && audioCurrent.isRepeat) ||
@@ -50,10 +49,10 @@ function ControlPlayer() {
         },
       });
     }
+    setTimeout(() => audioElement.current.play(), 800);
   };
 
   const handleClickPrev = () => {
-
     if (
       (audioCurrent.isRandom && audioCurrent.isRepeat) ||
       audioCurrent.isRepeat
@@ -70,7 +69,11 @@ function ControlPlayer() {
     } else if (audioCurrent.index <= 0) {
       dispatch({
         type: "Prev",
-        payload: { ...listMusics[length - 1], index: Number(length - 1),isPlaying: true, },
+        payload: {
+          ...listMusics[length - 1],
+          index: Number(length - 1),
+          isPlaying: true,
+        },
       });
     } else {
       dispatch({
@@ -143,13 +146,18 @@ function ControlPlayer() {
     setShow((prev) =>
       audioCurrent.isPlaying ? (prev = true) : (prev = false)
     );
-  }
-
-  const handleSeekBarUpdate = () => {
-    console.log('timeupdate', (audioElement.current.currentTime / audioElement.current.duration) * 100)
-    setPercent( () => (audioElement.current.currentTime / audioElement.current.duration) * 100 )
   };
 
+  const handleSeekBarUpdate = () => {
+    console.log(
+      "timeupdate",
+      (audioElement.current.currentTime / audioElement.current.duration) * 100
+    );
+    setPercent(
+      () =>
+        (audioElement.current.currentTime / audioElement.current.duration) * 100
+    );
+  };
 
   return (
     <>
@@ -205,7 +213,11 @@ function ControlPlayer() {
         />
       </div>
       <div>
-        <SeekBar audioElement={audioElement} setShow={setShow} percent={percent}/>
+        <SeekBar
+          audioElement={audioElement}
+          setShow={setShow}
+          percent={percent}
+        />
       </div>
 
       <audio
