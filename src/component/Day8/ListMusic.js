@@ -12,7 +12,7 @@ function ListMusic() {
   const handleClickMusicInList = (music) => {
     dispatch({
       type: "Goto",
-      payload: { ...music, index: Number(listMusics.indexOf(music)) },
+      payload: { ...music, index: Number(listMusics.indexOf(music)) , isPlaying: true},
     });
   };
   console.log("render listMusics", listMusics);

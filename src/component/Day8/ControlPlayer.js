@@ -88,7 +88,6 @@ function ControlPlayer() {
   };
 
   const handlePause = () => {
-    // audioCurrent.isPlaying = false;
     // setShow(false);
     setShow((prev) =>
       audioCurrent.isPlaying ? (prev = false) : (prev = true)
