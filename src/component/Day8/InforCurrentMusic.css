@@ -1,0 +1,18 @@
+.player__title {
+    font-weight: 500;
+    color: var(--primary-color);
+  }
+  .player__image {
+    background-color: #ccc;
+    width: 25rem;
+    height: 25rem;
+    margin: 1rem auto;
+    border-radius: 100%;
+    overflow: hidden;
+  }
+  
+  .player__image__url {
+    background-image: center center;
+    height: 100%;
+    width: 100%;
+  }

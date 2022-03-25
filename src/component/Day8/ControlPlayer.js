@@ -1,3 +1,5 @@
+import "./ControlPlayer.css"
+
 import React, { useRef, useState } from "react";
 import Button from "./Button";
 import SeekBar from "./SeekBar";

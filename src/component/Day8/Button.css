@@ -1,0 +1,84 @@
+.btn-toggle-play {
+  position: relative;
+}
+.icon-play {
+  position: absolute;
+}
+
+.player__control > div {
+  background-color: #ccc;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  color: #000000;
+}
+.player__control i {
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  vertical-align: middle !important;
+}
+.player__control i::before {
+  line-height: 4rem;
+}
+
+.player__control > div > .icon-pause {
+  display: none;
+  position: absolute;
+  left: 0;
+}
+.player__control > div > .icon-play {
+  z-index: 1;
+  position: absolute;
+  left: 0;
+}
+.player__control > div:active {
+  background-color: var(--primary-color) !important;
+  color: #fff;
+}
+
+.active {
+  color: var(--primary-color) !important;
+}
+
+.loading {
+  font-size: 10rem;
+}
+.loading:after {
+  content: " .";
+  animation: dots 1s steps(5, end) infinite;
+}
+
+@keyframes dots {
+  0%,
+  20% {
+    color: rgba(0, 0, 0, 0);
+    text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0);
+  }
+  40% {
+    color: white;
+    text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0);
+  }
+  60% {
+    text-shadow: 0.25em 0 0 white, 0.5em 0 0 rgba(0, 0, 0, 0);
+  }
+  80%,
+  100% {
+    text-shadow: 0.25em 0 0 white, 0.5em 0 0 white;
+  }
+}
+
+.show {
+  display: block !important;
+}
+
+.hide {
+  display: none !important;
+}
+
+.player__control.btn {
+  display: flex;
+  justify-content: space-around;
+  width: 70%;
+  margin: 0 auto;
+}

@@ -4,7 +4,7 @@ import "../../assets/css/grid.css";
 import { useEffect, useRef } from "react";
 import data from "../data";
 import HeadPlayer from "../../component/Day8/HeadPlayer";
-import ListSongPlayer from "../../component/Day8/ListSongPlayer";
+import ListMusic from "../../component/Day8/ListMusic";
 import { useDispatch } from "react-redux";
 
 function Day8() {
@@ -51,7 +51,7 @@ function Day8() {
         <div className="col l-12 m-12 c-12">
           <div className="music-player player">
             <HeadPlayer />
-            <ListSongPlayer />
+            <ListMusic />
           </div>
         </div>
       </div>

@@ -1,35 +1,37 @@
+import "./ListMusic.css";
+
+import MusicInList from "./MusicInList";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import SongPlayer from "./SongPlayer";
 
-function ListSongPlayer() {
+function ListMusic() {
   const dispatch = useDispatch();
 
   const listMusics = useSelector((state) => state.listMusicsReducer);
 
-  const handleClickSong = (music) => {
+  const handleClickMusicInList = (music) => {
     dispatch({
       type: "Goto",
       payload: { ...music, index: Number(listMusics.indexOf(music)) },
     });
   };
-  console.log("render listsong", listMusics);
+  console.log("render listMusics", listMusics);
   return (
-    <div className="songs">
+    <div className="listMusic">
       {/* {Boolean(listMusics) + "listMusics"  + listMusics.length} */}
       {listMusics.length === undefined ? (
         <div className="loading"></div>
       ) : (
         listMusics.map((music) => (
-          <SongPlayer
+          <MusicInList
             key={music.name + music.author}
             music={music}
-            handleClickSong={handleClickSong}
+            handleClickMusicInList={handleClickMusicInList}
           />
-          ))
+        ))
       )}
     </div>
   );
 }
 
-export default ListSongPlayer;
+export default ListMusic;

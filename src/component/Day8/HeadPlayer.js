@@ -1,10 +1,10 @@
 import ControlPlayer from "./ControlPlayer";
-import InforCurrentPlayer from "./InforCurrentPlayer";
+import InforCurrentMusic from "./InforCurrentMusic";
 function HeadPlayer() {
   
   return (
     <>
-      <InforCurrentPlayer  />
+      <InforCurrentMusic  />
       <ControlPlayer  />
     </>
   );

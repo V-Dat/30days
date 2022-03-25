@@ -1,14 +1,14 @@
-import { useEffect, useRef } from "react";
-import { useSelector } from "react-redux";
+import "./SeekBar.css";
 
-function SeekBar({   audioElement , percent  }) {
+import { useRef } from "react";
 
+function SeekBar({ audioElement, percent }) {
   const seekBarInput = useRef();
 
-    const handleSeekBarInput = (e) => {
-      audioElement.current.currentTime = (e.target.value / 100) * audioElement.current.duration;
-    };
-  
+  const handleSeekBarInput = (e) => {
+    audioElement.current.currentTime =
+      (e.target.value / 100) * audioElement.current.duration;
+  };
 
   return (
     <div className="player__seekbar">
@@ -16,12 +16,12 @@ function SeekBar({   audioElement , percent  }) {
         id="progress"
         className="progress"
         type="range"
-        value= {percent}
+        value={percent}
         step="1"
         min="0"
         max="100"
         ref={seekBarInput}
-        onInput ={(e) => handleSeekBarInput(e)}
+        onInput={(e) => handleSeekBarInput(e)}
       />
     </div>
   );
