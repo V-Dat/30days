@@ -1,0 +1,9 @@
+.seekbar_control.seek{
+    position: relative;
+    align-items: center;
+}
+
+.seekbar_control.seek {
+  padding: 1rem;
+  height: 4rem;
+}

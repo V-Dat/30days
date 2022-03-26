@@ -2,3 +2,7 @@
   height: 4rem;
   line-height: 4rem;
 }
+.seekbar__control {
+  padding: 1rem;
+  height: 4rem;
+}

@@ -1,21 +1,23 @@
 import "./ControlPlayer.css";
 
-import React, { useRef, useState } from "react";
 import Button from "../Button/Button.js";
-import SeekBar from "../SeekBar/SeekBar.js";
-import { useDispatch, useSelector } from "react-redux";
-function ControlPlayer() {
-  const dispatch = useDispatch();
-  const audioElement = useRef();
-  const listMusics = useSelector((state) => state.listMusicsReducer);
+import SeekBarControl from "../SeekBar/SeekBarControl";
 
+import React, { useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+function ControlPlayer() {
   const [show, setShow] = useState(false);
   const [random, setRandom] = useState(false);
   const [repeat, setRepeat] = useState(false);
   const [percent, setPercent] = useState(0);
 
-  const length = Number(listMusics.length);
+  const audioElement = useRef();
+  const dispatch = useDispatch();
   const audioCurrent = useSelector((state) => state.currentMusicReducer);
+  const listMusics = useSelector((state) => state.listMusicsReducer);
+  const length = Number(listMusics.length);
+
 
   const handleClickNext = () => {
     if (audioCurrent.isRepeat) {
@@ -75,18 +77,6 @@ function ControlPlayer() {
         },
       });
     }
-
-    if (length) {
-      console.log(audioCurrent.index);
-      dispatch({
-        type: "Prev",
-        payload: {
-          ...listMusics[audioCurrent.index],
-          isPlaying: true,
-          index: Number(audioCurrent.index),
-        },
-      });
-    }
   };
 
   const handlePause = () => {
@@ -136,13 +126,14 @@ function ControlPlayer() {
   };
 
   const handleSeekBarUpdate = () => {
-    console.log(
-      "timeupdate",
-      (audioElement.current.currentTime / audioElement.current.duration) * 100
-    );
     setPercent(
       (audioElement.current.currentTime / audioElement.current.duration) * 100
     );
+  };
+
+  const handleSeekBarInput = (e) => {
+    audioElement.current.currentTime =
+      (audioElement.current.duration * e.target.value) / 100;
   };
 
   return (
@@ -198,24 +189,28 @@ function ControlPlayer() {
           }
         />
       </div>
-      <div>
-        <SeekBar
+      <div className="seekbar__control">
+        <div>{audioElement.current.currentTime || '00 : 00' }</div>
+        <SeekBarControl
           audioElement={audioElement}
-          setShow={setShow}
           percent={percent}
+          setPercent={setPercent}
+          handleSeekBarInput={handleSeekBarInput}
         />
+        <div>{audioElement.current.duration || '00 : 00' }</div>
       </div>
-
-      <audio
-        id="audio"
-        className="audio"
-        src={audioCurrent.mp3}
-        autoPlay={true}
-        ref={audioElement}
-        onEnded={handleAudioEnded}
-        onPlay={handlePlaying}
-        onTimeUpdate={handleSeekBarUpdate}
-      ></audio>
+      <div>
+        <audio
+          id="audio"
+          className="audio"
+          src={audioCurrent.mp3}
+          autoPlay={true}
+          ref={audioElement}
+          onEnded={handleAudioEnded}
+          onPlay={handlePlaying}
+          onTimeUpdate={handleSeekBarUpdate}
+        ></audio>
+      </div>
     </>
   );
 }
