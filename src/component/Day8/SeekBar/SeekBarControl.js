@@ -1,7 +1,7 @@
 import SeekBarTimeUpdate from "./SeekBarTimeUpdate";
 import SeekBarProgress from "./SeekBarProgress";
 
-import { useRef, useState } from "react";
+import {  useState } from "react";
 
 function SeekBarControl({
   percent,

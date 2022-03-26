@@ -102,7 +102,7 @@ function ControlPlayer() {
   };
 
   const handlePlay = () => {
-    if (audioElement.current.src == "") {
+    if (audioElement.current.src === "") {
       dispatch({
         type: "Next",
         payload: {
