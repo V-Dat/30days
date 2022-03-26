@@ -7,14 +7,13 @@ import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 function ControlPlayer() {
-  
   const audioElement = useRef();
   const dispatch = useDispatch();
   const audioCurrent = useSelector((state) => state.currentMusicReducer);
   const listMusics = useSelector((state) => state.listMusicsReducer);
   const length = Number(listMusics.length) || 0;
   console.log("length", length);
-  
+
   const [random, setRandom] = useState(false);
   const [repeat, setRepeat] = useState(false);
   const [percent, setPercent] = useState(0);
@@ -22,6 +21,7 @@ function ControlPlayer() {
 
   const handleClickNext = () => {
     // Mỗi khi play/pause => mặc định audio luôn play và nút pause được show [event onPlaying]
+    audioElement.current.play();
 
     if (audioCurrent.isRepeat) {
       audioElement.current.currentTime = 0;
@@ -53,7 +53,7 @@ function ControlPlayer() {
 
   const handleClickPrev = () => {
     // Mỗi khi play/pause => mặc định audio luôn play và nút pause được show [event onPlaying]
-    
+    audioElement.current.play();
 
     if (audioCurrent.isRepeat) {
       audioElement.current.currentTime = 0;
@@ -82,26 +82,46 @@ function ControlPlayer() {
   };
 
   const handlePause = () => {
-    setShow((prev) =>
-      audioCurrent.isPlaying ? (prev = false) : (prev = true)
-    );
+    audioCurrent.isPlaying = false;
+    setShow(audioCurrent.isPlaying);
 
     audioElement.current.duration > 0
       ? audioElement.current.pause()
       : audioElement.current.play();
 
     console.log("handlePause");
+
+    dispatch({
+      type: "Pause",
+      payload: {
+        isPlaying: false,
+        isRotating: false,
+      },
+    });
+    console.log(audioCurrent.isRotating);
   };
 
   const handlePlay = () => {
-    setShow((prev) =>
-      audioCurrent.isPlaying ? (prev = true) : (prev = false)
-    );
+    if (audioElement.current.src == "") {
+      dispatch({
+        type: "Next",
+        payload: {
+          ...listMusics[0],
+          index: 0,
+          isPlaying: true,
+          isRotating: true,
+        },
+      });
+      return;
+    }
 
-    audioElement.current.src !== null
-      ? audioElement.current.play()
-      : dispatch({ type: "Next", payload: { ...listMusics[0], index: 0 } });
-    console.log("handlePlay");
+    dispatch({ type: "Play", payload: { isPlaying: true, isRotating: true } });
+
+    audioCurrent.isPlaying = true;
+
+    setShow(audioCurrent.isPlaying);
+    audioElement.current.play();
+    console.log(audioCurrent.isRotating);
   };
 
   const handleRandom = () => {
@@ -122,19 +142,14 @@ function ControlPlayer() {
   };
 
   const handlePlaying = () => {
-    console.log('Khi audio play => show btn pause')
+    console.log("Khi audio play => show btn pause");
     setShow(true);
   };
 
-  const handleSeekBarUpdate = () => {
+  const handleAudioUpdate = () => {
     setPercent(
       (audioElement.current.currentTime / audioElement.current.duration) * 100
     );
-  };
-
-  const handleSeekBarInput = (e) => {
-    audioElement.current.currentTime =
-      (audioElement.current.duration * e.target.value) / 100;
   };
 
   return (
@@ -192,12 +207,7 @@ function ControlPlayer() {
       </div>
       <div className="seekbar__control">
         {/* <div>{audioElement.current.currentTime || '00 : 00' }</div> */}
-        <SeekBarControl
-          audioElement={audioElement}
-          percent={percent}
-          setPercent={setPercent}
-          handleSeekBarInput={handleSeekBarInput}
-        />
+        <SeekBarControl audioElement={audioElement} percent={percent} />
         {/* <div>{audioElement.current.duration || '00 : 00' }</div> */}
       </div>
       <div>
@@ -206,10 +216,10 @@ function ControlPlayer() {
           className="audio"
           src={audioCurrent.mp3}
           autoPlay={true}
-          ref={audioElement }
+          ref={audioElement}
           onEnded={handleAudioEnded}
           onPlay={handlePlaying}
-          onTimeUpdate={handleSeekBarUpdate}
+          onTimeUpdate={handleAudioUpdate}
         ></audio>
       </div>
     </>

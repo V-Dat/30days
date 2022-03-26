@@ -1,18 +1,32 @@
 .player__title {
-    font-weight: 500;
-    color: var(--primary-color);
+  font-weight: 500;
+  color: var(--primary-color);
+}
+.player__image {
+  background-color: #ccc;
+  width: 25rem;
+  height: 25rem;
+  margin: 1rem auto;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.player__image__url {
+  background-image: center center;
+  height: 100%;
+  width: 100%;
+}
+
+.image__rotating {
+  animation: circle 30s linear infinite;
+}
+
+@keyframes circle {
+  0% {
+    transform: rotate(0deg);
   }
-  .player__image {
-    background-color: #ccc;
-    width: 25rem;
-    height: 25rem;
-    margin: 1rem auto;
-    border-radius: 100%;
-    overflow: hidden;
+  100% {
+    transform: rotate(360deg);
   }
-  
-  .player__image__url {
-    background-image: center center;
-    height: 100%;
-    width: 100%;
-  }
+}
+

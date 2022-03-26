@@ -3,8 +3,7 @@ import "./SeekBarTimeUpdate.css";
 function SeekBarTimeUpdate({
   percent,
   showProgress,
-  handleSeekBarInput,
-  seekBarInput,
+  handleSeekTimeupdateInput,
   handleMouseEnter,
 }) {
   return (
@@ -16,8 +15,7 @@ function SeekBarTimeUpdate({
         min="0"
         max="100"
         style= {{ display: showProgress }} 
-        ref={seekBarInput}
-        onInput={(e) => handleSeekBarInput(e)}
+        onInput={(e) => handleSeekTimeupdateInput(e)}
         onMouseEnter={handleMouseEnter}
       />
     </div>

@@ -1,22 +1,18 @@
 import SeekBarTimeUpdate from "./SeekBarTimeUpdate";
-import SeekProgress from "./SeekBarInput";
+import SeekBarProgress from "./SeekBarProgress";
 
 import { useRef, useState } from "react";
 
 function SeekBarControl({
   percent,
-  handleSeekBarInput,
   audioElement,
 }) {
-  const seekBarInput = useRef();
-  const seekProgress = useRef();
 
   const [showProgress, setShowProgress] = useState("inline-block");
   const [showSeekProgress, setShowSeekProgress] = useState("none");
   const [seekPercent, setSeekPercent] = useState(0);
 
   const handleMouseEnter = () => {
-    
     setShowProgress("inline-block");
     setShowSeekProgress("inline-block");
     setSeekPercent(percent);
@@ -41,25 +37,32 @@ function SeekBarControl({
     audioElement.current.play();
   };
 
+
+  const handleSeekTimeupdateInput = (e) => {
+    audioElement.current.currentTime =
+      (audioElement.current.duration * e.target.value) / 100;
+  };
+
+
+
   return (
     <div className="seekbar_control seek">
       <SeekBarTimeUpdate
         percent={percent}
         showProgress= {showProgress}
-        ref={seekBarInput}
-        // handleSeekBarInput={handleSeekBarInput}
-        // handleMouseUp={handleMouseUp}
+
+        handleSeekTimeupdateInput={handleSeekTimeupdateInput}
         handleMouseEnter={handleMouseEnter}
         handleMouseLeave={handleMouseLeave}
       />
 
-      <SeekProgress
-        handleSeekProgressInput={handleSeekProgressInput}
+      <SeekBarProgress
+        seekPercent={seekPercent}
+        showSeekProgress={showSeekProgress }
+        
         handleMouseUp={handleMouseUp}
         handleMouseLeave={handleMouseLeave}
-        showSeekProgress={showSeekProgress }
-        seekProgress={seekProgress}
-        seekPercent={seekPercent}
+        handleSeekProgressInput={handleSeekProgressInput}
       />
     </div>
   );

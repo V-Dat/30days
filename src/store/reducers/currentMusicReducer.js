@@ -6,6 +6,7 @@ const initialState = {
   isPlaying: false,
   isRandom: false,
   isRepeat: false,
+  isRotating: false,
 };
 
 const currentMusicReducer = (state = initialState, action) => {
@@ -24,9 +25,9 @@ const currentMusicReducer = (state = initialState, action) => {
       newState = {...state, ...action.payload}
       return state = newState;
     case "Play":
-      return state;
+      return state = {...state, ...action.payload};
     case "Pause":
-      return state;
+      return state = {...state, ...action.payload};
     case "Goto":
       newState = {...state, ...action.payload}
       return state = newState;

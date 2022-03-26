@@ -1,8 +1,8 @@
-import "./SeekBarInput.css";
+import "./SeekBarProgress.css";
 
 import React from "react";
 
-function SeekBarInput({
+function SeekBarProgress({
   handleSeekProgressInput,
   handleMouseUp,
   handleMouseLeave,
@@ -26,4 +26,4 @@ function SeekBarInput({
   );
 }
 
-export default SeekBarInput;
+export default SeekBarProgress;
