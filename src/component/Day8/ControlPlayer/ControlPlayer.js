@@ -7,19 +7,22 @@ import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 function ControlPlayer() {
-  const [show, setShow] = useState(false);
-  const [random, setRandom] = useState(false);
-  const [repeat, setRepeat] = useState(false);
-  const [percent, setPercent] = useState(0);
-
+  
   const audioElement = useRef();
   const dispatch = useDispatch();
   const audioCurrent = useSelector((state) => state.currentMusicReducer);
   const listMusics = useSelector((state) => state.listMusicsReducer);
-  const length = Number(listMusics.length);
-
+  const length = Number(listMusics.length) || 0;
+  console.log("length", length);
+  
+  const [random, setRandom] = useState(false);
+  const [repeat, setRepeat] = useState(false);
+  const [percent, setPercent] = useState(0);
+  const [show, setShow] = useState(audioCurrent.isPlaying);
 
   const handleClickNext = () => {
+    // Mỗi khi play/pause => mặc định audio luôn play và nút pause được show [event onPlaying]
+
     if (audioCurrent.isRepeat) {
       audioElement.current.currentTime = 0;
       return;
@@ -37,20 +40,21 @@ function ControlPlayer() {
       return;
     }
 
-    if (length) {
-      audioCurrent.index = (audioCurrent.index + 1 + length) % length;
-      dispatch({
-        type: "Next",
-        payload: {
-          ...listMusics[audioCurrent.index],
-          isPlaying: true,
-          index: audioCurrent.index,
-        },
-      });
-    }
+    audioCurrent.index = (audioCurrent.index + 1 + length) % length;
+    dispatch({
+      type: "Next",
+      payload: {
+        ...listMusics[audioCurrent.index],
+        isPlaying: true,
+        index: audioCurrent.index,
+      },
+    });
   };
 
   const handleClickPrev = () => {
+    // Mỗi khi play/pause => mặc định audio luôn play và nút pause được show [event onPlaying]
+    
+
     if (audioCurrent.isRepeat) {
       audioElement.current.currentTime = 0;
       return;
@@ -66,17 +70,15 @@ function ControlPlayer() {
       });
     }
 
-    if (length) {
-      audioCurrent.index = (audioCurrent.index - 1 + length) % length;
-      dispatch({
-        type: "Next",
-        payload: {
-          ...listMusics[audioCurrent.index],
-          isPlaying: true,
-          index: Number(audioCurrent.index),
-        },
-      });
-    }
+    audioCurrent.index = (audioCurrent.index - 1 + length) % length;
+    dispatch({
+      type: "Next",
+      payload: {
+        ...listMusics[audioCurrent.index],
+        isPlaying: true,
+        index: Number(audioCurrent.index),
+      },
+    });
   };
 
   const handlePause = () => {
@@ -120,9 +122,8 @@ function ControlPlayer() {
   };
 
   const handlePlaying = () => {
-    setShow((prev) =>
-      audioCurrent.isPlaying ? (prev = true) : (prev = false)
-    );
+    console.log('Khi audio play => show btn pause')
+    setShow(true);
   };
 
   const handleSeekBarUpdate = () => {
@@ -190,14 +191,14 @@ function ControlPlayer() {
         />
       </div>
       <div className="seekbar__control">
-        <div>{audioElement.current.currentTime || '00 : 00' }</div>
+        {/* <div>{audioElement.current.currentTime || '00 : 00' }</div> */}
         <SeekBarControl
           audioElement={audioElement}
           percent={percent}
           setPercent={setPercent}
           handleSeekBarInput={handleSeekBarInput}
         />
-        <div>{audioElement.current.duration || '00 : 00' }</div>
+        {/* <div>{audioElement.current.duration || '00 : 00' }</div> */}
       </div>
       <div>
         <audio
@@ -205,7 +206,7 @@ function ControlPlayer() {
           className="audio"
           src={audioCurrent.mp3}
           autoPlay={true}
-          ref={audioElement}
+          ref={audioElement }
           onEnded={handleAudioEnded}
           onPlay={handlePlaying}
           onTimeUpdate={handleSeekBarUpdate}

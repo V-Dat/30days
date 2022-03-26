@@ -8,8 +8,11 @@ function ListMusic() {
   const dispatch = useDispatch();
 
   const listMusics = useSelector((state) => state.listMusicsReducer);
+  const audioCurrent = useSelector((state) => state.currentMusicReducer);
 
   const handleClickMusicInList = (music) => {
+    audioCurrent.isPlaying = true;
+
     dispatch({
       type: "Goto",
       payload: { ...music, index: Number(listMusics.indexOf(music)) , isPlaying: true},

@@ -7,7 +7,7 @@ function InforCurrentMusic({}) {
   return (
     <>
       <div className="player__playing">Current Song:</div>
-      <div className="player__title">{"Tên Bài Hát"}</div>
+      <div className="player__title">{audioCurrent.name}</div>
       <div className="player__image">
         <img
           className="player__image__url"

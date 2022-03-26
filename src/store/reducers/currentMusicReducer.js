@@ -6,8 +6,6 @@ const initialState = {
   isPlaying: false,
   isRandom: false,
   isRepeat: false,
-  // duration: 1,
-  // currentTime: 1,
 };
 
 const currentMusicReducer = (state = initialState, action) => {
