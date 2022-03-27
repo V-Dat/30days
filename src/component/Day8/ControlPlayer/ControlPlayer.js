@@ -147,9 +147,11 @@ function ControlPlayer() {
   };
 
   const handleAudioUpdate = () => {
-    setPercent(
-      (audioElement.current.currentTime / audioElement.current.duration) * 100
-    );
+    // if(isSeeking){
+      setPercent(
+        (audioElement.current.currentTime / audioElement.current.duration) * 100
+        );
+    // }
   };
 
   return (

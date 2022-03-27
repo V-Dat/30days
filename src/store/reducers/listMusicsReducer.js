@@ -3,7 +3,7 @@ const initialState = [];
 const listMusicsReducer = (state = initialState, action) => {
   let newState = {};
   switch (action.type) {
-    case "CallApiSucess":
+    case "CallApiSuccess":
       newState = [ ...state, ...action.payload ];
       return (state = newState);
     case "CallApiFail":

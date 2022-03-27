@@ -27,7 +27,7 @@ function Day8() {
           image: music.share.image,
           mp3: music.hub.actions[1].uri,
         }.then((listMusics) =>
-          dispatch({ type: "CallApiSucess", payload: { listMusics } })
+          dispatch({ type: "CallApiSuccess", payload: { listMusics } })
         ))
       );
     }
