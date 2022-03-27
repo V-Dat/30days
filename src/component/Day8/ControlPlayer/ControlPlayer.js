@@ -11,24 +11,23 @@ function ControlPlayer() {
   const dispatch = useDispatch();
   const audioCurrent = useSelector((state) => state.currentMusicReducer);
   const listMusics = useSelector((state) => state.listMusicsReducer);
-  const length = Number(listMusics.length) || 0;
-  console.log("length", length);
+  const length = Number(listMusics.length) ? Number(listMusics.length) : 0;
 
   const [random, setRandom] = useState(false);
   const [repeat, setRepeat] = useState(false);
   const [percent, setPercent] = useState(0);
-  const [show, setShow] = useState(audioCurrent.isPlaying);
+  const [show, setShow] = useState(false);
+  // console.log('audioElement.current truoc prev: ' ,audioElement.current === undefined ? 'undefine' : audioElement.current.src == '' )
 
   const handleClickNext = () => {
     // Mỗi khi play/pause => mặc định audio luôn play và nút pause được show [event onPlaying]
-    audioElement.current.play();
 
-    if (audioCurrent.isRepeat) {
+    if (repeat) {
       audioElement.current.currentTime = 0;
       return;
     }
 
-    if (audioCurrent.isRandom) {
+    if (random) {
       dispatch({
         type: "Next",
         payload: {
@@ -40,27 +39,30 @@ function ControlPlayer() {
       return;
     }
 
-    audioCurrent.index = (audioCurrent.index + 1 + length) % length;
+    const nextIndex = (audioCurrent.index + 1 + length) % length;
     dispatch({
       type: "Next",
       payload: {
-        ...listMusics[audioCurrent.index],
+        ...listMusics[nextIndex],
         isPlaying: true,
-        index: audioCurrent.index,
+        index: nextIndex,
       },
     });
+    // lần đầu tiên nếu audio Elemenc.src = '' => không method play err
+    if (audioElement.current !== undefined && audioElement.current.src !== "") {
+      audioElement.current.play();
+    }
   };
 
   const handleClickPrev = () => {
     // Mỗi khi play/pause => mặc định audio luôn play và nút pause được show [event onPlaying]
-    audioElement.current.play();
 
-    if (audioCurrent.isRepeat) {
+    if (repeat) {
       audioElement.current.currentTime = 0;
       return;
     }
 
-    if (audioCurrent.isRandom) {
+    if (random) {
       dispatch({
         type: "Prev",
         payload: {
@@ -69,16 +71,20 @@ function ControlPlayer() {
         },
       });
     }
-
-    audioCurrent.index = (audioCurrent.index - 1 + length) % length;
+    const prevIndex = (audioCurrent.index - 1 + length) % length;
     dispatch({
       type: "Next",
       payload: {
-        ...listMusics[audioCurrent.index],
+        ...listMusics[prevIndex],
         isPlaying: true,
-        index: Number(audioCurrent.index),
+        index: Number(prevIndex),
       },
     });
+
+    // lần đầu tiên nếu audio Elemenc.src = '' => không method play err
+    if (audioElement.current !== undefined && audioElement.current.src !== "") {
+      audioElement.current.play();
+    }
   };
 
   const handlePause = () => {
@@ -89,8 +95,6 @@ function ControlPlayer() {
       ? audioElement.current.pause()
       : audioElement.current.play();
 
-    console.log("handlePause");
-
     dispatch({
       type: "Pause",
       payload: {
@@ -98,7 +102,6 @@ function ControlPlayer() {
         isRotating: false,
       },
     });
-    console.log(audioCurrent.isRotating);
   };
 
   const handlePlay = () => {
@@ -121,37 +124,32 @@ function ControlPlayer() {
 
     setShow(audioCurrent.isPlaying);
     audioElement.current.play();
-    console.log(audioCurrent.isRotating);
   };
 
   const handleRandom = () => {
     audioCurrent.isRandom = !audioCurrent.isRandom;
     setRandom(audioCurrent.isRandom);
-    console.log(audioCurrent);
   };
 
   const handleRepeat = () => {
     audioCurrent.isRepeat = !audioCurrent.isRepeat;
     setRepeat(audioCurrent.isRepeat);
-    console.log(audioCurrent);
   };
 
   const handleAudioEnded = () => {
-    console.log("Hết bài hát");
     handleClickNext();
   };
 
   const handlePlaying = () => {
-    console.log("Khi audio play => show btn pause");
     setShow(true);
   };
 
   const handleAudioUpdate = () => {
-    // if(isSeeking){
+    if (!audioCurrent.isSeeking) {
       setPercent(
         (audioElement.current.currentTime / audioElement.current.duration) * 100
-        );
-    // }
+      );
+    }
   };
 
   return (
@@ -207,21 +205,25 @@ function ControlPlayer() {
           }
         />
       </div>
-      <div className="seekbar__control">
-        {/* <div>{audioElement.current.currentTime || '00 : 00' }</div> */}
-        <SeekBarControl audioElement={audioElement} percent={percent} />
-        {/* <div>{audioElement.current.duration || '00 : 00' }</div> */}
+      <div className="player__seekbar-control">
+        <SeekBarControl
+          audioElement={audioElement}
+          percent={percent || 0}
+          setPercent={setPercent}
+        />
       </div>
-      <div>
+      <div className="player__audio-control">
         <audio
           id="audio"
           className="audio"
           src={audioCurrent.mp3}
           autoPlay={true}
+          loop={audioCurrent.isRepeat}
           ref={audioElement}
           onEnded={handleAudioEnded}
           onPlay={handlePlaying}
           onTimeUpdate={handleAudioUpdate}
+          seeking={`${audioCurrent.isSeeking}`}
         ></audio>
       </div>
     </>

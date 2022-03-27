@@ -10,7 +10,6 @@ function InforCurrentMusic() {
     cssstyle = { animationPlayState: "running" };
   }
 
-  console.log("audioCurrent.isRotating -- - -", audioCurrent.isRotating);
   return (
     <>
       <div className="player__playing">Current Song:</div>

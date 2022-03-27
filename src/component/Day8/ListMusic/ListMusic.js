@@ -18,10 +18,8 @@ function ListMusic() {
       payload: { ...music, index: Number(listMusics.indexOf(music)) , isPlaying: true},
     });
   };
-  console.log("render listMusics", listMusics);
   return (
     <div className="listMusic">
-      {/* {Boolean(listMusics) + "listMusics"  + listMusics.length} */}
       {listMusics.length === undefined ? (
         <div className="loading"></div>
       ) : (

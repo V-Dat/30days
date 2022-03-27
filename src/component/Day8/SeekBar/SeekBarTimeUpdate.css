@@ -1,12 +1,12 @@
 .seek__timeupdate input {
-  width: 80%;
+  width: 100%;
 }
 .seek__timeupdate {
-  position: absolute;
-  margin: auto;
-  width: 50%;
+  width: 80%;
+  display: flex;
+  margin: 0 auto;
+}
 
-  left: 50%;
-  transform: translate(-50%, 0);
-
+.seek__timeupdate > * {
+  margin: 0 1rem;
 }

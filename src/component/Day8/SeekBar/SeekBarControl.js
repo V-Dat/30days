@@ -1,70 +1,42 @@
+import "./SeekBarControl.css";
+
 import SeekBarTimeUpdate from "./SeekBarTimeUpdate";
-import SeekBarProgress from "./SeekBarProgress";
+import { useSelector, useDispatch } from "react-redux";
 
-import {  useState } from "react";
-
-function SeekBarControl({
-  percent,
-  audioElement,
-}) {
-
-  const [showProgress, setShowProgress] = useState("inline-block");
-  const [showSeekProgress, setShowSeekProgress] = useState("none");
-  const [seekPercent, setSeekPercent] = useState(0);
-
-  const handleMouseEnter = () => {
-    setShowProgress("inline-block");
-    setShowSeekProgress("inline-block");
-    setSeekPercent(percent);
-
-    console.log(showProgress);
-  };
-  const handleMouseLeave = () => {
-    setShowProgress("inline-block");
-    setShowSeekProgress("none");
-  };
-
-  const handleSeekProgressInput = (e) => {
-    setSeekPercent(e.target.value);
-  };
-
-  const handleMouseUp = () => {
-    audioElement.current.currentTime =
-      (audioElement.current.duration * seekPercent) / 100;
-    setShowProgress("inline-block");
-    
-    //sau khi tua => tu dong play    
-    audioElement.current.play();
-  };
-
+function SeekBarControl({ percent, setPercent, audioElement }) {
+  const dispatch = useDispatch();
+  const audioCurrent = useSelector((state) => state.currentMusicReducer);
 
   const handleSeekTimeupdateInput = (e) => {
-    audioElement.current.currentTime =
-      (audioElement.current.duration * e.target.value) / 100;
+    if (!audioCurrent.isSeeking) {
+      audioElement.current.currentTime =
+        (audioElement.current.duration * e.target.value) / 100;
+    }
+      setPercent(e.target.value);
   };
 
+  const handleSeekingDown = () => {
+    //dispatch action seeking
+    dispatch({ type: "Seeking", payload: { isSeeking: true } });
+  };
 
+  const handleSeekingUp = () => {
+    dispatch({ type: "Seeking", payload: { isSeeking: false } });
+
+    if(audioCurrent.mp3 !== null){
+      audioElement.current.currentTime =
+      (audioElement.current.duration * percent) / 100;
+    }
+  };
 
   return (
-    <div className="seekbar_control seek">
       <SeekBarTimeUpdate
         percent={percent}
-        showProgress= {showProgress}
-
+        handleSeekingDown={handleSeekingDown}
+        handleSeekingUp={handleSeekingUp}
         handleSeekTimeupdateInput={handleSeekTimeupdateInput}
-        handleMouseEnter={handleMouseEnter}
-        handleMouseLeave={handleMouseLeave}
+        audioElement={audioElement}
       />
-
-      <SeekBarProgress
-        seekPercent={seekPercent}
-        showSeekProgress={showSeekProgress }
-        
-        handleMouseUp={handleMouseUp}
-        handleMouseLeave={handleMouseLeave}
-        handleSeekProgressInput={handleSeekProgressInput}
-      />
-    </div>
   );
 }
 
