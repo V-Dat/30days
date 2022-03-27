@@ -83,11 +83,11 @@
   margin: 0 auto;
 }
 @media (max-width: 740px) {
-  .player__control  {
+  .player__control {
     width: 90% !important;
   }
   .player__image {
     width: 20rem !important;
     height: 20rem !important;
-}
+  }
 }

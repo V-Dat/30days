@@ -205,6 +205,7 @@ function ControlPlayer() {
           }
         />
       </div>
+
       <div className="player__seekbar-control">
         <SeekBarControl
           audioElement={audioElement}
@@ -212,6 +213,7 @@ function ControlPlayer() {
           setPercent={setPercent}
         />
       </div>
+      
       <div className="player__audio-control">
         <audio
           id="audio"

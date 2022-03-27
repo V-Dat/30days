@@ -1,32 +1,30 @@
+.music {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1rem 0;
+  background-clip: content-box;
+  background-color: #fff;
+}
 
-  
-  .music {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem 1rem 0;
-    background-clip: content-box;
-    background-color: #fff;
-  }
-  
-  .music__image {
-    width: 8rem;
-    height: 8rem;
-    border-radius: 50%;
-    overflow: hidden;
-    padding: 1rem;
-  }
-  
-  .music__image__url {
-    height: 100%;
-    width: 100%;
-  }
-  .music__infor {
-    align-self: center;
-    flex-grow: 1;
-    text-align: left;
-    padding-left: 1rem;
-  }
-  
-  .music__action {
-    align-self: center;
-  }
+.music__image {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.music__image__url {
+  height: 100%;
+  width: 100%;
+}
+.music__infor {
+  align-self: center;
+  flex-grow: 1;
+  text-align: left;
+  padding-left: 1rem;
+}
+
+.music__action {
+  align-self: center;
+}

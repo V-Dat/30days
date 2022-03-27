@@ -44,7 +44,7 @@ function Day8() {
       "https://shazam.p.rapidapi.com/songs/list-artist-top-tracks?id=40008598&locale=en-US",
       options
     );
-  }, []);
+  });
 
   return (
     <div className="day8 grid wide">
