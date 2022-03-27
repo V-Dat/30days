@@ -12,7 +12,7 @@ function SeekBarControl({ percent, setPercent, audioElement }) {
       audioElement.current.currentTime =
         (audioElement.current.duration * e.target.value) / 100;
     }
-      setPercent(e.target.value);
+    setPercent(e.target.value);
   };
 
   const handleSeekingDown = () => {
@@ -23,20 +23,20 @@ function SeekBarControl({ percent, setPercent, audioElement }) {
   const handleSeekingUp = () => {
     dispatch({ type: "Seeking", payload: { isSeeking: false } });
 
-    if(audioCurrent.mp3 !== null){
+    if (audioCurrent.mp3 !== null) {
       audioElement.current.currentTime =
-      (audioElement.current.duration * percent) / 100;
+        (audioElement.current.duration * percent) / 100;
     }
   };
 
   return (
-      <SeekBarTimeUpdate
-        percent={percent}
-        handleSeekingDown={handleSeekingDown}
-        handleSeekingUp={handleSeekingUp}
-        handleSeekTimeupdateInput={handleSeekTimeupdateInput}
-        audioElement={audioElement}
-      />
+    <SeekBarTimeUpdate
+      percent={percent}
+      handleSeekingDown={handleSeekingDown}
+      handleSeekingUp={handleSeekingUp}
+      handleSeekTimeupdateInput={handleSeekTimeupdateInput}
+      audioElement={audioElement}
+    />
   );
 }
 

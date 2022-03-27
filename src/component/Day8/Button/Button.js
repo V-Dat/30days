@@ -1,8 +1,8 @@
-import './Button.css';
+import "./Button.css";
 
 import React from "react";
 
-function Button({ icon, onClick , type }) {
+function Button({ icon, onClick, type }) {
   return (
     <div className={type} onClick={onClick}>
       {icon}

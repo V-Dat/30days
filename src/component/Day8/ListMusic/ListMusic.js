@@ -15,7 +15,11 @@ function ListMusic() {
 
     dispatch({
       type: "Goto",
-      payload: { ...music, index: Number(listMusics.indexOf(music)) , isPlaying: true},
+      payload: {
+        ...music,
+        index: Number(listMusics.indexOf(music)),
+        isPlaying: true,
+      },
     });
   };
   return (

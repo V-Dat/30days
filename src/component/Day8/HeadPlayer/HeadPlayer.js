@@ -3,11 +3,10 @@ import InforCurrentMusic from "../InforCurrentMusic/InforCurrentMusic.js";
 function HeadPlayer() {
   return (
     <>
-      <InforCurrentMusic  />
+      <InforCurrentMusic />
       <ControlPlayer />
     </>
   );
 }
-
 
 export default HeadPlayer;

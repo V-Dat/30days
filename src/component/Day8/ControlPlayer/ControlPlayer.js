@@ -17,7 +17,6 @@ function ControlPlayer() {
   const [repeat, setRepeat] = useState(false);
   const [percent, setPercent] = useState(0);
   const [show, setShow] = useState(false);
-  // console.log('audioElement.current truoc prev: ' ,audioElement.current === undefined ? 'undefine' : audioElement.current.src == '' )
 
   const handleClickNext = () => {
     // Mỗi khi play/pause => mặc định audio luôn play và nút pause được show [event onPlaying]
@@ -213,7 +212,7 @@ function ControlPlayer() {
           setPercent={setPercent}
         />
       </div>
-      
+
       <div className="player__audio-control">
         <audio
           id="audio"

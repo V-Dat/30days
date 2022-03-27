@@ -4,11 +4,6 @@ import { useSelector } from "react-redux";
 
 function InforCurrentMusic() {
   const audioCurrent = useSelector((state) => state.currentMusicReducer);
-  let cssstyle = { animationPlayState: "paused" };
-
-  if (audioCurrent.isRotating) {
-    cssstyle = { animationPlayState: "running" };
-  }
 
   return (
     <>
@@ -20,7 +15,11 @@ function InforCurrentMusic() {
             ? "player__image image__rotating"
             : "player__image"
         } `}
-        style={cssstyle}
+        style={
+          audioCurrent.isRotating
+            ? { animationPlayState: "running" }
+            : { animationPlayState: "paused" }
+        }
       >
         <img
           className={`player__image__url  `}
