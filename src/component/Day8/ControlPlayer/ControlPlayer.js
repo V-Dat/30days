@@ -3,7 +3,7 @@ import "./ControlPlayer.css";
 import Button from "../Button/Button.js";
 import SeekBarControl from "../SeekBar/SeekBarControl";
 
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 function ControlPlayer() {
@@ -13,20 +13,26 @@ function ControlPlayer() {
   const listMusics = useSelector((state) => state.listMusicsReducer);
   const length = Number(listMusics.length) ? Number(listMusics.length) : 0;
 
-  const [random, setRandom] = useState(false);
-  const [repeat, setRepeat] = useState(false);
   const [percent, setPercent] = useState(0);
   const [show, setShow] = useState(false);
+  const [musicCurrentTime, setMusicCurrentTime] = useState(0);
+  const [musicDurationTime, setMusicDurationTime] = useState();
+
+  useEffect(() => {
+    setMusicDurationTime(audioElement.current.duration);
+  }, [audioCurrent]);
+
+  const handleReloadCurrentMusic = () => {
+    audioElement.current.currentTime = 0;
+  };
 
   const handleClickNext = () => {
-    // Mỗi khi play/pause => mặc định audio luôn play và nút pause được show [event onPlaying]
-
-    if (repeat) {
-      audioElement.current.currentTime = 0;
+    if (audioCurrent.isRepeat) {
+      handleReloadCurrentMusic();
       return;
     }
 
-    if (random) {
+    if (audioCurrent.isRandom) {
       dispatch({
         type: "Next",
         payload: {
@@ -47,21 +53,20 @@ function ControlPlayer() {
         index: nextIndex,
       },
     });
-    // lần đầu tiên nếu audio Elemenc.src = '' => không method play err
+
     if (audioElement.current !== undefined && audioElement.current.src !== "") {
       audioElement.current.play();
     }
-  };
+  }; //done
 
   const handleClickPrev = () => {
     // Mỗi khi play/pause => mặc định audio luôn play và nút pause được show [event onPlaying]
-
-    if (repeat) {
-      audioElement.current.currentTime = 0;
+    if (audioCurrent.isRepeat) {
+      handleReloadCurrentMusic();
       return;
     }
 
-    if (random) {
+    if (audioCurrent.isRandom) {
       dispatch({
         type: "Prev",
         payload: {
@@ -84,12 +89,9 @@ function ControlPlayer() {
     if (audioElement.current !== undefined && audioElement.current.src !== "") {
       audioElement.current.play();
     }
-  };
+  }; //done
 
-  const handlePause = () => {
-    audioCurrent.isPlaying = false;
-    setShow(audioCurrent.isPlaying);
-
+  const handleClickPause = () => {
     audioElement.current.duration > 0
       ? audioElement.current.pause()
       : audioElement.current.play();
@@ -101,9 +103,12 @@ function ControlPlayer() {
         isRotating: false,
       },
     });
-  };
 
-  const handlePlay = () => {
+    // hiển thị nút play
+    setShow(false);
+  }; //done
+
+  const handleClickPlay = () => {
     if (audioElement.current.src === "") {
       dispatch({
         type: "Next",
@@ -119,37 +124,42 @@ function ControlPlayer() {
 
     dispatch({ type: "Play", payload: { isPlaying: true, isRotating: true } });
 
-    audioCurrent.isPlaying = true;
-
-    setShow(audioCurrent.isPlaying);
+    //hiển thị nút pause
+    setShow(true);
     audioElement.current.play();
-  };
+  }; //done
 
-  const handleRandom = () => {
-    audioCurrent.isRandom = !audioCurrent.isRandom;
-    setRandom(audioCurrent.isRandom);
-  };
+  const handleToggleButtonRandom = () => {
+    dispatch({ type: "Random", payload: { isRandom: !audioCurrent.isRandom } });
+  }; //done
 
-  const handleRepeat = () => {
-    audioCurrent.isRepeat = !audioCurrent.isRepeat;
-    setRepeat(audioCurrent.isRepeat);
-  };
+  const handleToggleButtonRepeat = () => {
+    dispatch({ type: "Repeat", payload: { isRepeat: !audioCurrent.isRepeat } });
+  }; //done
 
   const handleAudioEnded = () => {
     handleClickNext();
-  };
+  }; // cần sửa lại
 
-  const handlePlaying = () => {
+  const handleStartPlaying = () => {
     setShow(true);
-  };
+  }; //done
 
-  const handleAudioUpdate = () => {
+  const handleAudioOnTimeUpdate = () => {
+    // code mới (bị delay seekbar input)
+    // if (!audioCurrent.isSeeking) {
+    //   setMusicCurrentTime(audioElement.current.currentTime);
+    //   setPercent((musicCurrentTime / musicDurationTime) * 100);
+    // }
+
+    // code Cũ
     if (!audioCurrent.isSeeking) {
       setPercent(
         (audioElement.current.currentTime / audioElement.current.duration) * 100
       );
     }
   };
+  //done audioElement.current.currentTime quan ly vao state => done
 
   return (
     <>
@@ -157,9 +167,13 @@ function ControlPlayer() {
         <Button
           type="btn-repeat"
           icon={
-            <i className={repeat ? "active fas fa-redo" : "fas fa-redo"}></i>
+            <i
+              className={
+                audioCurrent.isRepeat ? "active fas fa-redo" : "fas fa-redo"
+              }
+            ></i>
           }
-          onClick={handleRepeat}
+          onClick={handleToggleButtonRepeat}
         />
 
         <Button
@@ -178,13 +192,13 @@ function ControlPlayer() {
                     ? "show fas fa-pause icon-pause"
                     : "fas fa-pause icon-pause"
                 }
-                onClick={handlePause}
+                onClick={handleClickPause}
               ></i>{" "}
               <i
                 className={
                   show ? "hide fas fa-play icon-play" : "fas fa-play icon-play"
                 }
-                onClick={handlePlay}
+                onClick={handleClickPlay}
               ></i>{" "}
             </>
           }
@@ -195,11 +209,13 @@ function ControlPlayer() {
           onClick={handleClickNext}
         />
         <Button
-          onClick={handleRandom}
+          onClick={handleToggleButtonRandom}
           type="btn-random"
           icon={
             <i
-              className={random ? "active fas fa-random" : "fas fa-random"}
+              className={
+                audioCurrent.isRandom ? "active fas fa-random" : "fas fa-random"
+              }
             ></i>
           }
         />
@@ -210,6 +226,9 @@ function ControlPlayer() {
           audioElement={audioElement}
           percent={percent || 0}
           setPercent={setPercent}
+          setMusicCurrentTime={setMusicCurrentTime}
+          musicDurationTime={musicDurationTime}
+          musicCurrentTime={musicCurrentTime}
         />
       </div>
 
@@ -222,8 +241,8 @@ function ControlPlayer() {
           loop={audioCurrent.isRepeat}
           ref={audioElement}
           onEnded={handleAudioEnded}
-          onPlay={handlePlaying}
-          onTimeUpdate={handleAudioUpdate}
+          onPlay={handleStartPlaying}
+          onTimeUpdate={handleAudioOnTimeUpdate}
           seeking={`${audioCurrent.isSeeking}`}
         ></audio>
       </div>

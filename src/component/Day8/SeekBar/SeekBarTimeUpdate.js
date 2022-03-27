@@ -15,7 +15,7 @@ function secondsToHms(d) {
 
 function SeekBarTimeUpdate({
   percent,
-  handleSeekTimeupdateInput,
+  handleSeekBarInput,
   handleSeekingDown,
   handleSeekingUp,
   audioElement,
@@ -35,7 +35,7 @@ function SeekBarTimeUpdate({
         step="1"
         min="0"
         max="100"
-        onChange={(e) => handleSeekTimeupdateInput(e)}
+        onInput={(e) => handleSeekBarInput(e)}
         onMouseDown={handleSeekingDown}
         onMouseUp={handleSeekingUp}
       />
