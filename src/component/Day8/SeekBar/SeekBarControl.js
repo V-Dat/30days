@@ -3,14 +3,7 @@ import "./SeekBarControl.css";
 import SeekBarTimeUpdate from "./SeekBarTimeUpdate";
 import { useSelector, useDispatch } from "react-redux";
 
-function SeekBarControl({
-  percent,
-  setPercent,
-  audioElement,
-  setMusicCurrentTime,
-  musicDurationTime,
-  musicCurrentTime,
-}) {
+function SeekBarControl({ percent, setPercent, audioElement }) {
   const dispatch = useDispatch();
   const audioCurrent = useSelector((state) => state.currentMusicReducer);
 

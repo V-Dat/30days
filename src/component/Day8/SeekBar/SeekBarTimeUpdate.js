@@ -1,18 +1,6 @@
 import { useSelector } from "react-redux";
 import "./SeekBarTimeUpdate.css";
 
-function secondsToHms(d) {
-  if (d === undefined) {
-    return;
-  }
-  d = Number(d);
-  var m = Math.floor((d % 3600) / 60);
-  var s = Math.floor((d % 3600) % 60);
-  var mDisplay = 10 > m > 0 ? "0" + m + ":" : "0:";
-  var sDisplay = 10 > s > 0 ? "0" + s + "" : s;
-  return mDisplay + sDisplay;
-}
-
 function SeekBarTimeUpdate({
   percent,
   handleSeekBarInput,
@@ -27,7 +15,9 @@ function SeekBarTimeUpdate({
       <label htmlFor="">
         {audioCurrent.index === -1
           ? "00:00"
-          : secondsToHms(audioElement.current.currentTime)}
+          : new Date(audioElement.current.currentTime * 1000)
+              .toISOString()
+              .slice(14, 19)}
       </label>
       <input
         type="range"
@@ -40,9 +30,11 @@ function SeekBarTimeUpdate({
         onMouseUp={handleSeekingUp}
       />
       <label htmlFor="">
-        {audioCurrent.index === -1
-          ? "00:00"
-          : secondsToHms(audioElement.current.duration)}
+        {audioCurrent.index !== -1
+          ? new Date(audioCurrent.musicDuration * 1000)
+              .toISOString()
+              .slice(14, 19)
+          : "00:00"}
       </label>
     </div>
   );

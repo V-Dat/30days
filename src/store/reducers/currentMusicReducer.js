@@ -8,6 +8,7 @@ const initialState = {
   isRepeat: false,
   isRotating: false,
   isSeeking: false,
+  musicDuration: 0,
 };
 
 const currentMusicReducer = (state = initialState, action) => {
@@ -35,6 +36,11 @@ const currentMusicReducer = (state = initialState, action) => {
     case "Seeking":
       newState = { ...state, ...action.payload };
       return (state = newState);
+
+    case "setMusicDuration":
+      newState = { ...state, ...action.payload };
+      return (state = newState);
+
     default:
       return state;
   }

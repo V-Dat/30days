@@ -15,12 +15,12 @@ function ControlPlayer() {
 
   const [percent, setPercent] = useState(0);
   const [show, setShow] = useState(false);
-  const [musicCurrentTime, setMusicCurrentTime] = useState(0);
-  const [musicDurationTime, setMusicDurationTime] = useState();
+  // const [musicCurrentTime, setMusicCurrentTime] = useState(0);
+  // const [musicDurationTime, setMusicDurationTime] = useState();
 
-  useEffect(() => {
-    setMusicDurationTime(audioElement.current.duration);
-  }, [audioCurrent]);
+  // useEffect(() => {
+  //   setMusicDurationTime(audioElement.current.duration);
+  // }, [audioCurrent]);
 
   const handleReloadCurrentMusic = () => {
     audioElement.current.currentTime = 0;
@@ -142,6 +142,7 @@ function ControlPlayer() {
   }; // cần sửa lại
 
   const handleStartPlaying = () => {
+    dispatch({ type: "setMusicDuration", payload: {musicDuration : audioElement.current.duration}})
     setShow(true);
   }; //done
 
@@ -226,9 +227,9 @@ function ControlPlayer() {
           audioElement={audioElement}
           percent={percent || 0}
           setPercent={setPercent}
-          setMusicCurrentTime={setMusicCurrentTime}
-          musicDurationTime={musicDurationTime}
-          musicCurrentTime={musicCurrentTime}
+          // setMusicCurrentTime={setMusicCurrentTime}
+          // musicDurationTime={musicDurationTime}
+          // musicCurrentTime={musicCurrentTime}
         />
       </div>
 
