@@ -137,7 +137,36 @@ function ControlPlayer() {
   }; //done
 
   const handleAudioEnded = () => {
-    handleClickNext();
+    if (audioCurrent.isRepeat) {
+      handleReloadCurrentMusic();
+      return;
+    }
+
+    if (audioCurrent.isRandom) {
+      dispatch({
+        type: "Next",
+        payload: {
+          ...listMusics[Math.floor(Math.random() * length)],
+          index: Number(Math.floor(Math.random() * length)),
+        },
+        isPlaying: true,
+      });
+      return;
+    }
+
+    const nextIndex = (audioCurrent.index + 1 + length) % length;
+    dispatch({
+      type: "Next",
+      payload: {
+        ...listMusics[nextIndex],
+        isPlaying: true,
+        index: nextIndex,
+      },
+    });
+
+    if (audioElement.current !== undefined && audioElement.current.src !== "") {
+      audioElement.current.play();
+    }
   }; // cần sửa lại
 
   const handleStartPlaying = () => {
