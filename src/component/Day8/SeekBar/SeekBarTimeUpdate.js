@@ -2,11 +2,9 @@ import { useSelector } from "react-redux";
 import "./SeekBarTimeUpdate.css";
 
 function SeekBarTimeUpdate({
-  percent,
   handleSeekBarInput,
   handleSeekingDown,
   handleSeekingUp,
-  audioElement,
 }) {
   const audioCurrent = useSelector((state) => state.currentMusicReducer);
 
@@ -15,17 +13,17 @@ function SeekBarTimeUpdate({
       <label htmlFor="">
         {audioCurrent.index === -1
           ? "00:00"
-          : new Date(audioElement.current.currentTime * 1000)
+          : new Date(audioCurrent.musicCurrentTime * 1000)
               .toISOString()
               .slice(14, 19)}
       </label>
       <input
         type="range"
-        value={percent}
+        value={Number(audioCurrent.currentPercent)}
         step="1"
         min="0"
         max="100"
-        onInput={(e) => handleSeekBarInput(e)}
+        onChange={(e) => handleSeekBarInput(e)}
         onMouseDown={handleSeekingDown}
         onMouseUp={handleSeekingUp}
       />

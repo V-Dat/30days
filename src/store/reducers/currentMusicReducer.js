@@ -9,38 +9,34 @@ const initialState = {
   isRotating: false,
   isSeeking: false,
   musicDuration: 0,
+  musicCurrentTime: 0,
+  currentPercent: 0,
 };
 
 const currentMusicReducer = (state = initialState, action) => {
-  let newState = {};
   switch (action.type) {
     case "Next":
-      newState = { ...state, ...action.payload };
-      return (state = newState);
+      return (state = { ...state, ...action.payload });
     case "Prev":
-      newState = { ...state, ...action.payload };
-      return (state = newState);
+      return (state = { ...state, ...action.payload });
     case "Random":
-      newState = { ...state, ...action.payload };
-      return (state = newState);
+      return (state = { ...state, ...action.payload });
     case "Repeat":
-      newState = { ...state, ...action.payload };
-      return (state = newState);
+      return (state = { ...state, ...action.payload });
     case "Play":
       return (state = { ...state, ...action.payload });
     case "Pause":
       return (state = { ...state, ...action.payload });
     case "Goto":
-      newState = { ...state, ...action.payload };
-      return (state = newState);
+      return (state = { ...state, ...action.payload });
     case "Seeking":
-      newState = { ...state, ...action.payload };
-      return (state = newState);
-
+      return (state = { ...state, ...action.payload });
     case "setMusicDuration":
-      newState = { ...state, ...action.payload };
-      return (state = newState);
-
+      return (state = { ...state, ...action.payload });
+    case "setMusicCurrentTime":
+      return (state = { ...state, ...action.payload });
+    case "setCurrentPercent":
+      return (state = { ...state, ...action.payload });
     default:
       return state;
   }

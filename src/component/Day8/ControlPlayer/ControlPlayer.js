@@ -13,7 +13,6 @@ function ControlPlayer() {
   const listMusics = useSelector((state) => state.listMusicsReducer);
   const length = Number(listMusics.length) ? Number(listMusics.length) : 0;
 
-  const [percent, setPercent] = useState(0);
   const [show, setShow] = useState(false);
   // const [musicCurrentTime, setMusicCurrentTime] = useState(0);
   // const [musicDurationTime, setMusicDurationTime] = useState();
@@ -142,25 +141,37 @@ function ControlPlayer() {
   }; // cần sửa lại
 
   const handleStartPlaying = () => {
-    dispatch({ type: "setMusicDuration", payload: {musicDuration : audioElement.current.duration}})
+    dispatch({
+      type: "setMusicDuration",
+      payload: { musicDuration: audioElement.current.duration },
+    });
     setShow(true);
   }; //done
 
   const handleAudioOnTimeUpdate = () => {
-    // code mới (bị delay seekbar input)
-    // if (!audioCurrent.isSeeking) {
-    //   setMusicCurrentTime(audioElement.current.currentTime);
-    //   setPercent((musicCurrentTime / musicDurationTime) * 100);
-    // }
+    //khi chua dung vao input => code mac dinh chay => khong seeking => tuc dang update ca 2
+    // khong seeking thi update ca 2 , và audio vẫn Chạy
 
-    // code Cũ
     if (!audioCurrent.isSeeking) {
-      setPercent(
-        (audioElement.current.currentTime / audioElement.current.duration) * 100
-      );
+      dispatch({
+        type: "setCurrentPercent",
+        payload: {
+          currentPercent: Number(
+            (audioCurrent.musicCurrentTime / audioCurrent.musicDuration) * 100
+          ),
+        },
+      });
+
+      dispatch({
+        type: "setMusicCurrentTime",
+        payload: {
+          musicCurrentTime: audioElement.current.currentTime,
+        },
+      });
     }
+
+    // dang seeking thi thôi không làm gì cả ( audio vẫn chạy )
   };
-  //done audioElement.current.currentTime quan ly vao state => done
 
   return (
     <>
@@ -223,14 +234,7 @@ function ControlPlayer() {
       </div>
 
       <div className="player__seekbar-control">
-        <SeekBarControl
-          audioElement={audioElement}
-          percent={percent || 0}
-          setPercent={setPercent}
-          // setMusicCurrentTime={setMusicCurrentTime}
-          // musicDurationTime={musicDurationTime}
-          // musicCurrentTime={musicCurrentTime}
-        />
+        <SeekBarControl audioElement={audioElement} />
       </div>
 
       <div className="player__audio-control">
@@ -244,7 +248,6 @@ function ControlPlayer() {
           onEnded={handleAudioEnded}
           onPlay={handleStartPlaying}
           onTimeUpdate={handleAudioOnTimeUpdate}
-          seeking={`${audioCurrent.isSeeking}`}
         ></audio>
       </div>
     </>

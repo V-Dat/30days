@@ -2,26 +2,36 @@ import "./SeekBarControl.css";
 
 import SeekBarTimeUpdate from "./SeekBarTimeUpdate";
 import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
 
 function SeekBarControl({ percent, setPercent, audioElement }) {
   const dispatch = useDispatch();
   const audioCurrent = useSelector((state) => state.currentMusicReducer);
 
   const handleSeekBarInput = (e) => {
-    //new code
-    // if (!audioCurrent.isSeeking) {
-    //   audioElement.current.currentTime =
-    //     (musicDurationTime * e.target.value) / 100;
-    // }
-    // setPercent(e.target.value);
-    // }
+    // nếu mà đang input thì sửa lại percent & thời gian hiện tại ( đang input tức là đang seeking )
+    //  tuy nhiên không được apply thời gian hiện tại cho thẻ audio
 
-    //old code
-    if (!audioCurrent.isSeeking) {
-      audioElement.current.currentTime =
-        (audioElement.current.duration * e.target.value) / 100;
+    if (audioCurrent.isSeeking) {
+      dispatch({
+        type: "setCurrentPercent",
+        payload: { currentPercent: Number(e.target.value) },
+      });
+
+      dispatch({
+        type: "setMusicCurrentTime",
+        payload: {
+          musicCurrentTime: Number(
+            (e.target.value * audioCurrent.musicDuration) / 100
+          ),
+        },
+      });
     }
-    setPercent(e.target.value);
+
+    // nếu mà không đang input thì có làm gì không ?
+    // Không tại vì : audio vẫn chạy khi chúng ta input ( điều kiện là nếu seeking thì sẽ cập nhật thời gian )
+    // tuy nhiên sẽ không cập nhật percent => sẽ không bị kéo lại trong lúc input__place
+
   };
 
   const handleSeekingDown = () => {
@@ -32,21 +42,16 @@ function SeekBarControl({ percent, setPercent, audioElement }) {
   };
 
   const handleSeekingUp = () => {
-    // new code
-    // if (audioCurrent.mp3 !== null) {
-    //   setMusicCurrentTime((musicDurationTime * percent) / 100);
-    //   audioElement.current.currentTime = musicCurrentTime;
-    //   console.log(musicCurrentTime);
-    // }
-    // dispatch({ type: "Seeking", payload: { isSeeking: false } });
+    dispatch({ type: "Seeking", payload: { isSeeking: false } }) 
 
-    // old code
     if (audioCurrent.mp3 !== null) {
-      audioElement.current.currentTime =
-        (audioElement.current.duration * percent) / 100;
+      dispatch({
+        type: "setMusicCurrentTime",
+        payload: { musicCurrentTime: Number((audioCurrent.currentPercent * audioCurrent.musicDuration) / 100) },
+      });
+      audioElement.current.currentTime = audioCurrent.musicCurrentTime;
     }
 
-    dispatch({ type: "Seeking", payload: { isSeeking: false } });
   };
 
   return (
