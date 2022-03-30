@@ -1,0 +1,7 @@
+.player__control {
+  height: 4rem;
+  line-height: 4rem;
+}
+.player__seekbar-control {
+  padding: 1rem;
+}
