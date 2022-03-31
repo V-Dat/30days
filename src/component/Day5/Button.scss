@@ -1,0 +1,66 @@
+.day5.grid{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;  
+}
+
+.input__title{
+  white-space: nowrap;
+  margin-right: 3rem;
+  margin-left: 3rem;
+  padding-top: 2rem
+}
+
+.input__title i{
+  color: red;
+}
+.caption{
+  text-align: left;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+
+.login{
+  max-width: 28rem;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 2rem;
+}
+.input__place{
+  margin-right: 3rem;
+  margin-left: 3rem;
+  margin-top: 2rem
+}
+.input__place > input{
+  width: 100%;
+  border-radius: 0.5rem;
+  height: 3rem;
+  outline: none;
+}
+
+.input__button{
+  display: flex;
+  justify-content: space-between;
+}
+.input__button--login, .input__button--register{
+  width: 10rem;
+  color: #fff;
+  background-color: var(--color-green);
+  margin-bottom: 2rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+}
+
+.input__place > input:focus{
+  border: 0.2rem solid var(--primary-color);
+}
+.input__place > input:hover{
+  border: 0.2rem solid var(--primary-color)
+}
+
+.input__place > input:focus + .caption, .input__place > input:hover + .caption{
+  color: #fff!important;
+}
