@@ -1,4 +1,4 @@
-import "./Header.css";
+import "./Header.scss";
 import "../assets/css/grid.css";
 import { memo } from "react";
 import { Link } from "react-router-dom";
