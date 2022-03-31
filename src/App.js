@@ -12,6 +12,10 @@ import Day9 from "./pages/Day9/Day9.js";
 import News from "./pages/News/News.js";
 import Profile from "./pages/Profile/Profile";
 import Homepage from "./pages/Homepage/Homepage";
+import NotFound from "./pages/NotFound";
+import Login from "./parts/Login";
+import ForgotPassword from "./parts/ForgotPassword";
+import Register from "./parts/Register";
 
 import { Suspense } from "react";
 import {
@@ -28,6 +32,7 @@ function App() {
       <Suspense fallback={<div>...Loading</div>}>
         <Router>
           <Routes>
+            <Route path="Login" element={<Login />} />
             <Route path="Day1" element={<Day1 />} />
             <Route path="/" element={<AppLayout />}>
               <Route path="Day2" element={<Day2 />} />
@@ -40,6 +45,9 @@ function App() {
               <Route path="Day9" element={<Day9 />} />
               <Route path="News" element={<News />} />
               <Route path="Profile" element={<Profile />} />
+              <Route path="404NotFound" element={<NotFound />} />
+              <Route path="Forgot-password" element={<ForgotPassword />} />
+              <Route path="Register" element={<Register />} />
               <Route path="/" element={<Homepage />} />
               <Route path="*" element={<Navigate replace to="/404NotFound" />}/>
             </Route>
