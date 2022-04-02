@@ -1,0 +1,11 @@
+.card__component {
+  width: 40rem;
+  height: 40rem;
+  background-clip: content-box;
+  text-align: center;
+  border-radius: 4rem;
+  background-color: #272d40;
+  * {
+    padding: 0.5rem;
+  }
+}
