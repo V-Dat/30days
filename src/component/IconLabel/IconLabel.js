@@ -1,9 +1,18 @@
-
-function IconLabel({className,text,iconClassName}) {
+function IconLabel({ className, children, iconClassName, href }) {
   return (
     <div className={className}>
-      <i className={iconClassName}></i>
-      {text}
+      {href && (
+        <a href={href}>
+          <i className={iconClassName}></i>
+          {children}
+        </a>
+      )}
+      {!href && (
+        <>
+          <i className={iconClassName}></i>
+          {children}
+        </>
+      )}
     </div>
   );
 }

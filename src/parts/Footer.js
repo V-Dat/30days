@@ -12,28 +12,29 @@ function Footer() {
         <ImageLink href="/About" src="./img/day2/Kevin.png" />
       </ChildComponent>
       <ChildComponent className="footer__child footer__contact">
-        <IconLink
+        <IconLabel
           href={about.github}
           className="contact__github"
           iconClassName="fab fa-github"
-          text="Github"
-        />
-        <IconLink
+        >
+          <p>Github</p>
+        </IconLabel>
+        <IconLabel
           href="/About"
           className="contact__about"
           iconClassName="fa-solid fa-info"
-          text="About me"
-        />
-        <IconLabel
-          className="contact__phone"
-          iconClassName="fa fa-phone"
-          text={about.phone}
-        />
+        >
+          <p>About me</p>
+        </IconLabel>
+        <IconLabel className="contact__phone" iconClassName="fa fa-phone">
+          <p>about.phone</p>
+        </IconLabel>
         <IconLabel
           className="contact__email"
           iconClassName="fa-solid fa-envelope"
-          text={about.email}
-        />
+        >
+          <p> {about.email}</p>
+        </IconLabel>
       </ChildComponent>
     </div>
   );
