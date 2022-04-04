@@ -1,0 +1,45 @@
+.icon-label {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    > * {
+        padding-right: 4rem;
+        flex: 0 0 100%;
+    }
+    i {
+        padding-right: 1rem;
+        &:before {
+            font-size: 2.5rem;
+        }
+    }
+    .fa-envelope {
+        color: #f87a13;
+    }
+
+    .fa-phone {
+        color: #2471be;
+    }
+
+    .fa-map {
+        color: #ccc;
+    }
+    p:hover {
+        color: var(--primary-color);
+    }
+    a {
+        text-decoration: none !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .header-about__right-contact > * {
+        flex: 0 0 50%;
+    }
+}
+@media (max-width: 779px) {
+    .header-about__right-contact > * {
+        flex: 0 0 100%;
+        padding-right: 0;
+    }
+}

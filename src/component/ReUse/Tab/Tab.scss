@@ -1,0 +1,23 @@
+.tab {
+    font-weight: 600;
+    &:hover {
+        color: var(--primary-color);
+    }
+    div {
+        margin: auto;
+    }
+    i {
+        font-size: 3rem;
+        width: 4rem;
+        text-align: center;
+    }
+    .fa-file-code {
+        color: rgb(198, 48, 48);
+    }
+    .fa-address-card {
+        color: rgb(57, 119, 169);
+    }
+    .fa-book {
+        color: rgb(50, 203, 129);
+    }
+}
