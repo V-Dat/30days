@@ -1,9 +1,8 @@
-import IconLabel from "../component/IconLabel/IconLabel";
-import IconLink from "../component/IconLink/IconLink";
 import ImageLink from "../component/ImageLink/ImageLink";
 import data from "../pages/data";
 import ChildComponent from "../component/ChildComponent/ChildComponent";
 import "./Footer.scss";
+import IconLabel from "../component/ReUse/IconLabel/IconLabel";
 function Footer() {
   const about = data.about;
   return (
@@ -12,27 +11,20 @@ function Footer() {
         <ImageLink href="/About" src="./img/day2/Kevin.png" />
       </ChildComponent>
       <ChildComponent className="footer__child footer__contact">
-        <IconLabel
-          href={about.github}
-          className="contact__github"
-          iconClassName="fab fa-github"
-        >
+        <IconLabel href={about.github} className="contact__github">
+          <i className="fab fa-github"></i>
           <p>Github</p>
         </IconLabel>
-        <IconLabel
-          href="/About"
-          className="contact__about"
-          iconClassName="fa-solid fa-info"
-        >
+        <IconLabel href="/About" className="contact__about">
+          <i className="fa-solid fa-info"> </i>
           <p>About me</p>
         </IconLabel>
-        <IconLabel className="contact__phone" iconClassName="fa fa-phone">
-          <p>about.phone</p>
+        <IconLabel className="contact__phone">
+          <i className="fa fa-phone"></i>
+          <p>{about.phone}</p>
         </IconLabel>
-        <IconLabel
-          className="contact__email"
-          iconClassName="fa-solid fa-envelope"
-        >
+        <IconLabel className="contact__email">
+          <i className="fa-solid fa-envelope"> </i>
           <p> {about.email}</p>
         </IconLabel>
       </ChildComponent>
