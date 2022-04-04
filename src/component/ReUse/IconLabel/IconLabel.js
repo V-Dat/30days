@@ -1,11 +1,9 @@
 import "./IconLabel.scss";
-function IconLabel({ className, iconClassName, data, children }) {
+export default function IconLabel({ className, children, href }) {
   return (
     <div className={className}>
-      <i className={iconClassName}></i>
-      {children}
+      {href && <a href={href}>{children}</a>}
+      {!href && <>{children}</>}
     </div>
   );
 }
-
-export default IconLabel;
