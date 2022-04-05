@@ -1,64 +1,118 @@
-import "./index.css";
+import "./index.scss";
 import "../../assets/css/grid.css";
-import { useState , useMemo } from "react";
-import data from '../data'
-
+import data from "../data";
+import Card from "../../component/Card/Card";
+import Button from "../../component/ReUse/Button/Button";
+import CardIcon from "../../component/Day1/CardIcon/CardIcon";
+import Child from "../../component/ReUse/Child/Child";
+import ImageComponent from "../../component/ReUse/ImageComponent/ImageComponent";
+import Text from "../../component/ReUse/Text/Text";
+import CardSelection from "../../component/Day1/CardSelection/CardSelection";
+import { useNavigate } from "react-router-dom";
 function Day1() {
+  console.log("Day1: render....");
+  const productList = data.productList;
+  const navigate = useNavigate();
 
-console.log('Day1: render....')
+  // const [listProductInCart, setListProductInCart] = useState([]);
+  // const [listProductInLove, setListProductInLove] = useState([]);
 
-const [active , setActive] = useState('false');
+  //add to love
+  const handleClickHeart = (product) => {
+    console.log("yourProduct is : ", product);
+  };
 
-const  productList = data.productList
+  ///add to cart
+  const handleClickCart = (product) => {
+    console.log("yourProduct is : ", product);
+  };
 
-const handleActive = e => {
-  e.target.classList.toggle('active')
-}
-const handleCardSize = e =>{
-  e.target.classList.toggle('card__size-active')
-}
+  //direct to cart => and confirm
+  const handleClickButtonBuy = (product) => {
+    console.log("yourProduct you will buy : ", product);
+    navigate("/your-packages");
+    alert("This is pages Your packages");
+  };
 
-const handleCardColor = e =>{
-  e.target.classList.toggle('card__color-active')
-}
+  ///add to cart
+  const handleClickButtonAdd = (product) => {
+    navigate("/your-packages");
+    console.log("yourProduct you will add : ", product);
+    alert("This is pages Your packages");
+  };
 
-const handleClickButton = e =>{
-  e.target.classList.add('card__button-active')
-  setTimeout(() =>e.target.classList.remove('card__button-active'), 200)
-}
+  const handleSelection = (product) => {
+    console.log("your select: ", product);
+  };
 
   return (
     <div className="day1 grid wide">
       <div className="row">
-        {productList.map((product, index) => (
-          <div key={index} className="card col l-3 m-6 c-12">
-            <span className="card__action card-item " onClick={ (e) => handleActive(e)}>
-              <i className="bx bx-heart" ></i>
-              <i className="bx bx-cart-alt"></i>
-            </span>
-            <div className="card__image card-item">
-              <img src={product.image} alt={product.name} />
-            </div>
-            <h2 className="card__name card-item">{product.name}</h2>
-            <div className="card__price card-item">{product.price}</div>
+        {productList.map((product) => (
+          <Card className="card" key={Math.random() * 9999}>
+            <Child className="card-icon">
+              <CardIcon
+                product={product}
+                iconClassName="bx bx-heart"
+                handleClick={handleClickHeart}
+              />
+              <CardIcon
+                product={product}
+                handleClick={handleClickCart}
+                iconClassName="bx bx-cart-alt"
+              />
+            </Child>
+            <Child className="card-infor">
+              <ImageComponent
+                className="card-infor__image "
+                alt={`Đây là hình ảnh của sản phẩm ${product.name}`}
+                src={product.image}
+              />
+              <Text className="card-infor__name">{product.name}</Text>
+              <Text className="card-infor__price">{product.price}</Text>
+              <Child className="card-size">
+                <Text className="card-size__title">{"Size: "}</Text>
+                {product.size.map((size) => (
+                  <CardSelection
+                    key={size}
+                    product={product}
+                    className="card-size__detail"
+                    handleSelection={handleSelection}
+                    size={size}
+                  />
+                ))}
+              </Child>
 
-            <div  className="card__size card-item" >
-            <h3>SIZE:</h3>
-            {product.size.map( (e) => (
-              <input type='button' key={e} onClick={ (e) => handleCardSize(e)} value={e} />
-              ))}
-            </div>
-            <div className="card__color card-item">
-            <h3>COLOR:</h3>
-            {product.color.map( (e) => (
-              <input type='button' key={e} style={{ backgroundColor: `${e}`}} onMouseDown={(e) => handleCardColor(e)} name='color' />
-              ))}
-            </div>
-            <div className="card__action card-item ">
-              <button className='btn buy'onClick={ (e) => handleClickButton(e)}>BUY NOW</button>
-              <button className='btn add'onClick={ (e) => handleClickButton(e)}>ADD CART</button>
-            </div>
-          </div>
+              <Child className="card-color">
+                <Text className="card-color__title">{"Color: "}</Text>
+                {product.color.map((color) => (
+                  <CardSelection
+                    key={color}
+                    product={product}
+                    className="card-color__detail"
+                    handleSelection={handleSelection}
+                    color={color}
+                  />
+                ))}
+              </Child>
+            </Child>
+            <Child className="card-button">
+              <Button
+                product={product}
+                className="btn buy"
+                handleClick={handleClickButtonBuy}
+              >
+                BUY NOW
+              </Button>
+              <Button
+                data={product}
+                className="btn add"
+                handleClick={handleClickButtonAdd}
+              >
+                ADD CART
+              </Button>
+            </Child>
+          </Card>
         ))}
       </div>
     </div>
