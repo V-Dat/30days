@@ -1,0 +1,125 @@
+.day7 {
+  background-color: #166091;
+  .grid {
+    .col {
+      .todo {
+        min-height: 90vh;
+        text-align: center;
+        margin: 0 auto;
+        background-color: #fff;
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+        .todo__title {
+          color: var(--primary-color);
+        }
+        .todo__add {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          padding: 1rem 3rem;
+          flex: 12;
+
+          .todo-add__input {
+            height: 3rem;
+            flex-grow: 1;
+          }
+
+          .todo-add__button {
+            text-align: center;
+            color: #fff;
+            background-color: rgb(122, 36, 128);
+            height: 3rem;
+            min-width: 3rem;
+            &:hover {
+              background-color: var(--primary-color);
+            }
+          }
+        }
+        .todo__lists {
+          margin-left: 3rem;
+          margin-right: 3rem;
+          padding-bottom: 3rem;
+          flex: 12;
+          .todo__list {
+            line-height: 3rem;
+            text-align: left;
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+
+            .job-in-list {
+              flex: 10;
+              overflow-wrap: break-word;
+              text-align: justify;
+              div {
+                display: inline;
+                height: 100%;
+                line-height: 3rem;
+                overflow-wrap: break-word;
+              }
+            }
+
+            .btn-del-job {
+              min-width: 3rem;
+              max-width: 3rem;
+              height: 3rem;
+              background-color: rgb(167, 157, 161);
+              outline: none;
+              text-align: center;
+              margin-left: 1rem;
+              font-weight: 600;
+              color: #fff;
+              flex: 1;
+              &:hover {
+                width: 3rem;
+                height: 3rem;
+                background-color: red;
+                color: #fff;
+                outline: none;
+              }
+            }
+
+            i {
+              width: 100%;
+              height: 100%;
+              text-align: center;
+              margin-left: 1rem;
+              vertical-align: middle;
+            }
+            input {
+              max-width: 3rem;
+              min-width: 3rem;
+
+              height: 3rem;
+              background-color: #ccc;
+              align-items: left;
+              margin-right: 0.8rem;
+              flex: 1;
+            }
+          }
+          .todo__clearAll {
+            display: flex;
+            justify-content: space-between;
+            button {
+              width: 10rem;
+              height: 3rem;
+              outline: none;
+              &:hover {
+                background-color: var(--primary-color);
+                color: #fff;
+              }
+            }
+            p {
+              height: 3rem;
+              text-align: center;
+              color: var(--primary-color);
+              font-weight: 700;
+            }
+          }
+        }
+      }
+    }
+  }
+}
