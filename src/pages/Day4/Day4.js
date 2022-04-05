@@ -1,55 +1,77 @@
 import "./index.scss";
-import { useState } from "react";
-import data from "../data";
+import { useEffect, useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 import Content from "../../component/ReUse/Content/Content";
 import Container from "../../component/ReUse/Container/Container";
 import Row from "../../component/ReUse/Row/Row";
 import Button from "../../component/ReUse/Button/Button";
 import ImageComponent from "../../component/ReUse/ImageComponent/ImageComponent";
 import Card from "../../component/Card/Card";
+import Axios from "axios";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 export default function Day4() {
-  const galary = data.galary;
-  const length = galary.length;
+  const url = 'https://api.unsplash.com/photos/?client_id=iLkxj0otL2j0TvMrd6OmKGO37mm3e3bawbeaIcwQygY';
+  const [images, setImages] = useState([]);
+  const length = images.length;
   const [src, setSrc] = useState("");
   const [showImage, setShowImage] = useState(false);
   const [indexOfCurrentImage, setIndexOfCurrentImage] = useState(0);
   const handleClickNext = () => {
     setIndexOfCurrentImage((indexOfCurrentImage + 1 + length) % length);
-    setSrc(galary[(indexOfCurrentImage + 1 + length) % length].url);
+    setSrc(images[(indexOfCurrentImage + 1 + length) % length].src);
   };
   const handleClickPrev = () => {
     setIndexOfCurrentImage((indexOfCurrentImage - 1 + length) % length);
-    setSrc(galary[(indexOfCurrentImage - 1 + length) % length].url);
+    setSrc(images[(indexOfCurrentImage - 1 + length) % length].src);
   };
-  const handleClickImage = (picture) => {
+  const handleClickImage = (event, data) => {
     setShowImage(true);
-    setSrc(picture.url);
-    setIndexOfCurrentImage(galary.indexOf(picture));
+    setSrc(data.src);
+    setIndexOfCurrentImage(data.id);
   };
   const handleClose = () => {
     setShowImage(false);
     console.log(showImage);
   };
 
+  const getImages = () => {
+    Axios.get(url).then((res) => {
+      const listImageUrl = res.data.map( (image,index) => ({id: index , src: image.urls.regular, alt:image.alt_description}) )
+      setImages(listImageUrl)
+      console.log(listImageUrl)
+    })
+
+  }
+  useEffect(() => {
+    getImages();
+  }, [])
+
   return (
     <Content className="day4 background-color">
       <Container>
         <Row className="row">
-          {galary.map((picture) => (
+          {images.map((image) => (
             <Card
-              key={`${picture.url}`}
+              key={uuidv4()}
               className="galary p-4"
               handleClick={handleClickImage}
-              data={picture}
+              data={image}
             >
-              <ImageComponent
-                className="galary__image"
-                src={picture.url}
-                alt={picture.name}
+              <LazyLoadImage
+                className='galary__image'
+                effect="blur"
+                src={image.src}
+                alt={image.alt}
+                key={image.id}
+                height="100%"
+                width="100%"
+                placeholderSrc=''
               />
             </Card>
           ))}
+
         </Row>
       </Container>
 

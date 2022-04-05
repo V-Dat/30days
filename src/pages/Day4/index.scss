@@ -6,15 +6,16 @@
     justify-content: center;
     min-height: 80vh;
     .row {
-      position: relative;
       .galary {
+        height:25rem;
         .galary__image {
           width: 100%;
-          height: 100% !important;
+          height: 100% !important;object-fit: cover;
 
           img {
             width: 100%;
             height: 100% !important;
+
           }
         }
       }
@@ -31,7 +32,7 @@
       }
       .img {
         height: 100% !important;
-        width: 100%;
+        width: 100%
       }
     }
   }
@@ -56,7 +57,7 @@
   .control__close {
     position: absolute;
     right: 2rem;
-    top: 0;
+    top: 2rem;
     z-index: 1;
     padding-right: 1rem;
   }
@@ -84,13 +85,13 @@
 
   .control__image {
     margin: auto;
-    display: block;
-    width: 80%;
-    height: 80vh;
+    display: flex;
+    height:90%;
+    width: 60%;
     img {
       width: 100%;
       height: 100%;
-      object-fit: content;
+      object-fit: cover;
     }
   }
 }

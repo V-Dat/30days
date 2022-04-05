@@ -193,40 +193,6 @@ const data = {
       },
     ],
   },
-  galary: [
-    {
-      name: "img1",
-      url: "./img/day4/img1.png",
-    },
-    {
-      name: "img2",
-      url: "./img/day4/img2.png",
-    },
-    {
-      name: "img3",
-      url: "./img/day4/img3.png",
-    },
-    {
-      name: "img4",
-      url: "./img/day4/img4.png",
-    },
-    {
-      name: "img5",
-      url: "./img/day4/img5.png",
-    },
-    {
-      name: "img6",
-      url: "./img/day4/img6.png",
-    },
-    {
-      name: "img7",
-      url: "./img/day4/img7.png",
-    },
-    {
-      name: "img8",
-      url: "./img/day4/img8.png",
-    },
-  ],
   dayList: [
     {
       day: "Day1",
