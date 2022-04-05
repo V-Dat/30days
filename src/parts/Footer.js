@@ -1,32 +1,33 @@
-import './Footer.css';
-
-const footerInfor = ['Terms',
- ' Privacy policy',
- ' Cookie settings',
- ' Sitemap',
- ' Accessibility statement',]
-
+import ImageLink from "../component/ImageLink/ImageLink";
+import data from "../pages/data";
+import ChildComponent from "../component/ChildComponent/ChildComponent";
+import "./Footer.scss";
+import IconLabel from "../component/ReUse/IconLabel/IconLabel";
 function Footer() {
+  const about = data.about;
   return (
     <div className="footer">
-        <div className="footer__child footer__image">
-        <a href="/About" >
-            <img src='./img/day2/Kevin.png'/>
-        </a>
-        </div>
-
-        <div className='footer__child footer__contact1'>
-        {footerInfor.map(e => (
-            <p key={e}>{e}</p>
-        ))}
-        </div>
-
-        <div className='footer__child footer__contact2'>
-        {footerInfor.map(e => (
-            <p key={`${e}${Math.random()}`}>{e}</p>
-        ))}
-        </div>
-
+      <ChildComponent className="footer__child footer__image">
+        <ImageLink href="/About" src="./img/day2/Kevin.png" />
+      </ChildComponent>
+      <ChildComponent className="footer__child footer__contact">
+        <IconLabel href={about.github} className="contact__github">
+          <i className="fab fa-github"></i>
+          <p>Github</p>
+        </IconLabel>
+        <IconLabel href="/About" className="contact__about">
+          <i className="fa-solid fa-info"> </i>
+          <p>About me</p>
+        </IconLabel>
+        <IconLabel className="contact__phone">
+          <i className="fa fa-phone"></i>
+          <p>{about.phone}</p>
+        </IconLabel>
+        <IconLabel className="contact__email">
+          <i className="fa-solid fa-envelope"> </i>
+          <p> {about.email}</p>
+        </IconLabel>
+      </ChildComponent>
     </div>
   );
 }
