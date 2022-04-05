@@ -8,7 +8,7 @@ import Text from "../../component/ReUse/Text/Text";
 import Button from "../../component/ReUse/Button/Button";
 import IconLabel from "../../component/ReUse/IconLabel/IconLabel";
 
-function Day2() {
+export default function Day2() {
   console.log("Day2: render....");
   const profile = data.profile;
   const handleClick = (profile) => {
@@ -16,8 +16,8 @@ function Day2() {
     console.log("Your Contact is : ", profile);
   };
   return (
-    <>
-      <div className="day2 grid wide">
+    <div className="day2 background-color">
+      <div className="grid wide">
         <div className="row">
           {profile.map((profile) => (
             <Card key={profile.avatar} className="profile">
@@ -49,8 +49,7 @@ function Day2() {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
-export default Day2;
