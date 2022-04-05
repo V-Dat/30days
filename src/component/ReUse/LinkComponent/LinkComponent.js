@@ -1,6 +1,6 @@
 import "./LinkComponent.scss";
 
-function LinkComponent({ href, text, children, className }) {
+export default  function LinkComponent({ href, text, children, className }) {
   return (
     <a href={href} className={`${className || ""} link`}>
       {text}
@@ -9,4 +9,3 @@ function LinkComponent({ href, text, children, className }) {
   );
 }
 
-export default LinkComponent;

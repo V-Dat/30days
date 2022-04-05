@@ -1,0 +1,31 @@
+.slide-show {
+    display: flex;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    position: relative;
+    max-height: 50vh;
+    margin-left: -1rem;
+
+    .slide-show__btnLeft {
+        position: absolute;
+        top: 50%;
+        font-size: 4rem;
+        right: calc(100% - 4rem);
+
+        color: #ccc;
+        &:hover {
+            color: var(--primary-color);
+        }
+    }
+
+    .slide-show__btnRight {
+        position: absolute;
+        top: 50%;
+        left: calc(100% - 4rem);
+        font-size: 4rem;
+        color: #ccc;
+        &:hover {
+            color: var(--primary-color);
+        }
+    }
+}

@@ -1,5 +1,12 @@
 import "./Tab.scss";
-function Tab({ handleClick, className, iconClassName, children, data }) {
+
+export default function Tab({
+  handleClick,
+  className,
+  iconClassName,
+  children,
+  data,
+}) {
   return (
     <div className={`${className || ""} tab`} onClick={() => handleClick(data)}>
       <i className={iconClassName}></i>
@@ -7,5 +14,3 @@ function Tab({ handleClick, className, iconClassName, children, data }) {
     </div>
   );
 }
-
-export default Tab;

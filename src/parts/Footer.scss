@@ -8,7 +8,7 @@
 
     .footer__child {
         display: flex;
-        padding: 2rem 0 ;
+        padding: 2rem 0;
         justify-content: center;
         align-items: center;
     }
@@ -77,4 +77,16 @@
             padding-bottom: 0.5rem;
         }
     }
+
+    @media (max-width: 900px) {
+        .footer__contact {
+            flex: 4;
+        }
+        .footer__contact > * {
+            flex: 100%;
+        }
+    }
+
+    // @media (max-width: 1023px) {
+    // }
 }

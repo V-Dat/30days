@@ -1,4 +1,5 @@
-function IconLabel({ className, children, iconClassName, href }) {
+
+export default function IconLabel({ className, children, iconClassName, href }) {
   return (
     <div className={className}>
       {href && (
@@ -16,5 +17,3 @@ function IconLabel({ className, children, iconClassName, href }) {
     </div>
   );
 }
-
-export default IconLabel;

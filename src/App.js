@@ -8,7 +8,7 @@ import Day6 from "./pages/Day6/Day6.js";
 import Day7 from "./pages/Day7/Day7.js";
 import Day8 from "./pages/Day8/Day8.js";
 import Day9 from "./pages/Day9/Day9.js";
-import About from "./pages/About/About.js";
+import Profile from "./pages/Profile/Profile";
 import News from "./pages/News/News.js";
 import Header from "./parts/Header";
 import Footer from "./parts/Footer";
@@ -40,7 +40,7 @@ function App() {
             <Route path="Day8" element={<Day8 />} />
             <Route path="Day9" element={<Day9 />} />
             <Route path="News" element={<News />} />
-            <Route path="About" element={<About />} />
+            <Route path="Profile" element={<Profile />} />
             <Route path="404NotFound" element={<NotFound />} />
             <Route path="/" element={<Content />} />
             <Route path="*" element={<Navigate replace to="/404NotFound" />} />

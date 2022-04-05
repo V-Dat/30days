@@ -1,4 +1,8 @@
-function Detail({ className, children }) {
-  return <div className={`${className || ""}`}>{children}</div>;
+export default function Detail({ className, children }) {
+  return (
+    <>
+      {className && <div className={`${className || ""}`}>{children}</div>}
+      {!className && <> {children} </>}
+    </>
+  );
 }
-export default Detail;

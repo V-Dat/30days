@@ -1,4 +1,4 @@
-function ImageLink({ href, src }) {
+export default function ImageLink({ href, src }) {
   return (
     <a href={href}>
       <img src={src} alt="./NotFound" />
@@ -6,4 +6,3 @@ function ImageLink({ href, src }) {
   );
 }
 
-export default ImageLink;

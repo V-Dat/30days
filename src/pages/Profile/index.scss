@@ -1,0 +1,267 @@
+.container-background {
+  background-color: #0a1e35;
+  padding: 3rem 0;
+  .aboutpage {
+    background-color: #fff;
+    text-align: justify !important;
+    background-clip: content-box;
+    .profile {
+      border-left: 5rem solid #0b68a0;
+      .profile-header {
+        display: flex;
+        padding: 1rem;
+        .profile-header__left {
+          flex: 3;
+          .profile-header__left-image {
+            padding-left: 1rem;
+            display: flex;
+            justify-content: center;
+            img {
+              width: 14rem;
+              vertical-align: middle;
+              border-bottom-left-radius: 3rem;
+              border-top-right-radius: 3rem;
+              box-shadow: 1rem 0.5rem 0.5rem 0.5rem rgb(239, 241, 241);
+            }
+          }
+        }
+        .profile-header__right {
+          flex: 9;
+          text-align: center;
+          margin: auto;
+          > * {
+            padding-right: 0;
+          }
+          .contact {
+            display: flex;
+            flex-wrap: wrap;
+            > * {
+              margin: 0 auto;
+            }
+            .contact__email,
+            .contact__phone,
+            .contact__github,
+            .contact__location {
+              justify-content: center;
+              flex: 1 0 50%;
+              display: flex;
+              width: 100%;
+              padding: 1rem 0;
+              a {
+                display: flex;
+              }
+            }
+          }
+        }
+      }
+
+      .profile-body {
+        display: flex;
+        > * {
+          padding-left: 1rem;
+        }
+        .profile-body__tabs {
+          flex: 3;
+          border-top: solid 1px #ccc;
+          border-right: solid 1px #ccc;
+          .tab {
+            > * {
+              padding: 2rem 0;
+            }
+            &:hover {
+              &:before {
+                content: " ";
+                border-left: solid 4px var(--primary-color);
+                font-size: 3.2rem;
+                animation: slide 1s;
+              }
+            }
+          }
+        }
+        .profile-body__contents {
+          border-top: solid 1px #ccc;
+          flex: 9;
+          .content {
+            > * {
+              padding-bottom: 2.5rem;
+            }
+            .list-items {
+              display: flex;
+              flex-wrap: wrap;
+
+              .item {
+                display: flex;
+                min-height: 10rem;
+                text-align: center;
+                align-items: center;
+                flex: 0 0 25%;
+                i:before {
+                  font-size: 4rem;
+                  width: 4rem;
+                  height: 4rem;
+                  padding-right: 1.2rem;
+                }
+                .react {
+                  color: #9fcadf;
+                }
+                .html {
+                  color: #f87a13;
+                }
+                .css {
+                  color: #1391f8;
+                }
+                .js {
+                  color: #cfc208;
+                }
+                .express {
+                  color: #e01010;
+                }
+                .nodejs {
+                  color: #10e091;
+                }
+                .sql {
+                  color: #2471be;
+                }
+                .nextjs {
+                  color: #2471be;
+                }
+                .redux {
+                  color: #b11ff5;
+                }
+                .mongodb {
+                  color: #3ff308;
+                }
+                .figma {
+                  color: #1abcfd;
+                }
+                .microsoft {
+                  color: #2471be;
+                }
+              }
+              @media (min-width: 451px) and (max-width: 779px) {
+                .item {
+                  flex: 0 0 33% !important;
+                }
+              }
+              @media (max-width: 450px) {
+                .item {
+                  flex: 0 0 50% !important;
+                }
+              }
+            }
+          }
+
+          .education {
+            .education__title {
+              text-align: center;
+              margin: 1rem 0 2rem;
+              width: 100%;
+              color: #087bec;
+              border-top: none;
+            }
+            .education__content {
+              margin: 0 auto;
+              .school__image {
+                display: inline-block;
+                background-color: #ccc;
+                width: 6rem;
+                height: 6rem;
+                border-radius: 50%;
+                overflow: hidden;
+                border: 2px solid var(--primary-color);
+                img {
+                  max-width: 100%;
+                  max-height: 100%;
+                  margin: auto;
+                  display: block;
+                }
+              }
+              .school__name {
+                display: inline-block;
+                font-weight: 700;
+                transform: translateY(-2.5rem);
+              }
+            }
+          }
+
+          .list-project {
+            .project {
+              margin-bottom: 3rem;
+              &:first-child {
+                .title {
+                  border-top: none;
+                }
+              }
+              .link {
+                display: block;
+                text-align: center;
+              }
+              .slide-image {
+                flex: 0 0 100%;
+                display: flex;
+                width: 100%;
+                img {
+                  margin: auto;
+                  height: 100%;
+                  align-items: center;
+                  max-width: 60%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @media (max-width: 739px) {
+      .profile-header__left {
+        display: none;
+      }
+      .profile-body__tabs {
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 1023px) {
+      .profile {
+        border-left: 3rem solid #0b68a0;
+        .contact {
+          display: flex;
+          .contact__email,
+          .contact__phone,
+          .contact__github,
+          .contact__location {
+            flex: 0 0 100% !important;
+            justify-content: center;
+            display: flex;
+          }
+          .contact__email {
+            order: 3;
+          }
+          .contact__location {
+            order: 1;
+          }
+          .contact__phone {
+            order: 2;
+          }
+        }
+
+        .profile-body {
+          display: block !important;
+          .profile-body__tabs {
+            padding: 1rem;
+            border-right: none !important;
+          }
+        }
+      }
+    }
+  }
+}
+@keyframes slide {
+  from {
+    font-size: 0;
+  }
+  to {
+    font-size: 3.2rem;
+  }
+}
