@@ -46,74 +46,76 @@ function Day1() {
   };
 
   return (
-    <div className="day1 grid wide">
-      <div className="row">
-        {productList.map((product) => (
-          <Card className="card" key={Math.random() * 9999}>
-            <Child className="card-icon">
-              <CardIcon
-                product={product}
-                iconClassName="bx bx-heart"
-                handleClick={handleClickHeart}
-              />
-              <CardIcon
-                product={product}
-                handleClick={handleClickCart}
-                iconClassName="bx bx-cart-alt"
-              />
-            </Child>
-            <Child className="card-infor">
-              <ImageComponent
-                className="card-infor__image "
-                alt={`Đây là hình ảnh của sản phẩm ${product.name}`}
-                src={product.image}
-              />
-              <Text className="card-infor__name">{product.name}</Text>
-              <Text className="card-infor__price">{product.price}</Text>
-              <Child className="card-size">
-                <Text className="card-size__title">{"Size: "}</Text>
-                {product.size.map((size) => (
-                  <CardSelection
-                    key={size}
-                    product={product}
-                    className="card-size__detail"
-                    handleSelection={handleSelection}
-                    size={size}
-                  />
-                ))}
+    <div className="day1 background-color">
+      <div className="grid wide">
+        <div className="row">
+          {productList.map((product) => (
+            <Card className="card" key={Math.random() * 9999}>
+              <Child className="card-icon">
+                <CardIcon
+                  product={product}
+                  iconClassName="bx bx-heart"
+                  handleClick={handleClickHeart}
+                />
+                <CardIcon
+                  product={product}
+                  handleClick={handleClickCart}
+                  iconClassName="bx bx-cart-alt"
+                />
               </Child>
+              <Child className="card-infor">
+                <ImageComponent
+                  className="card-infor__image "
+                  alt={`Đây là hình ảnh của sản phẩm ${product.name}`}
+                  src={product.image}
+                />
+                <Text className="card-infor__name">{product.name}</Text>
+                <Text className="card-infor__price">{product.price}</Text>
+                <Child className="card-size">
+                  <Text className="card-size__title">{"Size: "}</Text>
+                  {product.size.map((size) => (
+                    <CardSelection
+                      key={size}
+                      product={product}
+                      className="card-size__detail"
+                      handleSelection={handleSelection}
+                      size={size}
+                    />
+                  ))}
+                </Child>
 
-              <Child className="card-color">
-                <Text className="card-color__title">{"Color: "}</Text>
-                {product.color.map((color) => (
-                  <CardSelection
-                    key={color}
-                    product={product}
-                    className="card-color__detail"
-                    handleSelection={handleSelection}
-                    color={color}
-                  />
-                ))}
+                <Child className="card-color">
+                  <Text className="card-color__title">{"Color: "}</Text>
+                  {product.color.map((color) => (
+                    <CardSelection
+                      key={color}
+                      product={product}
+                      className="card-color__detail"
+                      handleSelection={handleSelection}
+                      color={color}
+                    />
+                  ))}
+                </Child>
               </Child>
-            </Child>
-            <Child className="card-button">
-              <Button
-                product={product}
-                className="btn buy"
-                handleClick={handleClickButtonBuy}
-              >
-                BUY NOW
-              </Button>
-              <Button
-                data={product}
-                className="btn add"
-                handleClick={handleClickButtonAdd}
-              >
-                ADD CART
-              </Button>
-            </Child>
-          </Card>
-        ))}
+              <Child className="card-button">
+                <Button
+                  product={product}
+                  className="btn buy"
+                  handleClick={handleClickButtonBuy}
+                >
+                  BUY NOW
+                </Button>
+                <Button
+                  data={product}
+                  className="btn add"
+                  handleClick={handleClickButtonAdd}
+                >
+                  ADD CART
+                </Button>
+              </Child>
+            </Card>
+          ))}
+        </div>
       </div>
     </div>
   );
