@@ -1,37 +1,49 @@
 import "./Header.scss";
 import "../assets/css/grid.css";
-import { memo } from "react";
+import Row from "../component/ReUse/Row/Row";
+import Child from "../component/ReUse/Child/Child";
+import { memo, useState } from "react";
 import { Link } from "react-router-dom";
+function Header({ children, className }) {
+  const [activeMenu, setActiveMenu] = useState(false);
+  const handleClickMenu = () => {
+    setActiveMenu(!activeMenu);
+  };
 
-function Header() {
-  console.log("header re-render");
   return (
-    <>
-      <div className="header grid ">
-        <div className="nav row">
-          <div className="nav__item">
-            <Link to="/">Home</Link>
-          </div>
-          <div className="nav__item">
-            <Link to="/News">News</Link>
-          </div>
-          <div className="nav__item">
-            <Link to="/About">About</Link>
-          </div>
-          <div className="nav__item nav__item--menu">
-            <i className="fas fa-bars"></i>
-          </div>
-          <div className="sub-nav">
-            <div className="sub-nav__item">
+    <div className={`grid ${className ? className : "header"}`}>
+      <Row className="nav row">
+        <Child className="nav__item">
+          <Link to="/">Home</Link>
+        </Child>
+        <Child className="nav__item">
+          <Link to="/News">News</Link>
+        </Child>
+
+        <Child className="nav__item">
+          <Link to="/About">About</Link>
+        </Child>
+        {children}
+        <Child
+          className="nav__item nav__item--menu"
+          handleClick={handleClickMenu}
+        >
+          <i className="fas fa-bars"></i>
+        </Child>
+        {activeMenu ? (
+          <Row className="sub-nav">
+            <Child className="sub-nav__item" handleClick={handleClickMenu}>
               <Link to="/About">About</Link>
-            </div>
-            <div className="sub-nav__item">
+            </Child>
+            <Child className="sub-nav__item" handleClick={handleClickMenu}>
               <Link to="/News">News</Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
+            </Child>
+          </Row>
+        ) : (
+          ""
+        )}
+      </Row>
+    </div>
   );
 }
 

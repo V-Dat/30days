@@ -28,7 +28,6 @@ function App() {
     <>
       <Suspense fallback={<div>...Loading</div>}>
         <Router>
-          <Header />
           <Routes>
             <Route path="Day1" element={<Day1 />} />
             <Route path="Day2" element={<Day2 />} />

@@ -1,5 +1,47 @@
+.custom-header {
+    .nav {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        flex: 12;
+        .nav__item {
+            flex: 1;
+        }
+        .nav__item.search-icon {
+            margin-left: 0rem !important;
+            margin-left: auto;
+            flex: 9;
+            position: relative;
+            .search-box {
+                position: absolute;
+                right: 15%;
+                .search-box__button {
+                    // padding: 0;
+                }
+                input {
+                    // padding: 0;
+                }
+                > * {
+                    left: 0 !important;
+                }
+            }
+        }
+        .search-box {
+            .search-box__button {
+                background-color: #ccc;
+                text-align: center;
+                > i {
+                }
+            }
+            .search-box__button--active {
+                // background-color: #ccc;
+            }
+        }
+    }
+}
 .day1 {
     background-color: #4f515e;
+
     .grid {
         min-height: 100vh;
         padding-top: 3rem;
@@ -79,9 +121,6 @@
                     max-width: 10rem;
                     padding: 0.9rem 0.5rem;
                 }
-                // .card__button-active {
-                //     background-color: #dc2681 !important;
-                // }
             }
         }
     }

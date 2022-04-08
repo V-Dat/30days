@@ -1,7 +1,6 @@
-import "./index.css";
+import "./index.scss";
 import "../../assets/css/grid.css";
 import { useState, useEffect } from "react";
-import data from "../data";
 var newDateOptions = {
   year: "numeric",
   month: "2-digit",
@@ -11,7 +10,7 @@ var newDateOptions = {
   second: "2-digit",
 };
 
-function Day6() {
+export default function Day6() {
   const [currentTime, setCurrentTime] = useState();
   const [currentTimeUS, setCurrentTimeUS] = useState();
   const [currentTimeAUS, setCurrentTimeAUS] = useState();
@@ -42,63 +41,50 @@ function Day6() {
   }, [currentTime]);
 
   return (
-    <div className="day6 grid wide">
-      <div className="row">
-        <div className="timer col l-3 m-4 c-6">
-          <h3 className="timer__title">Viet Nam Time</h3>
-          <div className="timer__current">{currentTime}</div>
-        </div>
-        <div className="timer col l-3 m-4 c-6">
-          <h3 className="timer__title">United States Time</h3>
-          <div className="timer__current">{currentTimeUS}</div>
-        </div>
-        <div className="timer col l-3 m-4 c-6">
-          <h3 className="timer__title">Australia Time</h3>
-          <div className="timer__current">{currentTimeAUS}</div>
-        </div>
-        <div className="timer col l-3 m-4 c-6">
-          <h3 className="timer__title">British English Time</h3>
-          <div className="timer__current">{currentTimeGB}</div>
-        </div>
-        <div className="timer col l-3 m-4 c-6">
-          <h3 className="timer__title">Korea Time</h3>
-          <div className="timer__current">{currentTimeKR}</div>
-        </div>
-        <div className="timer col l-3 m-4 c-6">
-          <h3 className="timer__title">Russia Time</h3>
-          <div className="timer__current">{currentTimeRU}</div>
-        </div>
+    <div className="day6 background-color">
+      <div className="grid wide">
+        <div className="row">
+          <div className="timer col l-3 m-4 c-6">
+            <h3 className="timer__title">Viet Nam Time</h3>
+            <div className="timer__current">{currentTime}</div>
+          </div>
+          <div className="timer col l-3 m-4 c-6">
+            <h3 className="timer__title">United States Time</h3>
+            <div className="timer__current">{currentTimeUS}</div>
+          </div>
+          <div className="timer col l-3 m-4 c-6">
+            <h3 className="timer__title">Australia Time</h3>
+            <div className="timer__current">{currentTimeAUS}</div>
+          </div>
+          <div className="timer col l-3 m-4 c-6">
+            <h3 className="timer__title">British English Time</h3>
+            <div className="timer__current">{currentTimeGB}</div>
+          </div>
+          <div className="timer col l-3 m-4 c-6">
+            <h3 className="timer__title">Korea Time</h3>
+            <div className="timer__current">{currentTimeKR}</div>
+          </div>
+          <div className="timer col l-3 m-4 c-6">
+            <h3 className="timer__title">Russia Time</h3>
+            <div className="timer__current">{currentTimeRU}</div>
+          </div>
 
-        <div className="timer col l-3 m-4 c-6">
-          <h3 className="timer__title">Japan Time</h3>
-          <div className="timer__current">{currentTimeJP}</div>
-        </div>
+          <div className="timer col l-3 m-4 c-6">
+            <h3 className="timer__title">Japan Time</h3>
+            <div className="timer__current">{currentTimeJP}</div>
+          </div>
 
-        <div className="timer col l-3 m-4 c-6">
-          <h3 className="timer__title">Indonesia Time</h3>
-          <div className="timer__current">{currentTimeIND}</div>
-        </div>
+          <div className="timer col l-3 m-4 c-6">
+            <h3 className="timer__title">Indonesia Time</h3>
+            <div className="timer__current">{currentTimeIND}</div>
+          </div>
 
-        <div className="timer col l-3 m-4 c-6">
-          <h3 className="timer__title">HongKong Time</h3>
-          <div className="timer__current">{currentTimeHK}</div>
+          <div className="timer col l-3 m-4 c-6">
+            <h3 className="timer__title">HongKong Time</h3>
+            <div className="timer__current">{currentTimeHK}</div>
+          </div>
         </div>
       </div>
     </div>
   );
 }
-
-export default Day6;
-
-// <div className="skill">
-// {skill.map((e) => (
-//   <>
-//     <div className="skill__left">
-//       <p>{e.key}</p>
-//     </div>
-//     <div className="skill__right">
-//       <p>{e.value}</p>
-//     </div>
-//   </>
-// ))}
-// </div>
