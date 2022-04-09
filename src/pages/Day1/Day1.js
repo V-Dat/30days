@@ -45,11 +45,14 @@ function Day1() {
   };
 
   return (
-    <div className="day1 background-color">
-      <div className="grid wide">
+    <div className="day1 background-color container-fluid">
+      <div className="container">
         <div className="row">
           {productList.map((product) => (
-            <Card className="card" key={Math.random() * 9999}>
+            <Card
+              className="product-card col-12 col-md-6 col-lg-4 col-xl-3"
+              key={Math.random() * 9999}
+            >
               <Child className="card-icon">
                 <CardIcon
                   product={product}
