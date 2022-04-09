@@ -1,5 +1,4 @@
 import "./index.scss";
-import "../../assets/css/grid.css";
 import data from "../data";
 import Card from "../../component/Card/Card";
 import Social from "../../component/Day2/Social";

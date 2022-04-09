@@ -1,5 +1,4 @@
 import "./index.scss";
-import "../../assets/css/grid.css";
 import { useState, useEffect } from "react";
 var newDateOptions = {
   year: "numeric",

@@ -1,5 +1,4 @@
 import "./index.css";
-import "../../assets/css/grid.css";
 import data from "../data";
 import Header from "../../parts/Header"
 import Infor from "../../component/About/Infor";

@@ -1,5 +1,4 @@
 import "./index.css";
-import "../../assets/css/grid.css";
 
 import data from "../../pages/data.js";
 

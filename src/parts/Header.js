@@ -1,5 +1,4 @@
 import "./Header.scss";
-import "../assets/css/grid.css";
 import Row from "../component/ReUse/Row/Row";
 import Child from "../component/ReUse/Child/Child";
 import { useState } from "react";
