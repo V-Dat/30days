@@ -1,4 +1,4 @@
-function Child({ className, children, handleClick }) {
+export default function Child({ className, children, handleClick }) {
   return (
     <>
       {handleClick ? (
@@ -11,4 +11,3 @@ function Child({ className, children, handleClick }) {
     </>
   );
 }
-export default Child;
