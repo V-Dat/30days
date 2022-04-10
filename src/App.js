@@ -10,8 +10,6 @@ import Day8 from "./pages/Day8/Day8.js";
 import Day9 from "./pages/Day9/Day9.js";
 import Profile from "./pages/Profile/Profile";
 import News from "./pages/News/News.js";
-import Header from "./parts/Header";
-import Footer from "./parts/Footer";
 
 import { Suspense } from "react";
 import {
@@ -28,7 +26,6 @@ function App() {
     <>
       <Suspense fallback={<div>...Loading</div>}>
         <Router>
-          <Header />
           <Routes>
             <Route path="Day1" element={<Day1 />} />
             <Route path="Day2" element={<Day2 />} />
@@ -45,7 +42,6 @@ function App() {
             <Route path="/" element={<Content />} />
             <Route path="*" element={<Navigate replace to="/404NotFound" />} />
           </Routes>
-          <Footer />
         </Router>
       </Suspense>
     </>

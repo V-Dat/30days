@@ -1,5 +1,4 @@
 
-import "./Card.scss";
 export default function Card({ children, className, handleClick, data }) {
   return (
     <div

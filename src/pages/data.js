@@ -11,92 +11,6 @@ const data = {
     "Day10",
     "Day11",
   ],
-  productList: [
-    {
-      name: "Nike",
-      price: "2299$",
-      image: "./img/day1/nike.png",
-      size: [6, 7, 8, 9],
-      color: ["#ff0000", "#009933", "#0000ff"],
-    },
-    {
-      name: "Nike Air-max",
-      price: "2299$",
-      image: "./img/day1/nikeairmax.png",
-      size: [6, 7, 8, 9],
-      color: ["#ff0000", "#009933", "#0000ff"],
-    },
-    {
-      name: "Nike Air",
-      price: "299$",
-      image: "./img/day1/nikeair.png",
-      size: [6, 7, 8, 9],
-      color: ["#ff0000", "#009933", "#0000ff"],
-    },
-    {
-      name: "Converse Shoes",
-      price: "299$",
-      image: "./img/day1/converseshoe.png",
-      size: [6, 7, 8, 9],
-      color: ["#ff0000", "#009933", "#0000ff"],
-    },
-    {
-      name: "Nike Air",
-      price: "299$",
-      image: "./img/day1/nikeair.png",
-      size: [6, 7, 8, 9],
-      color: ["#ff0000", "#009933", "#0000ff"],
-    },
-    {
-      name: "Converse Shoes",
-      price: "299$",
-      image: "./img/day1/converseshoe.png",
-      size: [6, 7, 8, 9],
-      color: ["#ff0000", "#009933", "#0000ff"],
-    },
-    {
-      name: "Nike Air-max",
-      price: "299$",
-      image: "./img/day1/nikeairmax.png",
-      size: [6, 7, 8, 9],
-      color: ["#ff0000", "#009933", "#0000ff"],
-    },
-    {
-      name: "Nike",
-      price: "299$",
-      image: "./img/day1/nike.png",
-      size: [6, 7, 8, 9],
-      color: ["#ff0000", "#009933", "#0000ff"],
-    },
-    {
-      name: "Nike Air",
-      price: "299$",
-      image: "./img/day1/nikeair.png",
-      size: [6, 7, 8, 9],
-      color: ["#ff0000", "#009933", "#0000ff"],
-    },
-    {
-      name: "Converse Shoes",
-      price: "299$",
-      image: "./img/day1/converseshoe.png",
-      size: [6, 7, 8, 9],
-      color: ["#ff0000", "#009933", "#0000ff"],
-    },
-    {
-      name: "Nike Air-max",
-      price: "299$",
-      image: "./img/day1/nikeairmax.png",
-      size: [6, 7, 8, 9],
-      color: ["#ff0000", "#009933", "#0000ff"],
-    },
-    {
-      name: "Nike",
-      price: "299$",
-      image: "./img/day1/nike.png",
-      size: [6, 7, 8, 9],
-      color: ["#ff0000", "#009933", "#0000ff"],
-    },
-  ],
   about: {
     name: "ĐOÀN VĂN ĐẠT",
     dayOfBirth: "19/03/1998",
@@ -199,41 +113,43 @@ const data = {
     ],
 
     objectiveSkill: [
+      { title: "Muốn Học Trong Năm 2022", icon: "" },
       {
-        text: "NextJS",
+        key: "NextJS",
         value: "Framework của React",
-        iconClassName: "fa-solid fa-n nextjs",
+        icon: '<i class="fa-solid fa-n nextjs"></i>',
       },
       {
-        text: "React Native",
+        key: "React Native",
         value: "Framework của React",
-        iconClassName: "fab fa-react react",
+        icon: '<i class="fab fa-react react"></i>',
       },
       {
-        text: "React Redux",
+        key: "React Redux",
         value: "Library của React",
-        iconClassName: "fas fa-check-double redux",
+        icon: '<i class="fas fa-check-double redux"></i>',
       },
       {
-        text: "SCSS, SASS",
+        key: "SCSS, SASS",
         value: "Chương trình tiền xử lý CSS (CSS preprocessor).",
-        iconClassName: "fab fa-sass scss",
+        icon: '<i class="fab fa-sass scss" ></i>',
       },
       {
-        text: "MongoDB",
+        key: "MongoDB",
         value: "Quản lý Database",
-        iconClassName: "fas fa-database mongodb",
+        icon: '<i class="fas fa-database mongodb" ></i>',
       },
       {
-        text: "Figma",
+        key: "Figma",
         value: "Thiết kế UI web",
-        iconClassName: "fa-brands fa-figma figma",
+        icon: '<i class="fa-brands fa-figma figma"></i>',
       },
     ],
 
-    listProject: [
+    project: [
       {
         title: "30 Days Practice",
+        show: true,
         link: "null",
         listImage: [
           "./img/about/day1.png",
@@ -279,40 +195,6 @@ const data = {
       },
     ],
   },
-  galary: [
-    {
-      name: "img1",
-      url: "./img/day4/img1.png",
-    },
-    {
-      name: "img2",
-      url: "./img/day4/img2.png",
-    },
-    {
-      name: "img3",
-      url: "./img/day4/img3.png",
-    },
-    {
-      name: "img4",
-      url: "./img/day4/img4.png",
-    },
-    {
-      name: "img5",
-      url: "./img/day4/img5.png",
-    },
-    {
-      name: "img6",
-      url: "./img/day4/img6.png",
-    },
-    {
-      name: "img7",
-      url: "./img/day4/img7.png",
-    },
-    {
-      name: "img8",
-      url: "./img/day4/img8.png",
-    },
-  ],
   dayList: [
     {
       day: "Day1",
@@ -405,6 +287,40 @@ const data = {
       avatar: "./img/day2/Vladimir.png",
       job: "Frontend Developer",
       social: ["facebook", "youtube", "github", "tiktok"],
+    },
+  ],
+  galary: [
+    {
+      name: "img1",
+      url: "./img/day4/img1.png",
+    },
+    {
+      name: "img2",
+      url: "./img/day4/img2.png",
+    },
+    {
+      name: "img3",
+      url: "./img/day4/img3.png",
+    },
+    {
+      name: "img4",
+      url: "./img/day4/img4.png",
+    },
+    {
+      name: "img5",
+      url: "./img/day4/img5.png",
+    },
+    {
+      name: "img6",
+      url: "./img/day4/img6.png",
+    },
+    {
+      name: "img7",
+      url: "./img/day4/img7.png",
+    },
+    {
+      name: "img8",
+      url: "./img/day4/img8.png",
     },
   ],
   musics: [
