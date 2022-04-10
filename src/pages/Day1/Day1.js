@@ -8,6 +8,9 @@ import ImageComponent from "../../component/ReUse/ImageComponent/ImageComponent"
 import Text from "../../component/ReUse/Text/Text";
 import CardSelection from "../../component/Day1/CardSelection/CardSelection";
 import { useNavigate } from "react-router-dom";
+import Content from "../../component/ReUse/Content/Content";
+import Container from "../../component/ReUse/Container/Container";
+import Row from "../../component/ReUse/Row/Row";
 function Day1() {
   console.log("Day1: render....");
   const productList = data.productList;
@@ -45,9 +48,9 @@ function Day1() {
   };
 
   return (
-    <div className="day1 background-color container-fluid">
-      <div className="container">
-        <div className="row">
+    <Content className="day1 background-color">
+      <Container>
+        <Row className="row">
           {productList.map((product) => (
             <Card
               className="product-card col-12 col-md-6 col-lg-4 col-xl-3"
@@ -117,9 +120,9 @@ function Day1() {
               </Child>
             </Card>
           ))}
-        </div>
-      </div>
-    </div>
+        </Row>
+      </Container>
+    </Content>
   );
 }
 

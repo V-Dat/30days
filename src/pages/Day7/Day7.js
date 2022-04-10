@@ -7,7 +7,6 @@ import Content from "../../component/ReUse/Content/Content";
 import Title from "../../component/ReUse/Title/Title";
 import InputComponent from "../../component/ReUse/InputComponent/InputComponent";
 import Button from "../../component/ReUse/Button/Button";
-import Child from "../../component/ReUse/Child/Child";
 
 function Day7() {
   // todo list

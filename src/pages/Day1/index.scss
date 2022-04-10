@@ -142,78 +142,76 @@
 }
 .day1 {
     background-color: #4f515e;
-    .container {
-        min-height: 100vh;
-        padding-top: 3rem;
-        padding-bottom: 3rem;
-        .product-card {
-            background-clip: content-box;
-            text-align: center;
-            border-radius: 4rem;
-            background-color: #272d40;
-            padding: 1rem;
+    .product-card {
+        background-clip: content-box;
+        text-align: center;
+        border-radius: 4rem;
+        background-color: #272d40;
+        color: #fff;
+        padding: 1rem;
+        > * {
+            padding: 0.5rem;
             > * {
-                padding: 0.5rem;
-                > * {
-                    padding: 0 1rem;
-                }
+                padding: 0 1rem;
             }
+        }
 
-            .card-icon {
-                padding-top: 2rem;
-                display: flex;
-                color: #fff;
+        .card-icon {
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        .card-infor {
+            > * {
+                padding-top: 1rem;
             }
-            .card-infor {
-                > * {
-                    padding-top: 1rem;
+            .card-infor__image {
+                margin: 0 auto;
+                width: 80%;
+                padding-top: 60%;
+                position: relative;
+                img {
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    max-height: 100%;
+                    max-width: 100%;
+                    display: block;
+                    margin: auto;
                 }
-                .card-infor__image {
-                    margin: 0 auto;
-                    width: 80%;
-                    padding-top: 60%;
-                    position: relative;
-                    img {
-                        position: absolute;
-                        top: 0;
-                        bottom: 0;
-                        left: 0;
-                        right: 0;
-                        max-height: 100%;
-                        max-width: 100%;
-                        display: block;
-                        margin: auto;
-                    }
+            }
+            .card-size,
+            .card-color {
+                display: flex;
+                flex-wrap: wrap;
+                .card-size__title {
+                    color: var(--color-white);
+                    font-weight: 500;
+                    font-size: 2rem;
                 }
-                .card-size {
-                    display: flex;
-                    flex-wrap: wrap;
-                    .card-size__title {
-                        color: var(--color-white);
-                        font-weight: 500;
-                        font-size: 2rem;
-                    }
-                    .card-infor__price {
-                        color: var(--color-white);
-                        font-size: 2rem;
-                        font-weight: 500;
-                    }
+                .card-infor__price {
+                    color: var(--color-white);
+                    font-size: 2rem;
+                    font-weight: 500;
                 }
-                .card-button {
-                    padding-bottom: 2rem;
-                    display: flex;
-                    justify-content: space-around;
-                    > div {
-                        background-color: var(--color-green);
-                        border: 0 solid;
-                        border-radius: 0.5rem;
-                        color: var(--color-white);
-                        font-size: 1.5rem;
-                        margin: 0.5rem auto;
-                        max-width: 10rem;
-                        padding: 0.9rem 0.5rem;
-                    }
-                }
+            }
+        }
+
+        .card-button {
+            display: flex;
+            justify-content: space-around;
+            padding-bottom: 2rem;
+            .btn {
+                background-color: var(--color-green);
+                color: #fff !important;
+                border: 0 solid;
+                border-radius: 0.5rem;
+                color: var(--color-white);
+                font-size: 1.5rem;
+                margin: 0.5rem auto;
+                max-width: 10rem;
             }
         }
     }

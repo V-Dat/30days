@@ -1,6 +1,5 @@
 import "./index.css";
 import data from "../data";
-import Header from "../../parts/Header";
 import Infor from "../../component/About/Infor";
 import Objective from "../../component/About/Objective";
 import Project from "../../component/About/Project";

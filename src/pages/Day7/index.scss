@@ -55,7 +55,6 @@
           vertical-align: middle;
         }
         .job-in-list {
-          flex-grow: 1;
           flex: 10;
           overflow-wrap: break-word;
           text-align: justify;
@@ -76,7 +75,6 @@
         .btn-del-job {
           min-width: 3rem;
           max-width: 3rem;
-
           height: 3rem;
           background-color: rgb(167, 157, 161);
           color: rgb(12, 11, 11);
@@ -84,7 +82,6 @@
           text-align: center;
           margin-left: 1rem;
           font-weight: 600;
-          color: #fff;
           flex: 1;
           &:hover {
             width: 3rem;
