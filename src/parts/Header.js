@@ -32,7 +32,7 @@ export default function Header({ children, className }) {
         {activeMenu ? (
           <Row className="sub-nav">
             <Child className="sub-nav__item" handleClick={handleClickMenu}>
-              <Link to="/About">About</Link>
+              <Link to="/Profile">Profile</Link>
             </Child>
             <Child className="sub-nav__item" handleClick={handleClickMenu}>
               <Link to="/News">News</Link>

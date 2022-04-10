@@ -37,9 +37,13 @@ export default function Day4() {
       <Container>
         <Row className="row">
           {galary.map((picture) => (
-            <Card key={`${picture.url}`} className="galary">
-              <img
-                onClick={() => handleClickImage(picture)}
+            <Card
+              key={`${picture.url}`}
+              className="galary p-4"
+              handleClick={handleClickImage}
+              data={picture}
+            >
+              <ImageComponent
                 className="galary__image"
                 src={picture.url}
                 alt={picture.name}

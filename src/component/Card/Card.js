@@ -3,7 +3,7 @@ import "./Card.scss";
 export default function Card({ children, className, handleClick, data }) {
   return (
     <div
-      className={`${className || ""} col l-3 m-6 c-12`}
+      className={`${className || ""} col-12 col-md-6 col-lg-4 col-xl-3`}
       onClick={() => handleClick(data)}
     >
       {children}

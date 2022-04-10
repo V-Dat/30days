@@ -1,23 +1,37 @@
 .day4.background-color {
   background-color: #626761;
-  .grid {
+  .container {
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 80vh;
     .row {
       position: relative;
+      .galary {
+        .galary__image {
+          width: 100%;
+          height: 100% !important;
+
+          img {
+            width: 100%;
+            height: 100% !important;
+          }
+        }
+      }
     }
     .galary__image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
       border-radius: 0.8rem;
       transition: 0.8s;
+      width: 100%;
+      height: 100% !important;
       &:hover {
         opacity: 0.8;
         cursor: pointer;
         transform: scale(1.1);
+      }
+      .img {
+        height: 100% !important;
+        width: 100%;
       }
     }
   }
