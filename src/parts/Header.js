@@ -20,7 +20,7 @@ export default function Header({ children, className }) {
         </Child>
 
         <Child className="nav__item">
-          <Link to="/About">About</Link>
+          <Link to="/Profile">Profile</Link>
         </Child>
         {children}
         <Child

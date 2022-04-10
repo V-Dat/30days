@@ -1,6 +1,6 @@
 import React from "react";
 
-function IconLink({ href, className, iconClassName, text }) {
+export default function IconLink({ href, className, iconClassName, text }) {
   return (
     <div className={className}>
       <a href={href}>
@@ -11,4 +11,3 @@ function IconLink({ href, className, iconClassName, text }) {
   );
 }
 
-export default IconLink;

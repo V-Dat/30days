@@ -1,0 +1,17 @@
+.skill-detail__content__detail {
+    padding-bottom: 0.1rem;
+    .name {
+        font-weight: 700;
+        display: inline-block;
+        width: 12rem;
+    }
+}
+@media (max-width: 600px) {
+    .skill-detail__content__detail {
+        padding-bottom: 0.3rem;
+        .name {
+            font-weight: 700;
+            width: initial !important;
+        }
+    }
+}

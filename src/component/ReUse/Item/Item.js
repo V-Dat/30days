@@ -1,6 +1,6 @@
 import "./Item.scss";
 
-function Item({ icon, text, className }) {
+export default function Item({ icon, text, className }) {
   return (
     <div className={`${className || ""} item`}>
       <span dangerouslySetInnerHTML={{ __html: `${icon}` }} />
@@ -8,5 +8,3 @@ function Item({ icon, text, className }) {
     </div>
   );
 }
-
-export default Item;

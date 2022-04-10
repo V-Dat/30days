@@ -1,0 +1,12 @@
+.objective {
+  padding-right: 2rem;
+  &:first-child .title {
+    border-top: none;
+  }
+
+  h2 {
+    width: 100%;
+    margin: 1rem 0 2rem;
+    color: #087bec;
+  }
+}
