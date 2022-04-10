@@ -1,11 +1,11 @@
 import "./infor.css";
 import ListComponent from "../ListComponent";
-import {memo} from 'react';
+import { memo } from "react";
 function Infor({ data }) {
   return (
     <>
       {data.education.map((e) => (
-        <div key={e} className="education">
+        <div key={e.school} className="education">
           <h2 className="education__title">
             <span>Học Vấn</span>
           </h2>
@@ -29,21 +29,19 @@ function Infor({ data }) {
         <h2>
           <span>Kĩ Năng</span>
         </h2>
-        {data.skill.map((e) => {
-            return (
-              <div key={e.value} className="skill">
-                <div className="skill__name">{e.key}</div>
-                <div className="skill__value">
-                  <span> {e.icon !== "" ? ':': null} </span>
-                  {e.value}
-                </div>
-              </div>
-            );
-        })}
+        {data.skill.map((e) => (
+          <div key={Math.random()} className="skill">
+            <div className="skill__name">{e.key}</div>
+            <div className="skill__value">
+              <span> {e.icon !== "" ? ":" : null} </span>
+              {e.value}
+            </div>
+          </div>
+        ))}
       </div>
 
       {data.work.map((e) => (
-        <div key={e} className="work">
+        <div key={e.company} className="work">
           <h2>
             <span>Kinh Nghiệm</span>
           </h2>
