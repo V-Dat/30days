@@ -10,8 +10,8 @@ export default function Header({ children, className }) {
   };
 
   return (
-    <div className={`grid ${className ? className : "header"}`}>
-      <Row className="nav row">
+    <div className={`${className ? className : "header"}`}>
+      <Row className="header-nav">
         <Child className="nav__item">
           <Link to="/">Home</Link>
         </Child>
