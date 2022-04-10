@@ -1,5 +1,4 @@
 import "./index.scss";
-import "../../assets/css/grid.css";
 import data from "../data";
 import Card from "../../component/Card/Card";
 import Button from "../../component/ReUse/Button/Button";
@@ -9,6 +8,9 @@ import ImageComponent from "../../component/ReUse/ImageComponent/ImageComponent"
 import Text from "../../component/ReUse/Text/Text";
 import CardSelection from "../../component/Day1/CardSelection/CardSelection";
 import { useNavigate } from "react-router-dom";
+import Content from "../../component/ReUse/Content/Content";
+import Container from "../../component/ReUse/Container/Container";
+import Row from "../../component/ReUse/Row/Row";
 function Day1() {
   console.log("Day1: render....");
   const productList = data.productList;
@@ -46,11 +48,14 @@ function Day1() {
   };
 
   return (
-    <div className="day1 background-color">
-      <div className="grid wide">
-        <div className="row">
+    <Content className="day1 background-color">
+      <Container>
+        <Row className="row">
           {productList.map((product) => (
-            <Card className="card" key={Math.random() * 9999}>
+            <Card
+              className="product-card col-12 col-md-6 col-lg-4 col-xl-3"
+              key={Math.random() * 9999}
+            >
               <Child className="card-icon">
                 <CardIcon
                   product={product}
@@ -115,9 +120,9 @@ function Day1() {
               </Child>
             </Card>
           ))}
-        </div>
-      </div>
-    </div>
+        </Row>
+      </Container>
+    </Content>
   );
 }
 

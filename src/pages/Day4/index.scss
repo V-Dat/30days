@@ -1,0 +1,107 @@
+.day4.background-color {
+  background-color: #626761;
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    .row {
+      position: relative;
+      .galary {
+        .galary__image {
+          width: 100%;
+          height: 100% !important;
+
+          img {
+            width: 100%;
+            height: 100% !important;
+          }
+        }
+      }
+    }
+    .galary__image {
+      border-radius: 0.8rem;
+      transition: 0.8s;
+      width: 100%;
+      height: 100% !important;
+      &:hover {
+        opacity: 0.8;
+        cursor: pointer;
+        transform: scale(1.1);
+      }
+      .img {
+        height: 100% !important;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.control {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  padding-top: 10vh;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+  font-size: 7rem;
+  color: #ccc;
+  .active {
+    color: #ccc !important;
+  }
+  .control__close {
+    position: absolute;
+    right: 2rem;
+    top: 0;
+    z-index: 1;
+    padding-right: 1rem;
+  }
+  .control__close:hover,
+  .control__prev:hover,
+  .control__next:hover {
+    color: var(--primary-color) !important;
+    opacity: 1;
+  }
+
+  .control__prev {
+    position: absolute;
+    left: 2rem;
+    bottom: 50%;
+    transform: translateY(50%);
+    z-index: 1;
+  }
+  .control__next {
+    position: absolute;
+    right: 2rem;
+    bottom: 50%;
+    transform: translateY(50%);
+    z-index: 1;
+  }
+
+  .control__image {
+    margin: auto;
+    display: block;
+    width: 80%;
+    height: 80vh;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: content;
+    }
+  }
+}
+
+@media (max-width: 740px) {
+  .row {
+    margin: auto 2rem;
+    .control.wide {
+      display: none !important;
+      padding: 0 1rem;
+      margin: auto;
+    }
+  }
+}

@@ -1,11 +1,15 @@
-import "./index.css";
-import "../../assets/css/grid.css";
+import "./index.scss";
 
 import { useEffect, useRef } from "react";
 import listMusicDefault from "./listMusicDefault";
 import HeadPlayer from "../../component/Day8/HeadPlayer/HeadPlayer.js";
 import ListMusic from "../../component/Day8/ListMusic/ListMusic.js";
 import { useDispatch } from "react-redux";
+import Content from "../../component/ReUse/Content/Content";
+import Container from "../../component/ReUse/Container/Container";
+import Row from "../../component/ReUse/Row/Row";
+import Column from "../../component/ReUse/Column/Column";
+import Child from "../../component/ReUse/Child/Child";
 
 function Day8() {
   const dispatch = useDispatch();
@@ -47,16 +51,18 @@ function Day8() {
   });
 
   return (
-    <div className="day8 grid wide">
-      <div className="row">
-        <div className="col l-12 m-12 c-12">
-          <div className="music-player player">
-            <HeadPlayer />
-            <ListMusic />
-          </div>
-        </div>
-      </div>
-    </div>
+    <Content className="day8">
+      <Container>
+        <Row className="row">
+          <Column className="col">
+            <Child className="music-player player">
+              <HeadPlayer />
+              <ListMusic />
+            </Child>
+          </Column>
+        </Row>
+      </Container>
+    </Content>
   );
 }
 

@@ -1,5 +1,4 @@
 import "./index.css";
-import "../../assets/css/grid.css";
 import {useEffect} from "react"
 
 function Day3() {

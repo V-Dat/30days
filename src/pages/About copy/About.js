@@ -1,5 +1,4 @@
 import "./index.css";
-import "../../assets/css/grid.css";
 import data from "../data";
 import { useState, useEffect } from "react";
 

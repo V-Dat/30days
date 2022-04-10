@@ -1,0 +1,13 @@
+.day8 {
+  min-height: 100vh;
+  .col {
+    margin-top: 0;
+    .music-player.player {
+      padding-top: 4rem;
+      max-width: 100%;
+      margin: auto;
+      background-color: #fff;
+      text-align: center;
+    }
+  }
+}

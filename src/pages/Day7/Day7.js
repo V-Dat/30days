@@ -1,116 +1,123 @@
-import "./index.css";
-import "../../assets/css/grid.css";
-import { useState, useEffect } from "react";
-import data from "../data";
+import "./index.scss";
+import { useState } from "react";
+import Container from "../../component/ReUse/Container/Container";
+import Row from "../../component/ReUse/Row/Row";
+import Column from "../../component/ReUse/Column/Column";
+import Content from "../../component/ReUse/Content/Content";
+import Title from "../../component/ReUse/Title/Title";
+import InputComponent from "../../component/ReUse/InputComponent/InputComponent";
+import Button from "../../component/ReUse/Button/Button";
 
 function Day7() {
-  // todo list 
-  const [jobs,setJobs] = useState([])
-  const [job,setJob] = useState('')
-  const [checked,setChecked] = useState([])
-  const [countLi,setCountLi] = useState(0)
+  // todo list
+  const [jobs, setJobs] = useState([]);
+  const [job, setJob] = useState("");
+  const [countLiChecked, setCountLiChecked] = useState(0);
   // event hover remove todo list
 
   //xử lý enter input:
-  const handleEnter = (e) =>{ if(e.key==='Enter' && job !== ''){    
-    let countLiChecked = document.querySelectorAll('input:checked').length;
-    setJobs( (prev) => [...prev,job])
-    setCountLi(jobs.length - countLiChecked + 1)
-    setJob('') } 
-  }  
+  const handleEnter = (e) => {
+    if (e.key === "Enter" && job !== "") {
+      setJobs((prev) => [...prev, { value: job, isChecked: false }]);
+      setJob("");
+    }
+  };
 
   const handleInputJob = (e) => {
-    setJob( e.target.value)
-    console.log('JOB: ',job)
-  }
-  
+    setJob(e.target.value);
+    console.log("JOB: ", job);
+  };
+
   const handleAddJobs = () => {
-    let countLiChecked = document.querySelectorAll('input:checked').length;
-      setCountLi( () => {
-      return (jobs.length - countLiChecked)})
-
-    if(job !== ''){ 
-    setJobs( (prev) => [...prev,job])
-    setCountLi(jobs.length -countLiChecked +1)
-    setJob('') } }
-
-  const handleDelJob = ({e, eJob}) => {
-    
-    console.log('JOB: ',eJob ,'-- del');
-    setJobs ( (prev) => [ ...prev].filter(ele => {return ele !== eJob}))
-    setJobs ( (prev) => [ ...prev].filter(ele => {return ele}))
-    
-    console.log('JOB: ',jobs);
-    // console.log('e: ',e.target);
-
-    if(e.target.previousElementSibling.previousElementSibling.hasAttribute('checked')){
-      //  trường hợp nếu input checked bị xóa   
-      setCountLi( () =>  {
-        const countLiChecked = document.querySelectorAll('input:checked').length -1;
-        return jobs.length -1  - countLiChecked}
-        )}
-
-      else{
-        //  trường hợp nếu input unchecked bị xóa   
-
-      setCountLi( () =>  {
-        const countLiChecked = document.querySelectorAll('input:checked').length;
-        return jobs.length -1  - countLiChecked})
+    if (job !== "") {
+      setJobs((prev) => [...prev, { value: job, isChecked: false }]);
+      setJob("");
     }
-    }
+  };
 
-  const handleCheckBox = (eJob) => {
-    setChecked((prev) =>
-    prev.includes(eJob) ?  checked.filter(e => (e !== eJob)) : [...prev,eJob] )
-    console.log('JOB- Checked: ' + checked);
+  const handleDelJob = ({ e, eJob, index }) => {
+    eJob.isChecked
+      ? setCountLiChecked(countLiChecked - 1)
+      : console.log("job khong duoc checked");
+    console.log("eJob.isChecked", eJob.isChecked);
+    setJobs((prev) => {
+      return [...prev.slice(0, index), ...prev.slice(index + 1, prev.length)];
+    });
+  };
 
-    //xu li check => pending - di so lan check
-    let countLiChecked = document.querySelectorAll('input:checked').length;
-    setCountLi( () => {
-      return (jobs.length - countLiChecked)
-    })
+  const handleCheckBox = (eJob, e, index) => {
+    eJob.isChecked
+      ? setCountLiChecked(countLiChecked - 1)
+      : setCountLiChecked(countLiChecked + 1);
+    eJob.isChecked = !eJob.isChecked;
+    setJobs((prev) => [...prev]);
+  };
 
-  }
-
-  const handleRemoveAllTask = () =>{
-    setJobs([])
-    setCountLi(0)
-    setJob('')
-  }
-
+  const handleRemoveAllTask = () => {
+    setJob("");
+    setCountLiChecked(0);
+    setJobs([]);
+  };
   return (
-    <div className="day7 grid wide">
-      <div className="row">
-        <div className="col l-12 m-12 c-12">
-          <div className="todo">
-          <h1 className="todo__title"><i className="fa-solid fa-list-check"></i>  TODO LIST</h1>
-          <div className="todo__add">
-            <input className="todo-add__input"type="text" value={job} onChange={(e) => handleInputJob(e)} onKeyDown={(e) => handleEnter(e)}/>
-            <button className="todo-add__button" onClick = {handleAddJobs}> <i className="fa-solid fa-plus"></i> </button>
-          </div>
-          <ol className="todo__lists" >
-              {jobs.map( (eJob ) => (
-                <li key={ Math.random()*0.193 }  className='todo__list'>
-                    <input type="checkbox" checked={checked.includes(eJob)} onChange = { () => handleCheckBox(eJob)}/>
-                    <div className="job-in-list" onChange={ (e) =>handleCheckBox(e) } value= {eJob} >
-                        <div >{`${jobs.indexOf(eJob) + 1}: `}</div>
-                      <div >
-                        {eJob || '---Hãy nhập todo list của bạn!---'} 
-                        </div>
-                    </div>
-                    <button className="btn-del-job" onClick={(e) => handleDelJob({e, eJob})}>X</button>
-                </li>
+    <Content className="day7 background-color">
+      <Container>
+        <Row className="row">
+          <Column className="col">
+            <Row className="todo">
+              <Title className="todo__title">
+                <i className="fa-solid fa-list-check"></i> TODO LIST
+              </Title>
+            </Row>
+            <Row className="todo__add">
+              <InputComponent
+                className="todo-add__input"
+                type="text"
+                handleChange={handleInputJob}
+                handleKeyDown={handleEnter}
+                value={job}
+              />
+              <Button className="todo-add__button" handleClick={handleAddJobs}>
+                <i className="fa-solid fa-plus"></i>
+              </Button>
+            </Row>
+            <Row className="todo__lists ">
+              {jobs.map((eJob, index) => (
+                <div key={Math.random() * 0.193} className="todo__list">
+                  <input
+                    type="checkbox"
+                    checked={eJob.isChecked}
+                    onChange={(index, e) => handleCheckBox(eJob, e, index)}
+                  />
+                  <div
+                    className="job-in-list"
+                    onChange={(e) => handleCheckBox(e)}
+                  >
+                    <b className="text-primary">{`${
+                      jobs.indexOf(eJob) + 1
+                    }`}</b>
+                    {`: ${eJob.value}`}
+                  </div>
+                  <button
+                    className="btn-del-job"
+                    onClick={(e) => handleDelJob({ e, eJob, index })}
+                  >
+                    X
+                  </button>
+                </div>
               ))}
-              <div className="todo__clearAll" >
-                <div>{ countLi === 0 ? `No task pending !`:`You have ${countLi} tasks pending` }</div>
+              <div className="todo__clearAll">
+                <div>
+                  {countLiChecked === jobs.length
+                    ? `No task pending !`
+                    : `You have ${jobs.length - countLiChecked} tasks pending`}
+                </div>
                 <button onClick={handleRemoveAllTask}> Clear All </button>
               </div>
-          </ol>
-
-        </div>
-        </div>
-      </div>
-      </div>
+            </Row>
+          </Column>
+        </Row>
+      </Container>
+    </Content>
   );
 }
 

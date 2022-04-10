@@ -1,5 +1,4 @@
 import "./index.css";
-import "../../assets/css/grid.css";
 import { useState , useCallback } from "react";
 
 function Day5() {

@@ -1,69 +1,55 @@
 .day2.background-color {
   background-color: #3d8381;
-  .grid {
-    min-height: 100vh;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    .profile {
-      overflow: hidden;
-      border-radius: 4rem;
+  min-height: 100vh;
+  .profile {
+    background-clip: content-box;
+    text-align: center;
+    border-radius: 4rem;
+    background-color: #272d40;
+    padding: 1rem;
+
+    .profile__avatar {
+      img {
+        width: 50%;
+        height: 50%;
+        border-radius: 50%;
+        border: 0.5rem solid var(--primary-color);
+        transition: 0.89s;
+        margin-top: 2rem;
+      }
+
+    }
+    .profile__job {
+      color: var(--primary-color);
+      font-size: 2rem;
+      margin-top: 1rem;
+    }
+
+    .profile__name {
+      color: var(--color-white);
+      font-size: 1.8rem;
+      margin: 1.5rem 0;
+      font-weight: Bold;
+    }
+    .profile__social {
+      a {
+        font-size: 2.8rem;
+        padding: 1rem;
+        color: var(--color-white);
+      }
+    }
+    .profile__contact {
+      color: var(--color-white);
+      font-size: 1.8rem;
+      margin: 1.5rem 0;
+      padding: 0.8rem;
+      display: inline-block;
+      border-radius: 1rem;
+      font-weight: normal;
+      border: 0.3rem solid var(--primary-color);
       background-color: #272d40;
-      height: 40rem;
-
-      .profile__avatar {
-        img {
-          width: 50%;
-          height: 50%;
-          border-radius: 50%;
-          border: 0.5rem solid var(--primary-color);
-          transition: 0.89s;
-          margin-top: 2rem;
-        }
-        &:hover {
-          width: 100%;
-          height: 100%;
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            margin-top: 0;
-            border-radius: 2.8rem;
-            background-clip: content;
-          }
-        }
-      }
-      .profile__job {
-        color: var(--primary-color);
-        font-size: 2rem;
-        margin-top: 1rem;
-      }
-
-      .profile__name {
-        color: var(--color-white);
-        font-size: 1.8rem;
-        margin: 1.5rem 0;
-        font-weight: Bold;
-      }
-      .profile__social {
-        a {
-          font-size: 2.8rem;
-          padding: 1rem;
-          color: var(--color-white);
-        }
-      }
-      .profile__contact {
-        color: var(--color-white);
-        font-size: 1.8rem;
-        margin: 1.5rem 0;
-        padding: 0.8rem;
-        display: inline-block;
-        border-radius: 1rem;
-        font-weight: normal;
-        border: 0.3rem solid var(--primary-color);
-        background-color: #272d40;
-        &:hover {
-          background-color: var(--primary-color);
-        }
+      &:hover {
+        background-color: var(--primary-color);
       }
     }
   }

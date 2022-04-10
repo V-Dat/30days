@@ -1,5 +1,4 @@
 import "./Header.scss";
-import "../assets/css/grid.css";
 import Row from "../component/ReUse/Row/Row";
 import Child from "../component/ReUse/Child/Child";
 import { useState } from "react";
@@ -11,8 +10,8 @@ export default function Header({ children, className }) {
   };
 
   return (
-    <div className={`grid ${className ? className : "header"}`}>
-      <Row className="nav row">
+    <div className={`${className ? className : "header"}`}>
+      <Row className="header-nav">
         <Child className="nav__item">
           <Link to="/">Home</Link>
         </Child>
@@ -33,7 +32,7 @@ export default function Header({ children, className }) {
         {activeMenu ? (
           <Row className="sub-nav">
             <Child className="sub-nav__item" handleClick={handleClickMenu}>
-              <Link to="/About">About</Link>
+              <Link to="/Profile">Profile</Link>
             </Child>
             <Child className="sub-nav__item" handleClick={handleClickMenu}>
               <Link to="/News">News</Link>

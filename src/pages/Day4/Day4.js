@@ -1,124 +1,81 @@
-import "./index.css";
-import "../../assets/css/grid.css";
-import { useState, useEffect } from "react";
+import "./index.scss";
+import { useState } from "react";
 import data from "../data";
+import Content from "../../component/ReUse/Content/Content";
+import Container from "../../component/ReUse/Container/Container";
+import Row from "../../component/ReUse/Row/Row";
+import Button from "../../component/ReUse/Button/Button";
+import ImageComponent from "../../component/ReUse/ImageComponent/ImageComponent";
+import Card from "../../component/Card/Card";
 
-function Day4() {
+export default function Day4() {
   const galary = data.galary;
-  const listUrlImage = galary.map((e) => e.url);
-  const image = document.querySelector(".control__image > img");
-  let indexOfCurrentImageUrl
-  let currentImageUrl
-  let indexOfNextImage ;
-  let indexOfPrevImage ;
-
-  console.log('Day4: render....')
-
-  const[imageUrl, setImageUrl] = useState('')
-
-
-  const HandleGalary = (e) => {
-    
-  const control = document.querySelector(".control");
-
-// handle click picture in list 
-    if (e.target.closest(".galary__image")) {
-      control.style.display = "block";
-      // currentImageUrl = `.${e.target.src.toString().slice(21)}`; 
-      currentImageUrl = `.${e.target.src.toString().slice(e.target.src.indexOf('/img') ,e.target.src.length )}`
-
-      setImageUrl( currentImageUrl )
-      console.log('handle click picture ')
-    }
-// handle close
-    if (e.target.closest(".control__close")) {
-    control.style.display = "none";
-
-    console.log('handle close')
-    }
-// handle click next
-    if(e.target.closest(".control__next")){
-
-      currentImageUrl =`.${image.src.slice(image.src.indexOf(`/img`) ,image.src.length )}` 
-      indexOfCurrentImageUrl = listUrlImage.indexOf(currentImageUrl);
-      if(indexOfCurrentImageUrl >= listUrlImage.length -1 ){ 
-        indexOfNextImage = 0
-      }else{
-        indexOfNextImage = indexOfCurrentImageUrl + 1;
-        indexOfPrevImage = indexOfCurrentImageUrl - 1;
-      }
-
-
-      image.src = `${listUrlImage[indexOfNextImage]}`
-        console.log('indexOfCurrentImageUrl: ' + indexOfNextImage)
-    }
-// handle click prev
-
-    if(e.target.closest(".control__prev")){
-      currentImageUrl =`.${image.src.slice(image.src.indexOf(`/img`) ,image.src.length )}` 
-      indexOfCurrentImageUrl = listUrlImage.indexOf(currentImageUrl);
-      if(indexOfCurrentImageUrl == 0  ){ 
-        indexOfPrevImage = listUrlImage.length -1
-      }else{
-        indexOfNextImage = indexOfCurrentImageUrl + 1;
-        indexOfPrevImage = indexOfCurrentImageUrl - 1;
-      }
-
-      image.src = `${listUrlImage[indexOfPrevImage]}`
-        console.log('indexOfCurrentImageUrl: ' + indexOfPrevImage)
-    }
-  }
-
+  const length = galary.length;
+  const [src, setSrc] = useState("");
+  const [showImage, setShowImage] = useState(false);
+  const [indexOfCurrentImage, setIndexOfCurrentImage] = useState(0);
+  const handleClickNext = () => {
+    setIndexOfCurrentImage((indexOfCurrentImage + 1 + length) % length);
+    setSrc(galary[(indexOfCurrentImage + 1 + length) % length].url);
+  };
+  const handleClickPrev = () => {
+    setIndexOfCurrentImage((indexOfCurrentImage - 1 + length) % length);
+    setSrc(galary[(indexOfCurrentImage - 1 + length) % length].url);
+  };
+  const handleClickImage = (picture) => {
+    setShowImage(true);
+    setSrc(picture.url);
+    setIndexOfCurrentImage(galary.indexOf(picture));
+  };
+  const handleClose = () => {
+    setShowImage(false);
+    console.log(showImage);
+  };
 
   return (
-    <>
-      {/* galary list  */}
-      <div className="day4 grid wide">
-        <div className="row" onClick={(e) => HandleGalary(e)}>
+    <Content className="day4 background-color">
+      <Container>
+        <Row className="row">
           {galary.map((picture) => (
-            <div key={picture.name} className="galary col l-3 m-4 c-12">
-              <img
+            <Card
+              key={`${picture.url}`}
+              className="galary p-4"
+              handleClick={handleClickImage}
+              data={picture}
+            >
+              <ImageComponent
                 className="galary__image"
                 src={picture.url}
                 alt={picture.name}
               />
-            </div>
+            </Card>
           ))}
+        </Row>
+      </Container>
 
-          <div className="control wide">
-            <span className="control__close">
-              <i className="fas fa-times close"></i>
-            </span>
+      {showImage ? (
+        <div className="control wide">
+          <Button className="control__close" handleClick={handleClose}>
+            <i className="fas fa-times close"></i>
+          </Button>
 
-            <span className="control__prev"  >
-              <i className="fas fa-chevron-left"></i>
-            </span>
+          <Button className="control__prev" handleClick={handleClickPrev}>
+            <i className="fas fa-chevron-left"></i>
+          </Button>
 
-            <span className="control__next">
-              <i className="fas fa-chevron-right"></i>
-            </span>
+          <ImageComponent
+            className="control__image"
+            src={src}
+            alt={"Đây là hình ảnh"}
+          />
 
-            <div className="control__image">
-              <img alt={imageUrl} src={imageUrl} />
-            </div>
-          </div>
+          <Button className="control__next" handleClick={handleClickNext}>
+            <i className="fas fa-chevron-right"></i>
+          </Button>
         </div>
-      </div>
-    </>
+      ) : (
+        ""
+      )}
+    </Content>
   );
 }
-
-export default Day4;
-
-// <div className="skill">
-// {skill.map((e) => (
-//   <>
-//     <div className="skill__left">
-//       <p>{e.key}</p>
-//     </div>
-//     <div className="skill__right">
-//       <p>{e.value}</p>
-//     </div>
-//   </>
-// ))}
-// </div>

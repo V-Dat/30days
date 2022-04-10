@@ -1,28 +1,27 @@
 .day6.background-color {
   background-color: rgb(87, 94, 86);
   color: #b7b0ca;
- 
-  .grid {
-    padding-top: 7rem;
-    padding-bottom: 3rem;
-    .timer {
-      height: 21rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      background-color: #3A4238;
+  min-height: 80vh;
+  .timer {
+    background-clip: content-box;
+    height: 20rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: #3a4238;
+    color: #fff;
+    border-radius: 3rem;
+    text-align: center;
+    &:hover {
       color: #fff;
-      border-radius: 3rem;
-      &:hover {
-        color: #fff;
-        background-color: rgb(189, 139, 139);
-        .timer__title {
-          color: #fff;
-        }
-      }
+      background-color: rgb(189, 139, 139);
       .timer__title {
         color: #fff;
       }
+    }
+    .timer__title {
+      color: #fff;
     }
   }
 }

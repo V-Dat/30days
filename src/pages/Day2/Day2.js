@@ -1,5 +1,4 @@
 import "./index.scss";
-import "../../assets/css/grid.css";
 import data from "../data";
 import Card from "../../component/Card/Card";
 import Social from "../../component/Day2/Social";
@@ -7,6 +6,9 @@ import ImageComponent from "../../component/ReUse/ImageComponent/ImageComponent"
 import Text from "../../component/ReUse/Text/Text";
 import Button from "../../component/ReUse/Button/Button";
 import IconLabel from "../../component/ReUse/IconLabel/IconLabel";
+import Container from "../../component/ReUse/Container/Container";
+import Content from "../../component/ReUse/Content/Content";
+import Row from "../../component/ReUse/Row/Row";
 
 export default function Day2() {
   console.log("Day2: render....");
@@ -16,9 +18,9 @@ export default function Day2() {
     console.log("Your Contact is : ", profile);
   };
   return (
-    <div className="day2 background-color">
-      <div className="grid wide">
-        <div className="row">
+    <Content className="day2 background-color">
+      <Container>
+        <Row className="row">
           {profile.map((profile) => (
             <Card key={profile.avatar} className="profile">
               <ImageComponent
@@ -47,9 +49,8 @@ export default function Day2() {
               </Button>
             </Card>
           ))}
-        </div>
-      </div>
-    </div>
+        </Row>
+      </Container>
+    </Content>
   );
 }
-
