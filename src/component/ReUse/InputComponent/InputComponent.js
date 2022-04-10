@@ -8,6 +8,7 @@ export default function InputComponent({
   handleKeyDown,
   value,
   checked,
+  data,
 }) {
   return (
     <>
@@ -17,7 +18,7 @@ export default function InputComponent({
           className={`${className}  ${state ? classNameActive : ""}`}
           onKeyUp={(e) => getUserInput(e)}
           onKeyDown={(e) => handleKeyDown(e)}
-          onChange={(e) => handleChange(e)}
+          onChange={handleChange ? (e) => handleChange(e, data) : () => {}}
           value={value}
           checked={checked}
         />
@@ -25,9 +26,9 @@ export default function InputComponent({
       {!classNameActive && (
         <input
           type={type}
-          className={`${className} input}`}
+          className={`${className} input`}
           onKeyDown={handleKeyDown ? (e) => handleKeyDown(e) : () => {}}
-          onChange={handleChange ? (e) => handleChange(e) : () => {}}
+          onChange={handleChange ? (e) => handleChange(e, data) : () => {}}
           value={value}
           onKeyUp={getUserInput ? (e) => getUserInput(e) : () => {}}
           checked={checked}
