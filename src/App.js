@@ -1,4 +1,6 @@
 import "./App.css";
+import Header from "./parts/Header";
+import Footer from "./parts/Footer";
 import Day1 from "./pages/Day1/Day1.js";
 import Day2 from "./pages/Day2/Day2.js";
 import Day3 from "./pages/Day3/Day3.js";
@@ -8,10 +10,10 @@ import Day6 from "./pages/Day6/Day6.js";
 import Day7 from "./pages/Day7/Day7.js";
 import Day8 from "./pages/Day8/Day8.js";
 import Day9 from "./pages/Day9/Day9.js";
-import Profile from "./pages/Profile/Profile";
 import News from "./pages/News/News.js";
-import Header from "./parts/Header";
-import Footer from "./parts/Footer";
+import Profile from "./pages/Profile/Profile";
+import Homepage from "./pages/Homepage/Homepage";
+import NotFound from "./pages/NotFound";
 
 import { Suspense } from "react";
 import {
@@ -20,8 +22,6 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import Content from "./component/Content/Content";
-import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -42,7 +42,7 @@ function App() {
             <Route path="News" element={<News />} />
             <Route path="Profile" element={<Profile />} />
             <Route path="404NotFound" element={<NotFound />} />
-            <Route path="/" element={<Content />} />
+            <Route path="/" element={<Homepage />} />
             <Route path="*" element={<Navigate replace to="/404NotFound" />} />
           </Routes>
           <Footer />

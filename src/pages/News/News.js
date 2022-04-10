@@ -1,30 +1,17 @@
 import "./index.css";
-import Day1 from "../Day1/Day1";
-import Day2 from "../Day2/Day2";
-import Day3 from "../Day3/Day3";
-import Content from "../../component/Content/Content";
-import { useState, useEffect } from "react";
 
-function News({ onClick }) {
-  useEffect(() =>onClick(),[])
+import { useState } from "react";
+export default function News() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-
-  console.log("news re-render");
-
-  const handleClick = () => {
-    console.log(email ,name);
-  };
 
   return (
     <div className="new">
       <div style={{ padding: 32 }}>
-        <input  onChange={(e) => setName(e.target.value)} />
-        <input  onChange={(e) => setEmail(e.target.value)} />
-        <button onClick={handleClick}>Change</button>
+        <input value={name} onChange={(e) => setName(e.target.value)} />
+        <input value={email} onChange={(e) => setEmail(e.target.value)} />
+        <button>Change</button>
       </div>
     </div>
   );
 }
-
-export default News;
