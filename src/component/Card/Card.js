@@ -3,7 +3,7 @@ export default function Card({ children, className, handleClick, data }) {
   return (
     <div
       className={`${className || ""} col-12 col-md-6 col-lg-4 col-xl-3`}
-      onClick={handleClick ? () => handleClick(data) : () => {}}
+      onClick={handleClick ? (e) => handleClick(e, data) : () => {}}
     >
       {children}
     </div>
