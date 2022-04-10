@@ -1,15 +1,15 @@
 import "./index.scss";
-import data from "../../pages/data.js";
+import data from "../data.js";
 import { Link } from "react-router-dom";
-import Container from "../ReUse/Container/Container";
-import Row from "../ReUse/Row/Row";
-import Card from "../Card/Card";
-import ImageComponent from "../ReUse/ImageComponent/ImageComponent";
+import Container from "../../component/ReUse/Container/Container";
+import Row from "../../component/ReUse/Row/Row";
+import Card from "../../component/Card/Card";
+import ImageComponent from "../../component/ReUse/ImageComponent/ImageComponent";
 
-export default function Content() {
+export default function Homepage() {
   const dayList = data.dayList;
 
-  console.log("content homepage re-render ");
+  console.log("homepage re-render ");
 
   return (
     <>

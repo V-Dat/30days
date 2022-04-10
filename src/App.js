@@ -20,7 +20,7 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import Content from "./component/Content/Content";
+import Content from "./pages/Homepage/Content";
 import NotFound from "./pages/NotFound";
 
 function App() {
