@@ -1,11 +1,10 @@
 import "./Title.scss";
 
-function Title({ title, className }) {
+export default function Title({ children, title, className }) {
   return (
     <h2 className={`${className || ""} title`}>
       <span>{title}</span>
+      {children}
     </h2>
   );
 }
-
-export default Title;
