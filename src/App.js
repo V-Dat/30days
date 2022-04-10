@@ -25,30 +25,27 @@ import NotFound from "./pages/NotFound";
 
 function App() {
   return (
-    <>
       <Suspense fallback={<div>...Loading</div>}>
         <Router>
-          <Header />
           <Routes>
-            <Route path="Day1" element={<Day1 />} />
-            <Route path="Day2" element={<Day2 />} />
-            <Route path="Day3" element={<Day3 />} />
-            <Route path="Day4" element={<Day4 />} />
-            <Route path="Day5" element={<Day5 />} />
-            <Route path="Day6" element={<Day6 />} />
-            <Route path="Day7" element={<Day7 />} />
-            <Route path="Day8" element={<Day8 />} />
-            <Route path="Day9" element={<Day9 />} />
-            <Route path="News" element={<News />} />
-            <Route path="Profile" element={<Profile />} />
-            <Route path="404NotFound" element={<NotFound />} />
-            <Route path="/" element={<Content />} />
-            <Route path="*" element={<Navigate replace to="/404NotFound" />} />
+            <Route path="Day1" element={ <Day1 />} />
+            <Route path="Day2" element={<><Header /><Day2 /> </>} />
+            <Route path="Day3" element={<><Header /><Day3 /> </>} />
+            <Route path="Day4" element={<><Header /><Day4 /> </>} />
+            <Route path="Day5" element={<><Header /><Day5 /> </>} />
+            <Route path="Day6" element={<><Header /><Day6 /> </>} />
+            <Route path="Day7" element={<><Header /><Day7 /> </>} />
+            <Route path="Day8" element={<><Header /><Day8 /> </>} />
+            <Route path="Day9" element={<><Header /><Day9 /> </>} />
+            <Route path="News" element={<><Header /><News /> </>} />
+            <Route path="Profile" element={<><Header /><Profile /> </>} />
+            <Route path="404NotFound" element={<><Header /><NotFound /> </>} />
+            <Route path="/" element={<><Header /><Content /> </>} />
+            <Route path="*" element={<><Header /><Navigate replace to="/404NotFound" /> </>} />
           </Routes>
           <Footer />
         </Router>
       </Suspense>
-    </>
   );
 }
 
