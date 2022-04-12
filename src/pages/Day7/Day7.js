@@ -17,36 +17,39 @@ function Day7() {
   const [countLiChecked, setCountLiChecked] = useState(0);
   // event hover remove todo list
 
-  //xử lý enter input:
-  const handleEnter = (e) => {
-    if (e.key === "Enter" && job !== "") {
+  const addJob = () => {
+    if (jobs !== "") {
       setJobs((prev) => [...prev, { value: job, isChecked: false }]);
       setJob("");
     }
   };
 
-  const handleInputJob = (e) => {
+  //xử lý enter input:
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      addJob();
+    }
+  };
+
+  const handleOnChangeInput = (e) => {
     setJob(e.target.value);
   };
 
-  const handleAddJobs = () => {
-    if (job !== "") {
-      setJobs((prev) => [...prev, { value: job, isChecked: false }]);
-      setJob("");
-    }
+  const handleOnClickAdd = () => {
+    addJob();
   };
 
-  const handleDelJob = (e, data) => {
+  const handleClickDelJob = (e, data) => {
     const index = jobs.indexOf(data);
     data.isChecked
       ? setCountLiChecked(countLiChecked - 1)
       : console.log("job khong duoc checked");
     setJobs((prev) => {
-      return [...prev.slice(0, index), ...prev.slice(index + 1, prev.length)];
+      return [...prev.slice(0, index), ...prev.slice(index + 1)];
     });
   };
 
-  const handleChange = (e, data) => {
+  const handleOnChangeCheckbox = (e, data) => {
     data.isChecked
       ? setCountLiChecked(countLiChecked - 1)
       : setCountLiChecked(countLiChecked + 1);
@@ -54,7 +57,7 @@ function Day7() {
     setJobs((prev) => [...prev]);
   };
 
-  const handleRemoveAllTask = () => {
+  const handleOnClickRemoveAll = () => {
     setJob("");
     setCountLiChecked(0);
     setJobs([]);
@@ -73,11 +76,14 @@ function Day7() {
               <InputComponent
                 className="todo-add__input"
                 type="text"
-                handleChange={handleInputJob}
-                handleKeyDown={handleEnter}
+                handleChange={handleOnChangeInput}
+                handleKeyDown={handleKeyDown}
                 value={job}
               />
-              <Button className="todo-add__button" handleClick={handleAddJobs}>
+              <Button
+                className="todo-add__button"
+                handleClick={handleOnClickAdd}
+              >
                 <i className="fa-solid fa-plus"></i>
               </Button>
             </Row>
@@ -87,7 +93,8 @@ function Day7() {
                   <InputComponent
                     type="checkbox"
                     data={eJob}
-                    handleChange={handleChange}
+                    handleChange={handleOnChangeCheckbox}
+                    checked={eJob.isChecked}
                   />
                   <Detail className="job-in-list">
                     <b className="text-primary">{`${
@@ -97,7 +104,7 @@ function Day7() {
                   </Detail>
                   <Button
                     className="btn-del-job"
-                    handleClick={handleDelJob}
+                    handleClick={handleClickDelJob}
                     data={eJob}
                   >
                     <i className="fa-solid fa-xmark"></i>
@@ -111,7 +118,7 @@ function Day7() {
                     : `You have ${jobs.length - countLiChecked} tasks pending`}
                 </Text>
                 <Button
-                  handleClick={handleRemoveAllTask}
+                  handleClick={handleOnClickRemoveAll}
                   className="button-clear"
                 >
                   <span> Clear All </span>
