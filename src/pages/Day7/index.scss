@@ -1,10 +1,11 @@
 .day7 {
+  background-color: #e4f2f5;
   .col {
     min-height: 75vh;
     .todo {
       text-align: center;
       margin: 0 auto;
-      background-color: #fff;
+      background-color: #e4f2f5;
       padding-top: 5rem;
       padding-bottom: 3rem;
       .todo__title {
@@ -22,14 +23,19 @@
       .todo-add__input {
         height: 3rem;
         flex-grow: 1;
+        text-indent: 1rem;
       }
-
+      .todo-add__button.active {
+        color: #fff !important;
+      }
       .todo-add__button {
-        text-align: center;
+        display: flex;
         color: #fff;
         background-color: rgb(122, 36, 128);
         height: 3rem;
         min-width: 3rem;
+        align-items: center;
+        justify-content: space-around;
         &:hover {
           background-color: var(--primary-color);
         }
@@ -75,9 +81,8 @@
         .btn-del-job {
           min-width: 3rem;
           max-width: 3rem;
-          height: 3rem;
           background-color: rgb(167, 157, 161);
-          color: rgb(12, 11, 11);
+          color: #fff;
           outline: none;
           text-align: center;
           margin-left: 1rem;
@@ -85,7 +90,6 @@
           flex: 1;
           &:hover {
             width: 3rem;
-            height: 3rem;
             background-color: red;
             color: #fff;
             outline: none;
@@ -96,9 +100,16 @@
       .todo__clearAll {
         display: flex;
         justify-content: space-between;
-        > button {
-          width: 10rem;
-          height: 3rem;
+        .button-clear.active {
+          color: #fff !important;
+        }
+        .button-clear {
+          text-align: center;
+          border: 1px solid #000;
+          background-color: #ccc;
+          width: 9rem;
+          font-weight: 600;
+          line-height: 3rem;
           outline: none;
           &:hover {
             background-color: var(--primary-color);
