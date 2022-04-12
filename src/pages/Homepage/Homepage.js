@@ -1,34 +1,33 @@
-import "./index.css";
-import "../../assets/css/grid.css";
-
+import "./index.scss";
 import data from "../data.js";
+import { Link } from "react-router-dom";
+import Container from "../../component/ReUse/Container/Container";
+import Row from "../../component/ReUse/Row/Row";
+import Card from "../../component/Card/Card";
+import Title from "../../component/ReUse/Title/Title";
+import ImageComponent from "../../component/ReUse/ImageComponent/ImageComponent";
 
-
-import {  Link  } from "react-router-dom";
-import {  memo } from "react";
-
-function Content({ onClick }) {
+export default function Content() {
   const dayList = data.dayList;
-
-  console.log(" homepage re-render ");
-
   return (
     <>
-      <div className="content grid wide">
-        <div className="row" onClick={(e) => onClick(e)}>
+      <Container>
+        <Row className="row">
           {dayList.map((e) => (
-            <div key={e.index + e.name} className="preview col l-3 m-6 c-12">
+            <Card className="preview" key={e.url}>
               <Link to={e.url}>
-                <img className="preview__image" src={e.imageUrl} alt={e.name} />
-                <h2 className="preview__title">{e.name}</h2>
+                <ImageComponent
+                  className="preview__image"
+                  src={e.imageUrl}
+                  alt={e.name}
+                >
+                  <Title className="preview__title" title={e.name} />
+                </ImageComponent>
               </Link>
-            </div>
+            </Card>
           ))}
-        </div>
-      </div>
-
+        </Row>
+      </Container>
     </>
   );
 }
-
-export default memo(Content);
