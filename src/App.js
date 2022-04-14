@@ -1,5 +1,4 @@
 import "./App.css";
-import Header from "./parts/Header";
 import Footer from "./parts/Footer";
 import Day1 from "./pages/Day1/Day1.js";
 import Day2 from "./pages/Day2/Day2.js";
@@ -13,7 +12,6 @@ import Day9 from "./pages/Day9/Day9.js";
 import News from "./pages/News/News.js";
 import Profile from "./pages/Profile/Profile";
 import Homepage from "./pages/Homepage/Homepage";
-import NotFound from "./pages/NotFound";
 
 import { Suspense } from "react";
 import {
@@ -22,27 +20,29 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
+import AppLayout from "./component/AppLayout/AppLayout";
 
 function App() {
   return (
     <>
       <Suspense fallback={<div>...Loading</div>}>
         <Router>
-          <Header />
           <Routes>
             <Route path="Day1" element={<Day1 />} />
-            <Route path="Day2" element={<Day2 />} />
-            <Route path="Day3" element={<Day3 />} />
-            <Route path="Day4" element={<Day4 />} />
-            <Route path="Day5" element={<Day5 />} />
-            <Route path="Day6" element={<Day6 />} />
-            <Route path="Day7" element={<Day7 />} />
-            <Route path="Day8" element={<Day8 />} />
-            <Route path="Day9" element={<Day9 />} />
-            <Route path="News" element={<News />} />
-            <Route path="Profile" element={<Profile />} />
-            <Route path="404NotFound" element={<NotFound />} />
-            <Route path="/" element={<Homepage />} />
+            <Route path="/" element={<AppLayout />}>
+              <Route path="Day2" element={<Day2 />} />
+              <Route path="Day3" element={<Day3 />} />
+              <Route path="Day4" element={<Day4 />} />
+              <Route path="Day5" element={<Day5 />} />
+              <Route path="Day6" element={<Day6 />} />
+              <Route path="Day7" element={<Day7 />} />
+              <Route path="Day8" element={<Day8 />} />
+              <Route path="Day9" element={<Day9 />} />
+              <Route path="News" element={<News />} />
+              <Route path="Profile" element={<Profile />} />
+              <Route path="/" element={<Homepage />} />
+              <Route path="*" element={<Navigate replace to="/404NotFound" />}/>
+            </Route>
             <Route path="*" element={<Navigate replace to="/404NotFound" />} />
           </Routes>
           <Footer />
