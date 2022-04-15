@@ -51,6 +51,11 @@
                 display: flex;
               }
             }
+            .contact__github {
+              a {
+                color: #650f74;
+              }
+            }
           }
         }
       }
@@ -73,7 +78,7 @@
                 content: " ";
                 border-left: solid 4px var(--primary-color);
                 font-size: 3.2rem;
-                animation: slide 1s;
+                animation: slide 0.6s;
               }
             }
           }
@@ -136,6 +141,19 @@
                 }
                 .microsoft {
                   color: #2471be;
+                }
+                .typescript {
+                  color: #2471be;
+                }
+                .oop {
+                  color: rgb(126, 123, 123);
+                }
+
+                .design-patterns {
+                  color: #cfc208;
+                }
+                .scss {
+                  color: #c9376f;
                 }
               }
               @media (min-width: 451px) and (max-width: 779px) {
@@ -205,6 +223,7 @@
                   height: 100%;
                   align-items: center;
                   max-width: 60%;
+                  border-radius: 0!important;
                 }
               }
             }

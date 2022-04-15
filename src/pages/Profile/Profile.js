@@ -1,5 +1,5 @@
 import "./index.scss";
-import data from "../data";
+import about from "./about";
 import { useDispatch, useSelector } from "react-redux";
 import Row from "../../component/ReUse/Row/Row";
 import Column from "../../component/ReUse/Column/Column";
@@ -14,7 +14,6 @@ import Container from "../../component/ReUse/Container/Container";
 import Child from "../../component/ReUse/Child/Child";
 import Content from "../../component/ReUse/Content/Content";
 export default function Profile() {
-  const about = data.about;
   const dispatch = useDispatch();
   const AboutSectionReducer = useSelector((state) => state.AboutSectionReducer);
 

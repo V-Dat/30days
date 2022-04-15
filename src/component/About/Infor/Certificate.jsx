@@ -1,7 +1,7 @@
-import data from "../../../pages/data";
+import about from "../../../pages/Profile/about";
 
 export default function Certificate() {
-  const certificates = data.about.certificates;
+  const certificates = about.certificates;
   return (
     <div className="certificate__detail">
       {certificates.map((cer) => (

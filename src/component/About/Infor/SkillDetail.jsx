@@ -1,8 +1,8 @@
 import "./SkillDetail.scss";
-import data from "../../../pages/data";
+import about from "../../../pages/Profile/about";
 
 export default function SkillDetail() {
-  const skillDetail = data.about.skillDetail;
+  const skillDetail = about.skillDetail;
   return (
     <div
       className="skill-detail__content__detail"
@@ -19,4 +19,3 @@ export default function SkillDetail() {
     </div>
   );
 }
-

@@ -34,8 +34,7 @@
         display: flex;
         > * {
             width: 100%;
-
-            flex: 50%; /* or - flex: 0 50% - or - flex-basis: 50% - */
+            flex: 50%; 
         }
         i {
             padding-right: 1rem;
@@ -86,7 +85,4 @@
             flex: 100%;
         }
     }
-
-    // @media (max-width: 1023px) {
-    // }
 }
