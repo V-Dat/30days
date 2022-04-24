@@ -1,6 +1,7 @@
 import "./index.css";
-import { useState, useMemo, useEffect, useCallback, useRef } from "react";
 import data from "../data";
+import { v4 as uuidv4 } from 'uuid';
+import { useState, useMemo, useEffect, useCallback, useRef } from "react";
 
 function Day9() {
   const [avatar, setAvatar] = useState('');
@@ -34,7 +35,7 @@ function Day9() {
 
             {arrAvatar.map((avt) => (
 
-            <div className="imageList" key= {avt.index}>
+            <div className="imageList" key= {uuidv4()}>
               <div className="image-item"></div>
               <img src={avt.preview} alt=""/>
             </div>

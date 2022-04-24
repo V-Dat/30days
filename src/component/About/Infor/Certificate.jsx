@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import data from "../../../pages/data";
 
 export default function Certificate() {
@@ -7,7 +8,7 @@ export default function Certificate() {
       {certificates.map((cer) => (
         <div
           className="certificate__detail"
-          key={cer.value}
+          key={uuidv4()}
           style={{ paddingBottom: "0.1rem" }}
         >
           <b>{cer.name}</b>

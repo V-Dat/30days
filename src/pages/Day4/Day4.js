@@ -64,7 +64,7 @@ export default function Day4() {
                 effect="blur"
                 src={image.src}
                 alt={image.alt}
-                key={image.id}
+                key={uuidv4()}
                 height="100%"
                 width="100%"
                 placeholderSrc=''

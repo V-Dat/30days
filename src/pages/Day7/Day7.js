@@ -9,6 +9,7 @@ import InputComponent from "../../component/ReUse/InputComponent/InputComponent"
 import Button from "../../component/ReUse/Button/Button";
 import Detail from "../../component/ReUse/Detail/Detail";
 import Text from "../../component/ReUse/Text/Text";
+import { v4 as uuidv4 } from 'uuid';
 
 function Day7() {
   // todo list
@@ -89,7 +90,7 @@ function Day7() {
             </Row>
             <Row className="todo__lists ">
               {jobs.map((eJob, index) => (
-                <Row key={index} className="todo__list">
+                <Row key={uuidv4()} className="todo__list">
                   <InputComponent
                     type="checkbox"
                     data={eJob}

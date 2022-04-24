@@ -1,11 +1,12 @@
 import "./MusicInList.css";
 
 import React from "react";
+import { v4 as uuidv4 } from 'uuid';
 
 function MusicInList({ music, handleClickMusicInList }) {
   return (
     <div
-      key={music.mp3}
+      key={uuidv4()}
       className="music"
       onClick={() => handleClickMusicInList(music)}
     >
