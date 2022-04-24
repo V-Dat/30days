@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import Child from "../../ReUse/Child/Child";
 import Title from "../../ReUse/Title/Title";
 import ImageComponent from "../../ReUse/ImageComponent/ImageComponent";
@@ -36,7 +37,7 @@ export default function Infor({ about }) {
         <Title title="Ngôn ngữ lập Trình/ FrameWork" className="skill__title" />
         <Content className="skill__content list-items ">
           {about.skill.map((item) => (
-            <IconLabel key={item.text} className="item">
+            <IconLabel key={uuidv4()} className="item">
               <i className={item.iconClassName}></i>
               <span>{item.text}</span>
             </IconLabel>
@@ -54,13 +55,13 @@ export default function Infor({ about }) {
       <Child className="work">
         <Title title="Kinh Nghiệm" className="work__title" />
         {about.work.map((work) => (
-          <Content key={work.company} className="work__content">
+          <Content key={uuidv4()} className="work__content">
             <i
               style={{ fontWeight: "670" }}
               className="work-content__company"
             >{`${work.company} (${work.time})`}</i>
             {work.task.map((task) => (
-              <p className="work-content__task" key={task}>
+              <p className="work-content__task" key={uuidv4()}>
                 {task}
               </p>
             ))}

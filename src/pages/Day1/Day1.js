@@ -14,6 +14,8 @@ import dataProductList from "./productList.js";
 import Row from "../../component/ReUse/Row/Row";
 import Content from "../../component/ReUse/Content/Content";
 import Container from "../../component/ReUse/Container/Container";
+import { v4 as uuidv4 } from 'uuid';
+
 export default function Day1() {
   const navigate = useNavigate();
   const [userInput, setUserInput] = useState("");
@@ -88,7 +90,7 @@ export default function Day1() {
                 className={`product-card col-12 col-md-6 col-lg-4 col-xl-3 ${
                   isProductListNull ? "dark" : ""
                 }`}
-                key={`${product.name} ${product.prices}`}
+                key={uuidv4()}
               >
                 <Child className="card-icon ">
                   <CardIcon
@@ -114,7 +116,7 @@ export default function Day1() {
                     <Text className="card-size__title">{"Size: "}</Text>
                     {product.size.map((size) => (
                       <CardSelection
-                        key={size}
+                        key={uuidv4()}
                         product={product}
                         className="card-size__detail"
                         handleSelection={handleSelection}
@@ -127,7 +129,7 @@ export default function Day1() {
                     <Text className="card-color__title">{"Color: "}</Text>
                     {product.color.map((color) => (
                       <CardSelection
-                        key={color}
+                        key={uuidv4()}
                         product={product}
                         className="card-color__detail"
                         handleSelection={handleSelection}

@@ -1,10 +1,11 @@
+import { v4 as uuidv4 } from 'uuid';
 import "./infor.css";
 import ListComponent from "../ListComponent";
 export default function Infor({ data }) {
   return (
     <>
       {data.education.map((e) => (
-        <div key={e.school} className="education">
+        <div key={uuidv4()} className="education">
           <h2 className="education__title">
             <span>Học Vấn</span>
           </h2>
@@ -29,7 +30,7 @@ export default function Infor({ data }) {
           <span>Kĩ Năng</span>
         </h2>
         {data.skill.map((e) => (
-          <div key={Math.random()} className="skill">
+          <div key={uuidv4()} className="skill">
             <div className="skill__name">{e.key}</div>
             <div className="skill__value">
               <span> {e.icon !== "" ? ":" : null} </span>
@@ -40,14 +41,14 @@ export default function Infor({ data }) {
       </div>
 
       {data.work.map((e) => (
-        <div key={e.company} className="work">
+        <div key={uuidv4()} className="work">
           <h2>
             <span>Kinh Nghiệm</span>
           </h2>
           <p className="company working-time">{`${e.company} (${e.time})`}</p>
 
           {e.task.map((e) => (
-            <div key={e} className="task">
+            <div key={uuidv4()} className="task">
               <p>{e}</p>
             </div>
           ))}
@@ -59,7 +60,7 @@ export default function Infor({ data }) {
           <span>Chứng Chỉ</span>
         </h2>
         {data.ceritficate.map((e) => (
-          <div key={e} className="certificate__name">
+          <div key={uuidv4()} className="certificate__name">
             {e}
           </div>
         ))}

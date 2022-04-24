@@ -9,6 +9,7 @@ import IconLabel from "../../component/ReUse/IconLabel/IconLabel";
 import Container from "../../component/ReUse/Container/Container";
 import Content from "../../component/ReUse/Content/Content";
 import Row from "../../component/ReUse/Row/Row";
+import { v4 as uuidv4 } from 'uuid';
 
 export default function Day2() {
   console.log("Day2: render....");
@@ -22,7 +23,7 @@ export default function Day2() {
       <Container>
         <Row className="row">
           {profile.map((profile) => (
-            <Card key={profile.avatar} className="profile">
+            <Card key={uuidv4()} className="profile">
               <ImageComponent
                 className="profile__avatar"
                 src={profile.avatar}
@@ -32,7 +33,7 @@ export default function Day2() {
               <Social className="profile__social">
                 {profile.social.map((social) => (
                   <IconLabel
-                    key={social}
+                    key={uuidv4()}
                     social={social}
                     href={`https://www.${social}.com/${profile.name}`}
                   >

@@ -3,6 +3,7 @@ import "./ListMusic.css";
 import MusicInList from "../MusicInList/MusicInList.js";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { v4 as uuidv4 } from 'uuid';
 
 function ListMusic() {
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ function ListMusic() {
       ) : (
         listMusics.map((music) => (
           <MusicInList
-            key={music.name + music.author}
+            key={uuidv4()}
             music={music}
             handleClickMusicInList={handleClickMusicInList}
           />

@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import "./project.css";
 import { useState, useEffect } from "react";
 
@@ -72,13 +73,13 @@ function Project( {data} ) {
               <div  className="project-description-left">
                 <h3>Mô Tả Project</h3>
                 {data[0].leftDescription.map(e => 
-                <p key={e}>{e}</p>
+                <p key={uuidv4()}>{e}</p>
                 )}
               </div>
               <div className="project-description-right">
                 <h3>Công Nghệ Sử Dụng</h3>
                 {data[0].rightDescription.map(e => 
-                <p key={e}>{e}</p>
+                <p key={uuidv4()}>{e}</p>
                 )}
               </div>
           </div>
@@ -96,13 +97,13 @@ function Project( {data} ) {
               <div  className="project-description-left">
                 <h3>Mô Tả Project</h3>
                 {data[1].leftDescription.map(e => 
-                <p key={e}>{e}</p>
+                <p key={uuidv4()}>{e}</p>
                 )}
               </div>
               <div className="project-description-right">
                 <h3>Công Nghệ Sử Dụng</h3>
                 {data[1].rightDescription.map(e => 
-                <p key={e}>{e}</p>
+                <p key={uuidv4()}>{e}</p>
                 )}
               </div>
           </div>

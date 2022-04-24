@@ -6,6 +6,7 @@ import Row from "../../component/ReUse/Row/Row";
 import Card from "../../component/Card/Card";
 import Title from "../../component/ReUse/Title/Title";
 import ImageComponent from "../../component/ReUse/ImageComponent/ImageComponent";
+import { v4 as uuidv4 } from 'uuid';
 
 export default function Content() {
   const dayList = data.dayList;
@@ -14,7 +15,7 @@ export default function Content() {
       <Container>
         <Row className="row">
           {dayList.map((e) => (
-            <Card className="preview" key={e.url}>
+            <Card className="preview" key={uuidv4()}>
               <Link to={e.url}>
                 <ImageComponent
                   className="preview__image"
