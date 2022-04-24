@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import Child from "../component/ReUse/Child/Child";
 import IconLabel from "../component/ReUse/IconLabel/IconLabel";
 import Title from "../component/ReUse/Title/Title";
-
 import { Link } from "react-router-dom";
 import InputComponent from "../component/ReUse/InputComponent/InputComponent";
 import Content from "../component/ReUse/Content/Content";
@@ -15,22 +14,21 @@ import Column from "../component/ReUse/Column/Column";
 export default function Login() {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
-  const [ , setData] = useState({});
+  const [data , setData] = useState({user: '' , password: ''});
   const navigate = useNavigate();
 
   const handleInputUsername = (e) => {
     setUser(e.target.value);
-    setData((data) => ({ ...data, user }));
+    setData((data) => ({ ...data, user: e.target.value }));
   };
 
   const handleInputPassword = (e) => {
     setPassword(e.target.value);
-    setData((data) => ({ ...data, password }));
+    setData((data) => ({ ...data, password:e.target.value }));
   };
 
-  const handleLogin = (data) => {
-    setData((prev) => ({ ...prev, ...data }));
-    console.log(data);
+  
+  const handleLogin = () => {
     alert(`
     UserName:${data.user}
     Password:${data.password}`);
@@ -71,7 +69,6 @@ export default function Login() {
                 <Button
                   className="button-login"
                   handleClick={handleLogin}
-                  data={{ user, password }}
                 >
                   Login
                 </Button>

@@ -15,15 +15,15 @@ export default function InputComponent({
 }) {
   return (
     <>
-      {classNameActive && (
+      {label && (
         <label>
           {label}
           <input
             type={type}
-            className={`${className}  ${state ? classNameActive : ""}`}
-            onKeyUp={handleKeyUp ? (e) => handleKeyUp(e, data) : () => {}}
-            onKeyDown={handleKeyDown ? (e) => handleKeyDown(data, e) : () => {}}
-            onChange={handleChange ? (e) => handleChange(e, data) : () => {}}
+            className={`${className}  ${state ? classNameActive : "input"}`}
+            onKeyUp={handleKeyUp ? (e) => handleKeyUp(e, data) : () => { }}
+            onKeyDown={handleKeyDown ? (e) => handleKeyDown(data, e) : () => { }}
+            onChange={handleChange ? (e) => handleChange(e, data) : () => { }}
             value={value}
             checked={checked}
             placeholder={placeholder}
@@ -31,21 +31,20 @@ export default function InputComponent({
           {children}
         </label>
       )}
-      {!classNameActive && (
-        <label>
-          {label}
+      {!label && (
+        <>
           <input
             type={type}
-            className={`${className} input`}
-            onKeyDown={handleKeyDown ? (e) => handleKeyDown(data, e) : () => {}}
-            onChange={handleChange ? (e) => handleChange(e, data) : () => {}}
+            className={`${className}  ${state ? classNameActive : "input"}`}
+            onKeyDown={handleKeyDown ? (e) => handleKeyDown(data, e) : () => { }}
+            onChange={handleChange ? (e) => handleChange(e, data) : () => { }}
             value={value}
-            onKeyUp={handleKeyUp ? (e) => handleKeyUp(e, data) : () => {}}
+            onKeyUp={handleKeyUp ? (e) => handleKeyUp(e, data) : () => { }}
             checked={checked}
             placeholder={placeholder}
           />
           {children}
-        </label>
+        </>
       )}
     </>
   );
