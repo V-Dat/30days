@@ -17,33 +17,32 @@ export default function Register() {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
-  const [, setData] = useState({});
+  const [data, setData] = useState({email:'', password:'', user:'', rePassword:'', inputYourName:''});
   const navigate = useNavigate();
 
   const handleInputUserName = (e) => {
     setUser(e.target.value);
-    setData((data) => ({ ...data, user }));
+    setData((data) => ({ ...data, user:e.target.value }));
   };
   const handleInputYourName = (e) => {
     setInputYourName(e.target.value);
-    setData((data) => ({ ...data, inputYourName }));
+    setData((data) => ({ ...data, inputYourName: e.target.value }));
   };
   const handleInputPassword = (e) => {
     setPassword(e.target.value);
-    setData((data) => ({ ...data, password }));
+    setData((data) => ({ ...data, password: e.target.value }));
   };
   const handleReEnterPassword = (e) => {
     setRePassword(e.target.value);
-    setData((data) => ({ ...data, rePassword }));
+    setData((data) => ({ ...data, rePassword: e.target.value }));
   };
 
   const handleInputEmail = (e) => {
     setEmail(e.target.value);
-    setData((data) => ({ ...data, email }));
+    setData((data) => ({ ...data, email: e.target.value }));
   };
 
-  const handleRegister = (data) => {
-    setData((prev) => ({ ...prev, ...data }));
+  const handleRegister = () => {
     console.log(data);
     alert(`
     YourName:${data.inputYourName}
@@ -117,7 +116,6 @@ export default function Register() {
                 <Button
                   className="button-register"
                   handleClick={handleRegister}
-                  data={{ user, password, email, inputYourName, rePassword }}
                 >
                   Register
                 </Button>

@@ -13,17 +13,15 @@ import Column from "../component/ReUse/Column/Column";
 import Detail from "../component/ReUse/Detail/Detail";
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
-  const [, setData] = useState({});
+  const [data, setData] = useState({email:''});
   const navigate = useNavigate();
 
   const handleInputEmail = (e) => {
     setEmail(e.target.value);
-    setData((data) => ({ ...data, email }));
+    setData((data) => ({ ...data, email: e.target.value }));
   };
 
-  const handleSendEmail = (data) => {
-    setData((prev) => ({ ...prev, ...data }));
-    console.log(data);
+  const handleSendEmail = () => {
     alert(`
     Email:${data.email}`);
     navigate("/");
@@ -60,7 +58,6 @@ export default function ForgotPassword() {
                 <Button
                   className="input__button-send"
                   handleClick={handleSendEmail}
-                  data={{ email }}
                 >
                   Gửi Email Cho Chúng Tôi
                 </Button>
