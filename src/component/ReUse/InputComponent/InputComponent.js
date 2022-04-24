@@ -1,7 +1,7 @@
 export default function InputComponent({
   type,
   className,
-  getUserInput,
+  handleKeyUp,
   classNameActive,
   state,
   handleChange,
@@ -10,32 +10,42 @@ export default function InputComponent({
   checked,
   data,
   placeholder,
+  label,
+  children,
 }) {
   return (
     <>
       {classNameActive && (
-        <input
-          type={type}
-          className={`${className}  ${state ? classNameActive : ""}`}
-          onKeyUp={(e) => getUserInput(e)}
-          onKeyDown={(e) => handleKeyDown(e)}
-          onChange={handleChange ? (e) => handleChange(e, data) : () => {}}
-          value={value}
-          checked={checked}
-          placeholder={placeholder}
-        />
+        <label>
+          {label}
+          <input
+            type={type}
+            className={`${className}  ${state ? classNameActive : ""}`}
+            onKeyUp={handleKeyUp ? (e) => handleKeyUp(e, data) : () => {}}
+            onKeyDown={handleKeyDown ? (e) => handleKeyDown(data, e) : () => {}}
+            onChange={handleChange ? (e) => handleChange(e, data) : () => {}}
+            value={value}
+            checked={checked}
+            placeholder={placeholder}
+          />
+          {children}
+        </label>
       )}
       {!classNameActive && (
-        <input
-          type={type}
-          className={`${className} input`}
-          onKeyDown={handleKeyDown ? (e) => handleKeyDown(e) : () => {}}
-          onChange={handleChange ? (e) => handleChange(e, data) : () => {}}
-          value={value}
-          onKeyUp={getUserInput ? (e) => getUserInput(e) : () => {}}
-          checked={checked}
-          placeholder={placeholder}
-        />
+        <label>
+          {label}
+          <input
+            type={type}
+            className={`${className} input`}
+            onKeyDown={handleKeyDown ? (e) => handleKeyDown(data, e) : () => {}}
+            onChange={handleChange ? (e) => handleChange(e, data) : () => {}}
+            value={value}
+            onKeyUp={handleKeyUp ? (e) => handleKeyUp(e, data) : () => {}}
+            checked={checked}
+            placeholder={placeholder}
+          />
+          {children}
+        </label>
       )}
     </>
   );

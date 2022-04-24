@@ -1,6 +1,6 @@
 import "./index.scss";
 import Dialog from "../../component/Day3/Dialog.js";
-import SearchBox from "../../component/Day3/SearchBox.js";
+import SearchBox from "../../component/ReUse/SearchBox/SearchBox";
 import Row from "../../component/ReUse/Row/Row";
 import Container from "../../component/ReUse/Container/Container";
 import Content from "../../component/ReUse/Content/Content";
