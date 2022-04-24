@@ -1,18 +1,10 @@
-// <<<<<<< HEAD
-// .header-about__left-image {
-//     text-align: center;
-//     img {
-//         width: 14rem;
-//         vertical-align: middle;
-//         border-bottom-left-radius: 3rem;
-//         border-top-right-radius: 3rem;
-//         box-shadow: 1rem 0.5rem 0.5rem 0.5rem rgb(239, 241, 241);
-//     }
-// =======
-img {
-    // width: 100%;
-    vertical-align: middle;
-    border-bottom-left-radius: 3rem;
-    border-top-right-radius: 3rem;
-// >>>>>>> 1a23689 (Import Reuse Component)
+.header-about__left-image {
+    text-align: center;
+    img {
+        width: 14rem;
+        vertical-align: middle;
+        border-bottom-left-radius: 3rem;
+        border-top-right-radius: 3rem;
+        box-shadow: 1rem 0.5rem 0.5rem 0.5rem rgb(239, 241, 241);
+    }
 }
