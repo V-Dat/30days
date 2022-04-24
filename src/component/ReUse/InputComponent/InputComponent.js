@@ -9,6 +9,7 @@ export default function InputComponent({
   value,
   checked,
   data,
+  placeholder,
 }) {
   return (
     <>
@@ -21,6 +22,7 @@ export default function InputComponent({
           onChange={handleChange ? (e) => handleChange(e, data) : () => {}}
           value={value}
           checked={checked}
+          placeholder={placeholder}
         />
       )}
       {!classNameActive && (
@@ -32,6 +34,7 @@ export default function InputComponent({
           value={value}
           onKeyUp={getUserInput ? (e) => getUserInput(e) : () => {}}
           checked={checked}
+          placeholder={placeholder}
         />
       )}
     </>
