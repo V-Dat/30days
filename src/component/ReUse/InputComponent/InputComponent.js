@@ -22,7 +22,7 @@ export default function InputComponent({
             type={type}
             className={`${className}  ${state ? classNameActive : "input"}`}
             onKeyUp={handleKeyUp ? (e) => handleKeyUp(e, data) : () => { }}
-            onKeyDown={handleKeyDown ? (e) => handleKeyDown(data, e) : () => { }}
+            onKeyDown={handleKeyDown ? (e) => handleKeyDown(e,data) : () => {}}
             onChange={handleChange ? (e) => handleChange(e, data) : () => { }}
             value={value}
             checked={checked}
@@ -36,7 +36,7 @@ export default function InputComponent({
           <input
             type={type}
             className={`${className}  ${state ? classNameActive : "input"}`}
-            onKeyDown={handleKeyDown ? (e) => handleKeyDown(data, e) : () => { }}
+            onKeyDown={handleKeyDown ? (e) => handleKeyDown(e,data) : () => { }}
             onChange={handleChange ? (e) => handleChange(e, data) : () => { }}
             value={value}
             onKeyUp={handleKeyUp ? (e) => handleKeyUp(e, data) : () => { }}
