@@ -1,5 +1,5 @@
 import "./index.scss";
-import { useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import Content from "../../component/ReUse/Content/Content";
 import Container from "../../component/ReUse/Container/Container";
@@ -7,52 +7,47 @@ import Row from "../../component/ReUse/Row/Row";
 import Button from "../../component/ReUse/Button/Button";
 import ImageComponent from "../../component/ReUse/ImageComponent/ImageComponent";
 import Card from "../../component/Card/Card";
-import Axios from "axios";
+import useAxios from "../../Handler/useAxios"
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
 export default function Day4() {
   const url = 'https://api.unsplash.com/photos/?client_id=iLkxj0otL2j0TvMrd6OmKGO37mm3e3bawbeaIcwQygY';
-  const [images, setImages] = useState([]);
-  const length = images.length;
+  const expectData = useCallback((data) => { return data.map((it) => ({ id: it.id, src: it.data.urls.regular, alt: it.data.blur_hash })) }, [])
+  const [axiosData, axiosDataLength] = useAxios(url, expectData)
   const [src, setSrc] = useState("");
-  const [showImage, setShowImage] = useState(false);
+  const [showImageControl, setShowImageControl] = useState(false);
   const [indexOfCurrentImage, setIndexOfCurrentImage] = useState(0);
+
   const handleClickNext = () => {
-    setIndexOfCurrentImage((indexOfCurrentImage + 1 + length) % length);
-    setSrc(images[(indexOfCurrentImage + 1 + length) % length].src);
+    const nextIndex = Number((indexOfCurrentImage + 1 + axiosDataLength) % axiosDataLength)
+    const currentImage = axiosData[nextIndex]
+    setIndexOfCurrentImage(nextIndex);
+    setSrc(currentImage.src);
   };
   const handleClickPrev = () => {
-    setIndexOfCurrentImage((indexOfCurrentImage - 1 + length) % length);
-    setSrc(images[(indexOfCurrentImage - 1 + length) % length].src);
+    const prevIndex = Number((indexOfCurrentImage - 1 + axiosDataLength) % axiosDataLength)
+    const currentImage = axiosData[prevIndex]
+    setIndexOfCurrentImage(prevIndex);
+    setSrc(currentImage.src);
   };
   const handleClickImage = (event, data) => {
-    setShowImage(true);
+    const currentIndex = data.id
+    setShowImageControl(true);
     setSrc(data.src);
-    setIndexOfCurrentImage(data.id);
+    setIndexOfCurrentImage(currentIndex);
   };
   const handleClose = () => {
-    setShowImage(false);
-    console.log(showImage);
+    setShowImageControl(false);
+    setIndexOfCurrentImage(0);
   };
 
-  const getImages = () => {
-    Axios.get(url).then((res) => {
-      const listImageUrl = res.data.map( (image,index) => ({id: index , src: image.urls.regular, alt:image.alt_description}) )
-      setImages(listImageUrl)
-      console.log(listImageUrl)
-    })
-
-  }
-  useEffect(() => {
-    getImages();
-  }, [])
 
   return (
     <Content className="day4 background-color">
       <Container>
         <Row className="row">
-          {images.map((image) => (
+          {axiosData.map((image) => (
             <Card
               key={uuidv4()}
               className="galary p-4"
@@ -75,7 +70,7 @@ export default function Day4() {
         </Row>
       </Container>
 
-      {showImage ? (
+      {showImageControl ? (
         <div className="control wide">
           <Button className="control__close" handleClick={handleClose}>
             <i className="fas fa-times close"></i>
