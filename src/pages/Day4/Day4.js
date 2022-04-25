@@ -4,12 +4,11 @@ import { v4 as uuidv4 } from 'uuid';
 import Content from "../../component/ReUse/Content/Content";
 import Container from "../../component/ReUse/Container/Container";
 import Row from "../../component/ReUse/Row/Row";
-import Button from "../../component/ReUse/Button/Button";
-import ImageComponent from "../../component/ReUse/ImageComponent/ImageComponent";
 import Card from "../../component/Card/Card";
 import useAxios from "../../Handler/useAxios"
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import ControImagelLayout from "../../component/ReUse/ControImagelLayout/ControImagelLayout";
 
 export default function Day4() {
   const url = 'https://api.unsplash.com/photos/?client_id=iLkxj0otL2j0TvMrd6OmKGO37mm3e3bawbeaIcwQygY';
@@ -71,25 +70,12 @@ export default function Day4() {
       </Container>
 
       {showImageControl ? (
-        <div className="control wide">
-          <Button className="control__close" handleClick={handleClose}>
-            <i className="fas fa-times close"></i>
-          </Button>
-
-          <Button className="control__prev" handleClick={handleClickPrev}>
-            <i className="fas fa-chevron-left"></i>
-          </Button>
-
-          <ImageComponent
-            className="control__image"
-            src={src}
-            alt={"Đây là hình ảnh"}
-          />
-
-          <Button className="control__next" handleClick={handleClickNext}>
-            <i className="fas fa-chevron-right"></i>
-          </Button>
-        </div>
+        <ControImagelLayout
+        handleClickNext={handleClickNext}
+        handleClickPrev={handleClickPrev}
+        handleClose={handleClose}
+        src={src}
+        />
       ) : (
         ""
       )}
