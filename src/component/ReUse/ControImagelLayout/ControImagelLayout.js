@@ -5,10 +5,11 @@ import ImageComponent from '../ImageComponent/ImageComponent'
 function ControlLayout({ handleClose, handleClickPrev, handleClickNext, src }) {
     return (
         <div className="control wide">
+            {handleClose &&
             <Button className="control__close" handleClick={handleClose}>
                 <i className="fas fa-times close"></i>
-            </Button>
-
+            </Button>}
+            
             {handleClose &&
                 <Button className="control__prev" handleClick={handleClickPrev}>
                     <i className="fas fa-chevron-left"></i>
@@ -23,7 +24,6 @@ function ControlLayout({ handleClose, handleClickPrev, handleClickNext, src }) {
                 <Button className="control__next" handleClick={handleClickNext}>
                     <i className="fas fa-chevron-right"></i>
                 </Button>}
-
         </div>
     )
 }

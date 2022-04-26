@@ -251,36 +251,42 @@ const data = {
   ],
   profile: [
     {
+      id: 1,
       name: "Christina",
       avatar: "./img/day2/Christina.png",
       job: "Frontend Developer",
       social: ["facebook", "youtube", "github", "tiktok"],
     },
     {
+      id: 2,
       name: "David",
       avatar: "./img/day2/David.png",
       job: "Frontend Developer",
       social: ["facebook", "youtube", "github", "tiktok"],
     },
     {
+      id: 3,
       name: "Matheo Mardaye",
       avatar: "./img/day2/Matheo_Mardaye.png",
       job: "Frontend Developer",
       social: ["facebook", "youtube", "github", "tiktok"],
     },
     {
+      id: 4,
       name: "Nice",
       avatar: "./img/day2/Nice.png",
       job: "Frontend Developer",
       social: ["facebook", "youtube", "github", "tiktok"],
     },
     {
+      id: 5,
       name: "Olivia",
       avatar: "./img/day2/Olivia.png",
       job: "Frontend Developer",
       social: ["facebook", "youtube", "github", "tiktok"],
     },
     {
+      id: 6,
       name: "Vladimir",
       avatar: "./img/day2/Vladimir.png",
       job: "Frontend Developer",

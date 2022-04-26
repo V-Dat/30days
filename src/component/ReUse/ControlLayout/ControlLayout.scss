@@ -1,0 +1,68 @@
+// .control {
+//     position: fixed; /* Stay in place */
+//     z-index: 1; /* Sit on top */
+//     left: 0;
+//     padding-top: 10vh;
+//     top: 0;
+//     width: 100%; /* Full width */
+//     height: 100%; /* Full height */
+//     overflow: auto; /* Enable scroll if needed */
+//     background-color: rgb(0, 0, 0); /* Fallback color */
+//     background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+//     font-size: 7rem;
+//     color: #ccc;
+//     .active {
+//       color: #ccc !important;
+//     }
+//     .control__close {
+//       position: absolute;
+//       right: 2rem;
+//       top: 2rem;
+//       z-index: 1;
+//       padding-right: 1rem;
+//     }
+//     .control__close:hover,
+//     .control__prev:hover,
+//     .control__next:hover {
+//       color: var(--primary-color) !important;
+//       opacity: 1;
+//     }
+  
+//     .control__prev {
+//       position: absolute;
+//       left: 2rem;
+//       bottom: 50%;
+//       transform: translateY(50%);
+//       z-index: 1;
+//     }
+//     .control__next {
+//       position: absolute;
+//       right: 2rem;
+//       bottom: 50%;
+//       transform: translateY(50%);
+//       z-index: 1;
+//     }
+  
+//     .control__image {
+//       margin: auto;
+//       display: flex;
+//       height:30%;
+//       width: 2%;
+//       img {
+//         width: 100%;
+//         height: 100%;
+//         object-fit: cover;
+//       }
+//     }
+//   }
+  
+//   @media (max-width: 740px) {
+//     .row {
+//       margin: auto 2rem;
+//       .control.wide {
+//         display: none !important;
+//         padding: 0 1rem;
+//         margin: auto;
+//       }
+//     }
+//   }
