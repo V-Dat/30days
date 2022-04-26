@@ -36,17 +36,25 @@ const data = {
     work: [
       {
         company: "NPV EXPRESS & LOGISTIC CO., LTD",
-        time: "9/2019 - 6/2021",
+        time: "9/2019 - 3/2021",
         task: [
-          "Quản lý & thiết lập database",
+          "Nhân Viên Xuất Nhập Khẩu",
+          "Lên tờ khai xuất nhập khẩu",
           "Theo dõi & khai báo cáo hóa chất MSDS",
-          "Theo dõi trừ lùi, chi tiết hàng hóa xuất nhập khẩu",
-          "Lên tờ khai xuất nhập khẩu",
         ],
       },
-    ],
+      {
+        company: "D'Furni JSC",
+        time: "4/2021 - 9/2021",
+        task: [
+          "Nhân Viên Quản Lý Đơn Hàng (Merchandiesr)",
+          "Chuẩn bị chứng từ xuất nhập khẩu",
+          "Tìm nhà cung cấp, mua nguyên vật liệu, thành phẩm",
+          "Key brands Manager & Bestuhl",
+        ],
+      },
 
-    love: "du lịch!",
+    ],
     skill: [
       {
         text: "HTML",
@@ -78,10 +86,26 @@ const data = {
         value: "Sử dụng thành thạo",
         iconClassName: "fab fa-microsoft microsoft",
       },
+      {
+        text: "React Redux",
+        value: "Library của React",
+        iconClassName: "fas fa-check-double redux",
+      },
+      {
+        text: "SCSS, SASS",
+        value: "Chương trình tiền xử lý CSS (CSS preprocessor).",
+        iconClassName: "fab fa-sass scss",
+      },
+      {
+        text: "Bootstrap 5",
+        value: "Style, Responsive",
+        iconClassName: "fa-brands fa-bootstrap bootstrap",
+      },
+
     ],
     skillDetail: [
-      { name: "HTML ", value: ": HTML DOM , HTML Event, HTTP Methods" },
-      { name: "CSS ", value: ": Flex Box, Grid System, Reponsive, BEM" },
+      { name: "HTML ", value: ": HTML DOM , HTML Event" },
+      { name: "CSS ", value: ": Flex Box, Grid System, Responsive, BEM" },
       { name: "JavaScript ", value: ": Javascript cơ bản, ES6, ..." },
       { name: "ReactJS ", value: ": JSX, Function Components, Hooks" },
       { name: "SQL ", value: ": CRUD, Query" },
@@ -99,15 +123,20 @@ const data = {
       {
         key: "Ngắn Hạn",
         value: [
-          "Tìm kiếm một vị trí trong một môi trường làm việc chuyên nghiệp, năng động và thử thách.",
-          "Đóng góp những kiến thức, kinh nghiệm và kỹ năng tốt nhất của tôi cho sự phát triển của công ty.",
-          "Luôn luôn phát triển khả năng bản thân, tích lũy thêm nhiều kinh nghiệm để hoàn thành tốt các nhiệm vụ được giao và cống hiến tối đa cho công ty. ",
+          "- Học và sử dụng được TypeScript",
+          "- Học và hiểu về Design Patterns",
+          "- Ứng dụng được OOP",
+          "- Tìm được công ty phù hợp để phát triển bản thân",
         ],
       },
       {
         key: "Dài Hạn",
         value: [
-          "Gắn bó lâu dài với công ty, trở thành nhân viên nòng cốt, tạo nhiều giá trị cho công ty.",
+          "- Ứng dụng được OOP, Viết Code Clean hơn mỗi ngày",
+          "- Vận dụng tốt design patterns",
+          "- Trở thành Full-Stack Developer",
+          "- Học tiếng anh",
+          "- Gắn bó lâu dài với công ty, trở thành nhân viên nòng cốt, tạo nhiều giá trị cho công ty.",
         ],
       },
     ],
@@ -124,16 +153,6 @@ const data = {
         iconClassName: "fab fa-react react",
       },
       {
-        text: "React Redux",
-        value: "Library của React",
-        iconClassName: "fas fa-check-double redux",
-      },
-      {
-        text: "SCSS, SASS",
-        value: "Chương trình tiền xử lý CSS (CSS preprocessor).",
-        iconClassName: "fab fa-sass scss",
-      },
-      {
         text: "MongoDB",
         value: "Quản lý Database",
         iconClassName: "fas fa-database mongodb",
@@ -142,6 +161,21 @@ const data = {
         text: "Figma",
         value: "Thiết kế UI web",
         iconClassName: "fa-brands fa-figma figma",
+      },
+
+      {
+        text: "Design Pattern",
+        value: "Học Design Pattern",
+        iconClassName: "fa-solid fa-book pattern",
+      }, {
+        text: "OOP",
+        value: "Học OOP",
+        iconClassName: "fa-solid fa-book oop",
+      },
+      {
+        text: "TypeScript",
+        value: "Học Typescript",
+        iconClassName: "fa-solid fa-book typescript",
       },
     ],
 
