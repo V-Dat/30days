@@ -1,15 +1,14 @@
 import "./index.scss";
 import { useState } from "react";
-import Container from "../../component/ReUse/Container/Container";
 import Row from "../../component/ReUse/Row/Row";
 import Column from "../../component/ReUse/Column/Column";
-import Content from "../../component/ReUse/Content/Content";
 import Title from "../../component/ReUse/Title/Title";
 import InputComponent from "../../component/ReUse/InputComponent/InputComponent";
 import Button from "../../component/ReUse/Button/Button";
 import Detail from "../../component/ReUse/Detail/Detail";
 import Text from "../../component/ReUse/Text/Text";
 import { v4 as uuidv4 } from 'uuid';
+import DayTemplate from "../DayTemplate/DayTemplate";
 
 function Day7() {
   // todo list
@@ -64,8 +63,7 @@ function Day7() {
     setJobs([]);
   };
   return (
-    <Content className="day7 background-color">
-      <Container>
+    <DayTemplate background='day7' >
         <Row className="row">
           <Column className="col">
             <Row className="todo">
@@ -128,8 +126,7 @@ function Day7() {
             </Row>
           </Column>
         </Row>
-      </Container>
-    </Content>
+      </DayTemplate>
   );
 }
 
