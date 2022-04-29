@@ -1,51 +1,133 @@
-import "./index.css";
-import data from "../data";
-import { v4 as uuidv4 } from 'uuid';
-import { useState, useMemo, useEffect, useCallback, useRef } from "react";
+import "./index.scss";
+import Container from "../../component/ReUse/Container/Container"
+import Content from "../../component/ReUse/Content/Content";
+import Title from "../../component/ReUse/Title/Title";
+import Detail from "../../component/ReUse/Detail/Detail";
+import Button from "../../component/ReUse/Button/Button";
+import Row from "../../component/ReUse/Row/Row";
+import InputComponent from "../../component/ReUse/InputComponent/InputComponent";
+import { useRef, useState } from "react";
+
+
+function padTime(time) {
+  return time.toString().padStart(2, "0");
+}
+
 
 function Day9() {
-  const [avatar, setAvatar] = useState('');
-  const [arrAvatar, setArrAvatar] = useState([]);
+  const [inputPomodoro, setInputPomodoro] = useState(25 * 60)
+  const [totalTimeInPomodoro, setTotalTimeInPomodoro] = useState(25 * 60)
+  const [timeleft, setTimeleft] = useState(totalTimeInPomodoro)
+  const [isCounting, setIsCounting] = useState(false)
+  const minutes = padTime((Math.floor(timeleft / 60)))
+  const seconds = padTime((timeleft - minutes * 60))
+  let idInterval = useRef(null);
 
-  const handlePicker = (e) => {
-    const file = e.target.files[0]; 
-    file.preview = URL.createObjectURL(file);
-    setAvatar(file)
-    setArrAvatar( (prev) => [...prev, file])
+  const handleClickStart = () => {
+    if (isCounting) { return }
+    setTotalTimeInPomodoro(totalTimeInPomodoro)
+    setIsCounting(true)
+    idInterval.current = setInterval(() => setTimeleft(prev => {
+      if (prev === 1) {
+        clearInterval(idInterval.current)
+        setIsCounting(false)
+        return prev === 0
+      }
+      return prev - 1
+    }), 1000)
   }
 
-  
-  useEffect(() =>{
-    return () => {
-      URL.revokeObjectURL(avatar);
-      console.log("revoke file ")
-    }
-  },[avatar])
-  
-  console.log("Mount or Re-Render ");
+  const handleResumeOrPause = () => {
+    clearInterval(idInterval.current)
+    setIsCounting(!isCounting)
+    // if change state to coungting => create new idInterval.current => and run it
+    if (!isCounting) { handleClickStart() }
+  }
+
+  const handleClickStop = () => {
+    clearInterval(idInterval.current)
+    setIsCounting(false)
+    setTimeleft(totalTimeInPomodoro)
+  }
+
+  const handleStartCounting = (time) => {
+    clearInterval(idInterval.current)
+    setTotalTimeInPomodoro(time)
+    setTimeleft(time)
+    setIsCounting(false)
+    if (isCounting) { handleClickStart() }
+  }
+
+
+  const handleSet5Munites = () => {
+    handleStartCounting(5 * 60);
+  }
+
+  const handleSet10Munites = () => {
+    handleStartCounting(10 * 60);
+  }
+
+  const handleSet15Munites = () => {
+    handleStartCounting(15 * 60);
+  }
+
+  const handleChange = (e) => {
+    setInputPomodoro(e.target.value)
+  }
+
+  const handleClickSetTotalTimeInPomodoro = () => {
+    clearInterval(idInterval.current)
+    if (totalTimeInPomodoro === inputPomodoro) return
+    setTimeleft(inputPomodoro)
+  }
+
   return (
-    <div className="day9 grid wide">
-      <div className="row">
-        <div className="col l-12 m-12 c-12">
-          <div className="image">
-            <input className="image__picker" type="file" onChange = {(e) => handlePicker(e)} />
-              <div className="image__show">
-              <img src={avatar.preview} alt=""/>
-            </div>
+    <Content className="day9 background-color">
+      <Container>
+        <Row className="row">
+          <Title className="title col-12 display-1 pt-5">Podomoro App !</Title>
+          <Detail className="col-12 text-center py-3 title display-1">
+            <span >{minutes || '00'}</span>
+            <span> : </span>
+            <span>{seconds || '00'}</span>
+          </Detail>
+        </Row>
+        <Row className="row justify-content-center text-center  buttons my-3">
+          <InputComponent
+            handleChange={handleChange}
+            type="number"
+            className="col-sm-9"
+            placeholder="Input seconds"
+          />
+          <Button
+            handleClick={handleClickSetTotalTimeInPomodoro}
+            className="col-sm-3 button"
+          >Set</Button>
+        </Row>
+        <Row className="row justify-content-between text-center mt-3 buttons my-5 ">
+          <Button
+            handleClick={handleSet5Munites}
+            className="buton  col-sm-12 col-md-3 "
+          >Set 5 Minutes</Button>
+          <Button
+            handleClick={handleSet10Munites}
+            className="buton  col-sm-12 col-md-3 "
+          >Set 10 Minutes</Button>
+          <Button
+            handleClick={handleSet15Munites}
+            className="buton  col-sm-12 col-md-3 "
+          >Set 15 Minutes</Button>
+        </Row>
 
-            {arrAvatar.map((avt) => (
 
-            <div className="imageList" key= {uuidv4()}>
-              <div className="image-item"></div>
-              <img src={avt.preview} alt=""/>
-            </div>
-            ))}
+        <Row className="row justify-content-arround text-center mt-3 buttons pb-3">
+          <Button className="buton col-sm-12 col-mx-3 " handleClick={handleClickStart}>Start</Button>
+          <Button className="buton col-sm-12 col-mx-3 " handleClick={handleResumeOrPause}>{`${isCounting ? "Pause" : "Resume"}`}</Button>
+          <Button className="buton col-sm-12 col-mx-3 " handleClick={handleClickStop}>Stop</Button>
+        </Row>
 
-
-          </div>
-        </div>
-      </div>
-    </div>
+      </Container>
+    </Content>
   );
 }
 

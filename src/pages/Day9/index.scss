@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+.day9 {
+  background-color: #00c6ff;
+  min-height: 100vh;
+  font-family: 'Ubuntu', sans-serif;
+  .title {
+    color: #1f6e72;
+    margin-bottom: 2rem;
+    border-top:none;
+  }
+  .buttons button {
+    outline: none;
+    border: none;
+    font-size: 24px;
+    background: #f7fca0;
+    color: #878b32;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    padding: 15px 30px;
+    cursor: pointer;
+    transition: 0.3s ease all;
+  }
+
+  .buttons button:hover {
+    border-radius: 1rem;
+    background: #f5f8ca;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+  }
+}

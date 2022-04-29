@@ -49,6 +49,12 @@
     background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
     font-size: 7rem;
     color: #ccc;
+    button {
+      background-color:transparent !important;
+      outline:none !important;
+      color: #626761;
+      border: none !important;
+    }
     .active {
       color: #ccc !important;
     }
@@ -104,6 +110,6 @@
       }
     }
   }
-  
+
 }
 
