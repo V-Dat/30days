@@ -9,18 +9,27 @@ import InputComponent from "../../component/ReUse/InputComponent/InputComponent"
 import { useRef, useState } from "react";
 
 
-function padTime(time) {
-  return time.toString().padStart(2, "0");
-}
 
+var toHHMMSS = (secs) => {
+  var sec_num = parseInt(secs, 10);
+  var hours = Math.floor(sec_num / 3600);
+  var minutes = Math.floor(sec_num / 60) % 60;
+  var seconds = sec_num % 60;
+
+  return [hours, minutes, seconds]
+    .map((v) => (v < 10 ? "0" + v : v))
+    .filter((v, i) => v !== "00" || i > 0)
+    .join(":");
+};
 
 function Day9() {
+
   const [inputPomodoro, setInputPomodoro] = useState(25 * 60)
   const [totalTimeInPomodoro, setTotalTimeInPomodoro] = useState(25 * 60)
   const [timeleft, setTimeleft] = useState(totalTimeInPomodoro)
   const [isCounting, setIsCounting] = useState(false)
-  const minutes = padTime((Math.floor(timeleft / 60)))
-  const seconds = padTime((timeleft - minutes * 60))
+  // const minutes = padTime((Math.floor(timeleft / 60)))
+  // const seconds = padTime((timeleft - minutes * 60))
   let idInterval = useRef(null);
 
   const handleClickStart = () => {
@@ -47,10 +56,11 @@ function Day9() {
   const handleClickStop = () => {
     clearInterval(idInterval.current)
     setIsCounting(false)
-    setTimeleft(totalTimeInPomodoro)
+    setTimeleft(inputPomodoro)
   }
 
   const handleStartCounting = (time) => {
+    setInputPomodoro(time)
     clearInterval(idInterval.current)
     setTotalTimeInPomodoro(time)
     setTimeleft(time)
@@ -75,7 +85,7 @@ function Day9() {
     setInputPomodoro(e.target.value)
   }
 
-  const handleClickSetTotalTimeInPomodoro = () => {
+  const handleClickSet = () => {
     clearInterval(idInterval.current)
     if (totalTimeInPomodoro === inputPomodoro) return
     setTimeleft(inputPomodoro)
@@ -87,9 +97,7 @@ function Day9() {
         <Row className="row">
           <Title className="title col-12 display-1 pt-5">Podomoro App !</Title>
           <Detail className="col-12 text-center py-3 title display-1">
-            <span >{minutes || '00'}</span>
-            <span> : </span>
-            <span>{seconds || '00'}</span>
+            <span >{toHHMMSS(timeleft)}</span>
           </Detail>
         </Row>
         <Row className="row justify-content-center text-center  buttons my-3">
@@ -100,7 +108,7 @@ function Day9() {
             placeholder="Input seconds"
           />
           <Button
-            handleClick={handleClickSetTotalTimeInPomodoro}
+            handleClick={handleClickSet}
             className="col-sm-3 button"
           >Set</Button>
         </Row>
