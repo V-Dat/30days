@@ -1,14 +1,11 @@
 import "./index.scss";
-import Container from "../../component/ReUse/Container/Container"
-import Content from "../../component/ReUse/Content/Content";
 import Title from "../../component/ReUse/Title/Title";
 import Detail from "../../component/ReUse/Detail/Detail";
 import Button from "../../component/ReUse/Button/Button";
 import Row from "../../component/ReUse/Row/Row";
 import InputComponent from "../../component/ReUse/InputComponent/InputComponent";
 import { useRef, useState } from "react";
-
-
+import DayTemplate from "../DayTemplate/DayTemplate";
 
 var toHHMMSS = (secs) => {
   var sec_num = parseInt(secs, 10);
@@ -92,14 +89,15 @@ function Day9() {
   }
 
   return (
-    <Content className="day9 background-color">
-      <Container>
+    <DayTemplate background='day9'>
+        <>
         <Row className="row">
           <Title className="title col-12 display-1 pt-5">Podomoro App !</Title>
           <Detail className="col-12 text-center py-3 title display-1">
             <span >{toHHMMSS(timeleft)}</span>
           </Detail>
         </Row>
+
         <Row className="row justify-content-center text-center  buttons my-3">
           <InputComponent
             handleChange={handleChange}
@@ -112,6 +110,7 @@ function Day9() {
             className="col-sm-3 button"
           >Set</Button>
         </Row>
+
         <Row className="row justify-content-between text-center mt-3 buttons my-5 ">
           <Button
             handleClick={handleSet5Munites}
@@ -127,15 +126,13 @@ function Day9() {
           >Set 15 Minutes</Button>
         </Row>
 
-
         <Row className="row justify-content-arround text-center mt-3 buttons pb-3">
           <Button className="buton col-sm-12 col-mx-3 " handleClick={handleClickStart}>Start</Button>
           <Button className="buton col-sm-12 col-mx-3 " handleClick={handleResumeOrPause}>{`${isCounting ? "Pause" : "Resume"}`}</Button>
           <Button className="buton col-sm-12 col-mx-3 " handleClick={handleClickStop}>Stop</Button>
         </Row>
-
-      </Container>
-    </Content>
+        </>
+    </DayTemplate>
   );
 }
 
