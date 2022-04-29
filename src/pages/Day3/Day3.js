@@ -2,20 +2,20 @@ import "./index.scss";
 import Dialog from "../../component/Day3/Dialog.js";
 import SearchBox from "../../component/ReUse/SearchBox/SearchBox";
 import Row from "../../component/ReUse/Row/Row";
-import Container from "../../component/ReUse/Container/Container";
-import Content from "../../component/ReUse/Content/Content";
+
+import DayTemplate from "../DayTemplate/DayTemplate";
 function Day3() {
   return (
-    <Content className="day3 background-color">
-      <Container>
+    <DayTemplate background='day3' >
+      <Row>
         <Row>
           <Dialog />
         </Row>
         <Row className="break">
           <SearchBox />
         </Row>
-      </Container>
-    </Content>
+      </Row>
+    </DayTemplate>
   );
 }
 

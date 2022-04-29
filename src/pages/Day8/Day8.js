@@ -5,11 +5,10 @@ import listMusicDefault from "./listMusicDefault";
 import HeadPlayer from "../../component/Day8/HeadPlayer/HeadPlayer.js";
 import ListMusic from "../../component/Day8/ListMusic/ListMusic.js";
 import { useDispatch } from "react-redux";
-import Content from "../../component/ReUse/Content/Content";
-import Container from "../../component/ReUse/Container/Container";
 import Row from "../../component/ReUse/Row/Row";
 import Column from "../../component/ReUse/Column/Column";
 import Child from "../../component/ReUse/Child/Child";
+import DayTemplate from "../DayTemplate/DayTemplate";
 
 function Day8() {
   const dispatch = useDispatch();
@@ -51,8 +50,7 @@ function Day8() {
   });
 
   return (
-    <Content className="day8">
-      <Container>
+    <DayTemplate background='day8' >
         <Row className="row">
           <Column className="col">
             <Child className="music-player player">
@@ -61,8 +59,7 @@ function Day8() {
             </Child>
           </Column>
         </Row>
-      </Container>
-    </Content>
+    </DayTemplate>
   );
 }
 

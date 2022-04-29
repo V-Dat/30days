@@ -6,10 +6,10 @@ import ImageComponent from "../../component/ReUse/ImageComponent/ImageComponent"
 import Text from "../../component/ReUse/Text/Text";
 import Button from "../../component/ReUse/Button/Button";
 import IconLabel from "../../component/ReUse/IconLabel/IconLabel";
-import Container from "../../component/ReUse/Container/Container";
-import Content from "../../component/ReUse/Content/Content";
-import Row from "../../component/ReUse/Row/Row";
+
 import { v4 as uuidv4 } from 'uuid';
+import DayTemplate from "../DayTemplate/DayTemplate";
+import Row from "../../component/ReUse/Row/Row";
 
 export default function Day2() {
   console.log("Day2: render....");
@@ -19,9 +19,8 @@ export default function Day2() {
     console.log("Your Contact is : ", profile);
   };
   return (
-    <Content className="day2 background-color">
-      <Container>
-        <Row className="row">
+    <DayTemplate background='day2' >
+      <Row className='row'>
           {profile.map((profile) => (
             <Card key={uuidv4()} className="profile">
               <ImageComponent
@@ -51,7 +50,6 @@ export default function Day2() {
             </Card>
           ))}
         </Row>
-      </Container>
-    </Content>
+    </DayTemplate>
   );
 }

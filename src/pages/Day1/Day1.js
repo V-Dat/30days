@@ -12,9 +12,8 @@ import { useState } from "react";
 import SearchBox from "../../component/ReUse/SearchBox/SearchBox";
 import dataProductList from "./productList.js";
 import Row from "../../component/ReUse/Row/Row";
-import Content from "../../component/ReUse/Content/Content";
-import Container from "../../component/ReUse/Container/Container";
 import { v4 as uuidv4 } from 'uuid';
+import DayTemplate from "../DayTemplate/DayTemplate";
 
 export default function Day1() {
   const navigate = useNavigate();
@@ -80,100 +79,81 @@ export default function Day1() {
           />
         </Child>
       </Header>
-      <Content
-        className={`day1 background-color ${isProductListNull ? "dark" : ""}`}
-      >
-        <Container>
-          <Row className="row">
-            {productList.map((product) => (
-              <Card
-                className={`product-card col-12 col-md-6 col-lg-4 col-xl-3 ${
-                  isProductListNull ? "dark" : ""
-                }`}
-                key={uuidv4()}
-              >
-                <Child className="card-icon ">
-                  <CardIcon
-                    product={product}
-                    iconClassName="bx bx-heart"
-                    handleClick={handleClickHeart}
-                  />
-                  <CardIcon
-                    product={product}
-                    handleClick={handleClickCart}
-                    iconClassName="bx bx-cart-alt"
-                  />{" "}
-                </Child>
-                <Child className="card-infor">
-                  <ImageComponent
-                    className="card-infor__image "
-                    alt={`Đây là hình ảnh của sản phẩm ${product.name}`}
-                    src={product.image}
-                  />
-                  <Text className="card-infor__name h2">{product.name}</Text>
-                  <Text className="card-infor__price">{product.price}</Text>
-                  <Child className="card-size">
-                    <Text className="card-size__title">{"Size: "}</Text>
-                    {product.size.map((size) => (
-                      <CardSelection
-                        key={uuidv4()}
-                        product={product}
-                        className="card-size__detail"
-                        handleSelection={handleSelection}
-                        size={size}
-                      />
-                    ))}
-                  </Child>
 
-                  <Child className="card-color">
-                    <Text className="card-color__title">{"Color: "}</Text>
-                    {product.color.map((color) => (
-                      <CardSelection
-                        key={uuidv4()}
-                        product={product}
-                        className="card-color__detail"
-                        handleSelection={handleSelection}
-                        color={color}
-                      />
-                    ))}
-                  </Child>
+      <DayTemplate background={`day1 background-color ${isProductListNull ? "dark" : ""}`} >
+        <Row className="row">
+          {productList.map((product) => (
+            <Card
+              className={`product-card col-12 col-md-6 col-lg-4 col-xl-3 ${isProductListNull ? "dark" : ""
+                }`}
+              key={uuidv4()}
+            >
+              <Child className="card-icon ">
+                <CardIcon
+                  product={product}
+                  iconClassName="bx bx-heart"
+                  handleClick={handleClickHeart}
+                />
+                <CardIcon
+                  product={product}
+                  handleClick={handleClickCart}
+                  iconClassName="bx bx-cart-alt"
+                />{" "}
+              </Child>
+              <Child className="card-infor">
+                <ImageComponent
+                  className="card-infor__image "
+                  alt={`Đây là hình ảnh của sản phẩm ${product.name}`}
+                  src={product.image}
+                />
+                <Text className="card-infor__name h2">{product.name}</Text>
+                <Text className="card-infor__price">{product.price}</Text>
+                <Child className="card-size">
+                  <Text className="card-size__title">{"Size: "}</Text>
+                  {product.size.map((size) => (
+                    <CardSelection
+                      key={uuidv4()}
+                      product={product}
+                      className="card-size__detail"
+                      handleSelection={handleSelection}
+                      size={size}
+                    />
+                  ))}
                 </Child>
-                <Child className="card-button d-flex justify-content-between flex-wrap">
-                  <Button
-                    product={product}
-                    className="btn buy"
-                    handleClick={handleClickButtonBuy}
-                  >
-                    BUY NOW
-                  </Button>
-                  <Button
-                    data={product}
-                    className="btn add"
-                    handleClick={handleClickButtonAdd}
-                  >
-                    ADD CART
-                  </Button>
+
+                <Child className="card-color">
+                  <Text className="card-color__title">{"Color: "}</Text>
+                  {product.color.map((color) => (
+                    <CardSelection
+                      key={uuidv4()}
+                      product={product}
+                      className="card-color__detail"
+                      handleSelection={handleSelection}
+                      color={color}
+                    />
+                  ))}
                 </Child>
-              </Card>
-            ))}
-            {/* {productList.length === 0 ? (
-              <div class="alert alert-warning">
-                <strong>Warning ! </strong>We Dont Have This Product{" "}
-                <strong
-                  href="#"
-                  class="text-warning text-decoration-underlineg"
-                  onClick={() => setProductList(data)}
+              </Child>
+              <Child className="card-button d-flex justify-content-between flex-wrap">
+                <Button
+                  product={product}
+                  className="btn buy"
+                  handleClick={handleClickButtonBuy}
                 >
-                  Go Back Hear
-                </strong>
-                .
-              </div>
-            ) : (
-              ""
-            )} */}
-          </Row>
-        </Container>
-      </Content>
+                  BUY NOW
+                </Button>
+                <Button
+                  data={product}
+                  className="btn add"
+                  handleClick={handleClickButtonAdd}
+                >
+                  ADD CART
+                </Button>
+              </Child>
+            </Card>
+          ))}
+        </Row>
+      </DayTemplate>
     </>
   );
 }

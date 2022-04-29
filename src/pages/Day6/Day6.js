@@ -1,8 +1,8 @@
 import "./index.scss";
 import { useState, useEffect } from "react";
-import Content from "../../component/ReUse/Content/Content";
-import Container from "../../component/ReUse/Container/Container";
 import Row from "../../component/ReUse/Row/Row";
+import DayTemplate from "../DayTemplate/DayTemplate";
+import BroadTime from "../../component/Day6/BroadTime";
 var newDateOptions = {
   year: "numeric",
   month: "2-digit",
@@ -43,50 +43,47 @@ export default function Day6() {
   }, [currentTime]);
 
   return (
-    <Content className="day6 background-color">
-      <Container>
-        <Row className="row">
-          <div className="timer p-3 col-6 col-md-4 col-lg-3 col-xl-2">
-            <h3 className="timer__title">Viet Nam Time</h3>
-            <div className="timer__current">{currentTime}</div>
-          </div>
-          <div className="timer p-3 col-6 col-md-4 col-lg-3 col-xl-2">
-            <h3 className="timer__title">United States Time</h3>
-            <div className="timer__current">{currentTimeUS}</div>
-          </div>
-          <div className="timer p-3 col-6 col-md-4 col-lg-3 col-xl-2">
-            <h3 className="timer__title">Australia Time</h3>
-            <div className="timer__current">{currentTimeAUS}</div>
-          </div>
-          <div className="timer p-3 col-6 col-md-4 col-lg-3 col-xl-2">
-            <h3 className="timer__title">British English Time</h3>
-            <div className="timer__current">{currentTimeGB}</div>
-          </div>
-          <div className="timer p-3 col-6 col-md-4 col-lg-3 col-xl-2">
-            <h3 className="timer__title">Korea Time</h3>
-            <div className="timer__current">{currentTimeKR}</div>
-          </div>
-          <div className="timer p-3 col-6 col-md-4 col-lg-3 col-xl-2">
-            <h3 className="timer__title">Russia Time</h3>
-            <div className="timer__current">{currentTimeRU}</div>
-          </div>
+    <DayTemplate background='day6' >
+      <Row className='row'>
+        <BroadTime
+          timezone='Viet Nam Time'
+          timeLocation={currentTime}
+        />
+        <BroadTime
+          timezone='United States Time'
+          timeLocation={currentTimeUS}
+        />
+        <BroadTime
+          timezone='Australia Time'
+          timeLocation={currentTimeAUS}
+        />
+        <BroadTime
+          timezone='British English Time'
+          timeLocation={currentTimeGB}
+        />
+        <BroadTime
+          timezone='Russia Time Time'
+          timeLocation={currentTimeRU}
+        />
+        <BroadTime
+          timezone='Korea Time'
+          timeLocation={currentTimeKR}
+        />
 
-          <div className="timer p-3 col-6 col-md-4 col-lg-3 col-xl-2">
-            <h3 className="timer__title">Japan Time</h3>
-            <div className="timer__current">{currentTimeJP}</div>
-          </div>
+        <BroadTime
+          timezone='Japan Time'
+          timeLocation={currentTimeJP}
+        />
 
-          <div className="timer p-3 col-6 col-md-4 col-lg-3 col-xl-2">
-            <h3 className="timer__title">Indonesia Time</h3>
-            <div className="timer__current">{currentTimeIND}</div>
-          </div>
-
-          <div className="timer p-3 col-6 col-md-4 col-lg-3 col-xl-2">
-            <h3 className="timer__title">HongKong Time</h3>
-            <div className="timer__current">{currentTimeHK}</div>
-          </div>
-        </Row>
-      </Container>
-    </Content>
+        <BroadTime
+          timezone='Indonesia Time'
+          timeLocation={currentTimeIND}
+        />
+        <BroadTime
+          timezone='HongKong Time'
+          timeLocation={currentTimeHK}
+        />
+      </Row>
+    </DayTemplate>
   );
 }
