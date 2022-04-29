@@ -8,14 +8,14 @@ function Footer() {
   return (
     <div className="footer">
       <ChildComponent className="footer__child footer__image">
-        <ImageLink href="/About" src="./img/day2/Kevin.png" />
+        <ImageLink href="/Profile" src="./img/day2/Kevin.png" />
       </ChildComponent>
       <ChildComponent className="footer__child footer__contact">
         <IconLabel href={about.github} className="contact__github">
           <i className="fab fa-github"></i>
           <p>Github</p>
         </IconLabel>
-        <IconLabel href="/About" className="contact__about">
+        <IconLabel href="/Profile" className="contact__about">
           <i className="fa-solid fa-info"> </i>
           <p>About me</p>
         </IconLabel>
