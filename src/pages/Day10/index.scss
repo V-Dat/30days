@@ -1,7 +1,77 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
-.10 {
+.day10 {
   background-color: #00c6ff;
   min-height: 100vh;
-  font-family: 'Ubuntu', sans-serif;
- 
+  .category-selector {
+    p {
+    }
+  }
+  .score-board {
+    .score-board__correct {
+    }
+    .score-board__wrong {
+    }
+  }
+
+  //result models
+
+  .result-modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .is-correct h3 {
+      color: rgb(63, 162, 63);
+    }
+
+    .is-wrong h3 {
+      color: rgb(211, 79, 79);
+    }
+    .overlay {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.5);
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .result-modal-content {
+      background: #fff;
+      border-radius: 5px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      padding: 30px;
+      width: 400px;
+      margin: 0 auto;
+      max-width: 90%;
+      text-align: center;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      h3 {
+        font-size: 30px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+      }
+
+      .correct-answer {
+        margin-bottom: 20px;
+      }
+
+      .correct-answer small {
+        color: #777;
+      }
+
+      .correct-answer strong {
+        font-size: 40px;
+      }
+    }
+  }
 }

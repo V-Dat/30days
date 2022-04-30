@@ -26,6 +26,7 @@ import {
 } from "react-router-dom";
 import AppLayout from "./component/AppLayout/AppLayout";
 import ScrollToTop from "./component/ScrollToTop/ScrollToTop";
+import Day10 from "./pages/Day10/Day10";
 
 function App() {
 
@@ -47,6 +48,7 @@ function App() {
                 <Route path="Day7" element={<Day7 />} />
                 <Route path="Day8" element={<Day8 />} />
                 <Route path="Day9" element={<Day9 />} />
+                <Route path="Day10" element={<Day10 />} />
                 <Route path="News" element={<News />} />
                 <Route path="Profile" element={<Profile />} />
                 <Route path="404NotFound" element={<NotFound />} />
