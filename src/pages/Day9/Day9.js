@@ -25,8 +25,6 @@ function Day9() {
   const [totalTimeInPomodoro, setTotalTimeInPomodoro] = useState(25 * 60)
   const [timeleft, setTimeleft] = useState(totalTimeInPomodoro)
   const [isCounting, setIsCounting] = useState(false)
-  // const minutes = padTime((Math.floor(timeleft / 60)))
-  // const seconds = padTime((timeleft - minutes * 60))
   let idInterval = useRef(null);
 
   const handleClickStart = () => {
@@ -90,7 +88,6 @@ function Day9() {
 
   return (
     <DayTemplate background='day9'>
-        <>
         <Row className="row">
           <Title className="title col-12 display-1 pt-5">Podomoro App !</Title>
           <Detail className="col-12 text-center py-3 title display-1">
@@ -131,7 +128,6 @@ function Day9() {
           <Button className="buton col-sm-12 col-mx-3 " handleClick={handleResumeOrPause}>{`${isCounting ? "Pause" : "Resume"}`}</Button>
           <Button className="buton col-sm-12 col-mx-3 " handleClick={handleClickStop}>Stop</Button>
         </Row>
-        </>
     </DayTemplate>
   );
 }
